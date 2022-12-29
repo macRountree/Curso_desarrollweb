@@ -4,6 +4,12 @@ Lista de metodos
   upper()  ---> Convierte en mayusculas un string
   title()------ Convierte la primera letra en Mayuscula
   sort() --------- Ordena los elemementos de una lista  alfabeticamente
+  .pop() ----------  Elimina el ultimo element de una lista
+  .pop(n)---------- elimina un elemento especifico de una lista
+  .append()--------- Agregamos un elemento al final de la lista
+  .remove().......... Eliminamos un elemento por su nombre
+  range(n,n,n)........Es utilizado en for para ponerle limites 
+                     a nuestra condicion (inicio,final, incremental)
 
 
 
@@ -121,4 +127,37 @@ meses[1] // Diciembre
 La ubicación Diciembre es 1 porque empieza de 0 a 3 en este caso.. abril seria posicion
 2 y marzo 3
 
+------------------------------------ITERADORES--------------------------
+
+Son repetidores de codigo hasta que una condicion se cumpla o no
+ En caso de tener una lista un For accede a todosl os datos
+ y se ejecutara hasta que se cumpla la condicion en el caso de la lista
+ hasta que cheque cada elemento
+ se puede utilizar en rangos
+ for numero in range (0,10,1)
+    print (numero)
+    aqui estamos usando un metodo range el cual cada argumento
+especifica:
+el comienzo en este caso el 0
+el final en este caso es 10 (el recorrido es
+de 0 a 9)
+y el ultimo argumento que es 1 estara corriendo de 1 en 1
+si ponemos 2 el resultado es 0,2,4,6,8
+no se pone 10 porque el rango es de 0a9
+ 
+------------------------CONDICIONALES
+
+If nos dice si un valor cumple comparandolo con otro
+
+if valor > valor  
+los condicionales son 
+>.... mayor
+<....menor
+== .... igual a  (Si condicionamos booleanos no lo ocupamos)
+!= ,,,, diferente a 
+<= .... menor o igual a 
+>= ... mayor o igual a
+else... Siempre que la condicion no se cumpla
+aparece el else
+elif es una segundo condición en cas de tener mas de 1 if
  """

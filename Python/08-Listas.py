@@ -20,3 +20,25 @@ print(learning)
 #aqui modificamos los valores de un arreglo. reemplazandolo
 lenguajes[3] = 'Frances'
 print(lenguajes)
+
+
+#aqui agregamos otro valor al final lista 
+
+lenguajes.append('Italiano')
+print(lenguajes)
+
+#eliminar elementos de una lista
+del lenguajes[1]
+print(lenguajes)
+
+#Eliminar el ultimo elemento de una lista
+lenguajes.pop()
+print(lenguajes)
+
+#eliminar con .pop() un elemento especifico
+lenguajes.pop(2)
+print(lenguajes)
+
+# eliminar algo por nombre
+lenguajes.remove('Japonés')
+print(lenguajes)
