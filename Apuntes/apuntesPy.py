@@ -1,15 +1,21 @@
 """
+--------------------------------Secuencia de caracteres-------------------
+f --------- lo utilizams para concatenar Strings con variables (f'Hola mi nombre es: {nombre_usuario}')
+\r----------Lo utilizamos para retornarun valor
+\n......... Lo utilizamos para un salto de linea
 ----------------------------------Métodos--------------------------------
 Lista de metodos
-  upper()  ---> Convierte en mayusculas un string
-  title()------ Convierte la primera letra en Mayuscula
-  sort() --------- Ordena los elemementos de una lista  alfabeticamente
-  .pop() ----------  Elimina el ultimo element de una lista
-  .pop(n)---------- elimina un elemento especifico de una lista
-  .append()--------- Agregamos un elemento al final de la lista
-  .remove().......... Eliminamos un elemento por su nombre
-  range(n,n,n)........Es utilizado en for para ponerle limites 
-                     a nuestra condicion (inicio,final, incremental)
+.upper()  ---> Convierte en mayusculas un string
+.title()------ Convierte la primera letra en Mayuscula
+.sort() --------- Ordena los elemementos de una lista  alfabeticamente
+.pop() ----------  Elimina el ultimo element de una lista
+.pop(n)---------- elimina un elemento especifico de una lista
+.append()--------- Agregamos un elemento al final de la lista
+.remove().......... Eliminamos un elemento por su nombre
+range(n,n,n)........Es utilizado en for para ponerle limites 
+ a nuestra condicion (inicio,final, incremental)
+.get()...........Se puede utilizar para acceder a unvalor de un diccionario
+.item()..........Se utiliza para acceder alos items de un diccionario (valor/key)               
 
 
 
@@ -160,4 +166,17 @@ los condicionales son
 else... Siempre que la condicion no se cumpla
 aparece el else
 elif es una segundo condición en cas de tener mas de 1 if
+
+operadores AND y OR
+
+------------------------------------------OBJETOS con Diccionarios
+Son parecidos a los arreeglos pero en lugar de usasr listas en Objetos
+utilizamos las llaves (keys) y en pyhon Objetos son llamados Diccionarios
+
+
+
+-------------------------------Entrada de datos por USUARIOS--------
+Las entradas de datos son acciones por parte del usuario cuando ingresa
+cierta informacíón como logearte, realizar un examen en linea, realizar pagos
+en python se utiliza la funcion input()
  """
