@@ -179,4 +179,38 @@ utilizamos las llaves (keys) y en pyhon Objetos son llamados Diccionarios
 Las entradas de datos son acciones por parte del usuario cuando ingresa
 cierta informacíón como logearte, realizar un examen en linea, realizar pagos
 en python se utiliza la funcion input()
+
+
+
+
+-------------------------------WHILE--------------------------------
+Se ejecuta mientras una condicion sea VERDADERA
+Se recomienda crear una variable inicial e incrementar el final del
+while para que no se haga loop
+
+--------------------------------------EJERCICIO----------------
+Siempre que creemos una app es recomendable crear una funcionprincipal
+y que esta funcion llame a todas las demas y arranque la app 
+
+
+------------------------------------POO en python------------------------
+Es un estandar a la hora de escribir codigo
+
+Cuando definimos una clase () debemos describir su comportamiento y
+ la forma de ese objeto 
+ El objeto es la información creada por una clase (instancia)
+
+ clase cliente : 
+    nombre
+    apellido
+    tipo
+    
+    Estructura de una clase en Python
+    class Cliente:
+        #resto de la clase
+    cliente = Cliente() 'Este es la intancia' Es decir
+    un objeto creado cuando llamamos a una clase
+    --->Atributo de clase: Es una propiedad que tendran todos
+    los objetos creados con nuestra clase
+    ---> Metodo: Es una funcion que existe dentro de una clase
  """
