@@ -16,9 +16,15 @@ range(n,n,n)........Es utilizado en for para ponerle limites
  a nuestra condicion (inicio,final, incremental)
 .get()...........Se puede utilizar para acceder a unvalor de un diccionario
 .item()..........Se utiliza para acceder alos items de un diccionario (valor/key)               
+.open()..........Se utiliza para crear archivos (video 48)
+.write()--------- Metodo para escribir en el archivo creato..
+.close()...........Metodo para cerrar el archivo.. Se utiliza para buenas practicas
+.rstrip()......... Es un metodo que nos quita los espacios entre renglones
+.exist().........metemos el path o la variable global del path
+.makedirs()......se crea la carpeta
+---------------------------------LIBRERIAS-------------------------------------------
 
-
-
+import os -----> libreria que nos permite importar funciones para manejar archivos
 
 
 
@@ -213,4 +219,34 @@ Cuando definimos una clase () debemos describir su comportamiento y
     --->Atributo de clase: Es una propiedad que tendran todos
     los objetos creados con nuestra clase
     ---> Metodo: Es una funcion que existe dentro de una clase
+
+    *ABSTRACCIÓN ---> Son los datos necesarios de una clase
+    Restaurant ocupa un : Nombre, nombre del platillo, descripcion, precio
+    SOLAMENTE AGREGAMOS DATOS NECESARIOS
+
+    *Encapsulamiento --> Permite restringir u ocultar el acceso de los datos
+    dentro de la misma clase del mundo exterior (se modifican via metodos en la misma clase)
+
+
+    Herencia: Podemos crear una clase que sea hijo o una copia de otra,al heredar una clase
+    tendremos tdos los metodos y atributos de la clase padre en en hijo, y
+    podremos modificarlos encaso de ser necesario.
+
+
+    Polimorfismo: Es la habilidad de tener diferentes comportamientos basado en que subclase
+    se esta utilizando.. se relaciona estrechamente con la herencia
+
+
+
+    ---------------------------------------------------------CREACION DE ARCHIVOS--------------------------------
+
+    Los lenguajes de programación podemos crear archivos de texto o pdf
+--------------------------------------------------------proyecto FINAL---------------------------
+
+CRUD
+Crear
+Read
+Update
+Delete
+Los datos de una app deben de tener la realizar estas acciones
  """

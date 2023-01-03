@@ -1,0 +1,3 @@
+Nombre: george
+Telefono: 456456456
+Categoria: moto
