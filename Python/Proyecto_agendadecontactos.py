@@ -32,25 +32,62 @@ def app():
         opcion = int(opcion)
 
         if opcion == 1:
-            print('Agregar contacto')
             agregar_contacto()
             preguntar = False
         elif opcion == 2:
-            print('Editar contacto')
             editar_contacto()
             preguntar = False
         elif opcion == 3: 
-            print('Ver contacto')
+            mostrar_contactos()
             preguntar = False
         elif opcion == 4: 
-            print('Buscar contacto')
+            buscar_contactos()
             preguntar = False
         elif opcion == 5: 
-            print('Eliminar contacto')
+            eliminar_contactos()
             preguntar = False
         else:
             print('Opcion no Valida. Intente de nuevo')
 
+def eliminar_contactos():
+    nombre = input('Seleccione el contacto que desea buscar: \r\n')
+    try:
+        os.remove(CARPETA+ nombre +EXTENSION)
+        print ('Contacto Eliminado')
+    except:
+        print('No existe ese contacto. Seleccione un contacto existente por favor')
+    app()
+def buscar_contactos():
+
+    #creamos un input que nos pida el nombre  de contacto
+    nombre = input('Seleccione el contacto que desea buscar: \r\n')
+    #creamos un with open con la carpeta el input y la extension .txt
+    try:  #el try inntenta abrir el archivo.. Si no existe se va al except SOLO UTILIZAR CUANDO haya un error no abusar de usarlo
+        with open(CARPETA+ nombre + EXTENSION) as contacto:
+             print('\r\n Información de Contacto \r\n ')
+        for linea in contacto:
+            print(linea.rstrip()) #NOS DARA ERRRO Y PARA ESO MODIFICAMOS todo
+        print('-------------------------------------\r\n')
+    except IOError:
+        print('El archivo no existe ')
+        print(IOError)
+    #Reiniciamos
+    app()
+
+    
+def mostrar_contactos():
+    #Seleccionamos todas las carpetas de contactos
+
+    archivos = os.listdir(CARPETA)
+    archivos_txt = [i for i in archivos if i.endswith(EXTENSION)] # Nos permite recorrer si el archivo es extension txt
+
+    for archivo in archivos_txt:
+        with open(CARPETA + archivo) as contacto:
+            for linea in contacto:
+                #imprime los contenidos
+                print(linea.rstrip())
+            #imprime un separador entre contactos
+            print('-----------------------\r\n')
 def editar_contacto():
     print('escribe el nombre del contacto a editar')
     nombre_anterior = input('Nombre del contacto : \r\n ')
@@ -74,11 +111,11 @@ def editar_contacto():
 
 
             #Tambien tenemos que actualizar el nombre del archivo/carpeta
-            os.rename(CARPETA + nombre_anterior + EXTENSION,
-                      CARPETA + nombre_contacto + EXTENSION)
+        os.rename(CARPETA + nombre_anterior + EXTENSION,
+                  CARPETA + nombre_contacto + EXTENSION) #Esta linea debe estar identada fuera del with open
 
             #Se agrego correctamente
-            print('\r\n   Contacto editado correctamente \r\n ')
+        print('\r\n   Contacto editado correctamente \r\n ')
     else:
         print('Este contacto no existe')
     

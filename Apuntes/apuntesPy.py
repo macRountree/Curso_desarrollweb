@@ -22,6 +22,8 @@ range(n,n,n)........Es utilizado en for para ponerle limites
 .rstrip()......... Es un metodo que nos quita los espacios entre renglones
 .exist().........metemos el path o la variable global del path
 .makedirs()......se crea la carpeta
+.listdir()....... lista todas los archivos de un directorio
+.remove()....... De utiliza para eliminar un archivo seleccionado
 ---------------------------------LIBRERIAS-------------------------------------------
 
 import os -----> libreria que nos permite importar funciones para manejar archivos
@@ -249,4 +251,16 @@ Read
 Update
 Delete
 Los datos de una app deben de tener la realizar estas acciones
+ 
+ 
+ 
+ ---------------------PROYECTOS FUTUROS
+ APLICACION CON ARCHIVOS PARA RESTAURANT
+ DIRECTORIO DE EMPRESA CON SUBCARPETAS /GERENCIA/VENTAS
+
+ SISTEMA DE ADMINISTRACION DE BIBLIOTECAS CON PRESTAMO DE LIBROS
+ (un libro prestado debera moverse de carpeta hacia prestados)
+
+ crear un juego de piedra, papel o tijeras
+ 
  """
