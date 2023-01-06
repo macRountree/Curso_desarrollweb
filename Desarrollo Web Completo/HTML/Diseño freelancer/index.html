@@ -6,25 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mac Files</title>
+    <link rel="preload" href="css/normalize.css" as="style"> <!---Mayor performance cargamas rapido la pagina-->
+    <link rel="stylesheet" href="css/normalize.css"> <!--Es la libreria que cargara primero lo utilizamos para que los sitios web se vvean bien en los navegadores-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;700&family=Krub:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="css/styles.css" as="style"> <!---Mayor performance cargamas rapido la pagina-->
+    <link rel="stylesheet" href="css/styles.css"> <!---rel es la relacion con el href osea la ruta-->
+   
 </head>
 
 <body>
     <Header><!-- es la cabecera -->
-        <h1> Mac Rountree</h1>
+        <h1 class="titulo"> Mac Rountree <span>Portafolio</span></h1> <!---->
     </Header>
-    <nav> <!--- Cuando es un renglon de link se utiliza un menu o etiqueta nav-->
+    <div class="nav-bg">
+        <nav class="nav-principal contenedor"> <!--- Cuando es un renglon de link se utiliza un menu o etiqueta nav-->
         <a href="#">Inicio</a>
         <!-- Los navs siempre tienen etiquetas de  enlace <ax para redirigirse a otrasa paginas-->
         <a href="#">Portafolio</a>
         <!-- En este caso se debe crear otro archivo .html para la pagina del portafolio o bien redirigirse a esa seccion-->
         <a href="#">CV</a>
         <a href="#">Skills</a>
-
-
-
-
-
-    </nav>
+        </nav>
+    </div>
+    
     <img src="images/webdev.jpg" alt=""> <!---Las imagenes de background las modificamos en CSS-->
     <section>
         <!--- Si hay un header hijo consecutivo (h2,h2,h3 ...) utilizamos Section si es para el contenido principal usamos main-->

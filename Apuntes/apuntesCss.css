@@ -1,0 +1,78 @@
+/* SELECTORES*/
+
+h1{
+  color:azure;  /*Este es un selector de elemento*/
+}
+
+
+.cliente{
+    font-size: large; /*Este es un selector de clases*/
+}
+
+
+#cliente{
+    padding-right: 1rem; /*Este selector es de ID solo puede tener 1 ID por pagina*/
+}
+
+
+/*Seletor de atributo*/
+
+
+/*Todos loshijos*/ /*Aqui la clase cliente es Padre y aplica la regla a todass las etiquetas hijos declaradas*/
+
+.cliente > p{ 
+    color: aliceblue;
+}
+
+
+/* -----------------ESPECIFICIDAD--------
+Es como el navegador mostrara el CSS de acuerdo a lo especifico del select
+Se tienen 2 selectores repetidos pero con diferente color... en este caso el prioritario sera el segundo
+*/
+.titulo span{
+    color: aquamarine;
+}
+
+.titulo span {
+    color: pink;
+}
+ /* Si queremos ser mas especificos podemos hacer lo siguiente 
+ aqui podemos especificar un mas nuestr estilo en un selector pero
+ la prioridad ahora sera la de Colo cadetblue */
+
+ h1.titulo span{
+    color: cadetblue;
+ }
+
+ .titulo span {
+    color: pink;
+}
+
+
+
+.cliente span{
+    color: darkgoldenrod!important; /*El important es la jerarquia mas importante pero no es recomendable usarlo mucho */
+}
+
+/*----COLORES CSS-----
+No es recomendable usar el nombre de colores:
+azul, rojo, aqua etc
+es mejor utilizar hexadecimal
+
+
+TENEMOS QUE DEFINIR CUANTOS COLORES TENEMOS EN NUESTRO PROYECTO
+
+
+
+*/
+
+/*------------FONTS en CSS
+
+Se pueden ver fuentes en
+fonts google
+
+
+----------DISPLAY BLOCK inline
+Display: block un elemento se colocara uno
+debajo del otro sin importar su tamaño o contenido
+*/

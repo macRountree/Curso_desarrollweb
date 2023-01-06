@@ -1,4 +1,10 @@
 <!--
+  ----------------------------------------------------------------
+  SHORCUTS HTML
+  Ctrl + D sobre una etiqueta repedita como div o section y escribir sus clases
+    Shift+ Alt + flecha abajo si queremos repetir una etiqueta
+    Ctrl click y mover la linea para mover la linea o lineas seleccionadas
+  -------------------------------------------------------------------
     Integrar nuevas seecciones en los proyects de HTML y CSS.. colores. orden
 
     Visitar https://www.frontendmentor.io/home
@@ -60,14 +66,27 @@
 <section> 
     <fieldset>
         <legend>
-            <label for="">///Nombre-> </label> <input type="text" placeholder="solo escribimos texto">
-            <label for="">/// input Checkbox -> </label> <input type="checkbox">
-            <label for="">//inputRadio -> </label> <input type="radio" placeholder="solo escribimos texto">
-            <label for="">///solo numeros--> </label> <input type="number" placeholder="solo escribimos numeros">
-            <label for="">///solo Telefono--> </label> <input type="tel" placeholder="solo escribimos telefono">
+           
+            
+           
+            
+            
         </legend>
+        <div> <label for="">///Nombre-> </label> <input type="text" placeholder="solo escribimos texto"></div>
+        <div><label for="">/// input Checkbox -> </label> <input type="checkbox"></div>
+        <div> <label for="">//inputRadio -> </label> <input type="radio" placeholder="solo escribimos texto"></div>
+        <div><label for="">///solo numeros--> </label> <input type="number" placeholder="solo escribimos numeros"></div>
+        <div><label for="">///solo Telefono--> </label> <input type="tel" placeholder="solo escribimos telefono"></div>
+        <div class=""></div class=""> <!--S--->
+        <div class=""></div class="">
+        <div class=""></div class="">
+        <div class=""></div class="">
+        <div class=""></div class="">
+       
     </fieldset>
    </section>
+
+   <h1>NO es recomendable tener la etiqueta  p dentro de un h1 es mejor usar un SPAN</h1>
 </body>
 </html> <!-- Esta es la etiqueta de cierrre de html-->
 
@@ -85,5 +104,35 @@ CLASE 16 ---------------- ESTRUCTURAR EL CONTENIDO----------------------------
 Se deben separar las diferentes secciones de la pagina web normalmente el header y 
 el footer se mantienen intactos
 
+
+
+-----------------------CSS-----------------------------------------
+Es la hoja de estilo de cascada
+Se encarga de los TAMAÑOS y el TIPO DE FUENTE, los colores , espacios, margenes
+adaptar diseños para diferentes dispositivos
+
+-NO es recomendable estilizar nuestra pagina web en HTML .... lo mejor es siempre crear
+un archivo CSS
+
+---CSS consta de 4 partes
+
+1 Selector: Son las etiquetas que queremos estilizar .... <H1> <p> form etc
+2 propiedad: Son las propiedades de cada selector.... text-agling , background , color
+-VVALOR:  text-align:  right Aqui le estamos diciendo que H1 tiene la propiedad text align y se acomodara a la derecha de la pagina
+
+
+
+
+
+Debemos tener en cuenta en checar el navegador en la opcion de inspeccionar para ver nuestro CSS o html
+----Anatomia CSS
+
+    p {            /*Todas las etiquetas tienen propiedades encerradas en una llave*/
+        color:blue;    Aqui podemos modificar las propiedad de color  de un parrafo
+    }
+
+    p{
+        color: red;   /*Si tenemos 2 veces la etiqueta p ... la pagina web agarra el ultimo que pusiste en este caso se pondra el parrafo color rojo*/
+    }
 -->
 

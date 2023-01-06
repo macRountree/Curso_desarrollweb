@@ -1,0 +1,49 @@
+
+/*Los colores a utilizar son 5 : Negro, Azul, Amarillo , blanco y gris*/
+
+:root{    /*Los que inician con : son pseudoselectores porque no existen en HTML y root almacena variables CSS*/
+    --blanco: #ffffff;
+    --negro: #212121;
+    --primario: rgb(255, 193, 5);/*Podemos definir nuestra paleta de colores  y declararlo en nuestros selectores*/
+    --secundario: #6744b8;
+    --gris: #757575;
+
+}
+
+
+
+html{  /* esta etiqueta y el body  SE UTILIZAN EN TODOS MIS PROYECTOS es para adaptación de dispositivos*/
+    font-size: 62.5%;
+}
+body{
+    font-size: 16px;
+    font-family: 'Krub', sans-serif; /*Si queremos que toda la fuente de la pagina sea igual lo agregamos en el body*/  
+}
+/*Es recomendable utilizar siempre las CLASES*/
+.titulo{
+    text-align: center;
+    font-size: 3.8rem; /* 1 Rem = 10px*/
+    font-family: 'Krub', sans-serif;
+}
+
+.titulo span{  /*Si tenemos muchos span o muchas etiquetas en el html podemos especificarlas con la etiqueta padre */
+    font-size: 2rem;  /* YA no se usa pixelear se usa rem*/
+}
+
+.contenedor{ /*Es para centrar el contenido*/
+    width: 120rem;
+    /*Nos da eparación*/
+    margin: 0 auto;
+}   
+
+.nav-bg{
+    background-color: var(--secundario); 
+}
+.nav-principal{
+   
+}
+
+.nav-principal a{
+    background-color:var(--primario);
+   
+}
