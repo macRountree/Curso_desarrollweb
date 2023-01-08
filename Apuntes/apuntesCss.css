@@ -54,7 +54,7 @@ Se tienen 2 selectores repetidos pero con diferente color... en este caso el pri
     color: darkgoldenrod!important; /*El important es la jerarquia mas importante pero no es recomendable usarlo mucho */
 }
 
-/*----COLORES CSS-----
+/**----COLORES CSS-----
 No es recomendable usar el nombre de colores:
 azul, rojo, aqua etc
 es mejor utilizar hexadecimal
@@ -66,7 +66,7 @@ TENEMOS QUE DEFINIR CUANTOS COLORES TENEMOS EN NUESTRO PROYECTO
 
 */
 
-/*------------FONTS en CSS
+/**------------FONTS en CSS
 
 Se pueden ver fuentes en
 fonts google
@@ -75,4 +75,113 @@ fonts google
 ----------DISPLAY BLOCK inline
 Display: block un elemento se colocara uno
 debajo del otro sin importar su tamaño o contenido
-*/
+todos los elementos ya tienen un display por default
+
+display:block un elemento se colocara uno debajo del otro
+
+display:inline: un elemento secolocara  ala derecha
+
+NINGUN ELEMENTO TIENE un display: flex o display grid por default
+
+
+MARGIN: es el limite del elemento hacia afuera
+padding es el limite del elemento hacia andentro
+
+
+
+Flexbox: corre de izq a derecha O arriba abajo es 4unidireccional
+display es row por defecto. Flexbox esta diseñado para diseñar layouts o floats
+
+
+align.item es una propiedad para columnas 
+---------------------------
+
+
+ENFOQUES PARA Escribir CSS
+Si el proyecto es grande es necesario enfocarse en uno de esos 3
+
+BEM : BLoques elementos y Modificadores
+
+.card{}  ESte es el bloque
+.card__titulo{}
+.card__imagen{}
+.card__boton{}
+.card__boton__imagen{}
+
+
+Utility First: creamos una clase con una sola propiedad descritiva
+.text-center{} Esta clase texto queremos centrarla
+.color-red-100{} Este color lo haremos rojo y su porcentaje de intensidad
+.bg-blue-200{} El background es azul y 200 con intensidad
+.p-2{} este es un padding de 2
+.m-2{} este es un margin de 2
+Tendremos 1 propiedad y 1 valor por clase
+
+Modulo: Definimos el contenido principal
+
+.card{} Esta es la clase padre
+.card h2 {} Esta es la clase padre + clase hijo 
+.card img {}
+.card a {}1
+
+
+
+
+------------------------------------
+RESPONNSIVE WEB DESIGN: adaptar la resolución del sitio web a diversos dispositivos
+
+Google penaliza a los sitios web No responsivos
+
+Utilizamos Media Queries
+
+la sintaxis es 
+@media ()
+
+Por buenas practicas si definimo
+
+
+
+---------------------------------------
+CSS BOX MODEL
+
+El tamaño esta delimitado por:: 
+Tamaño de contenido
+Tamaño de relleno pading
+Borde
+MArgen
+
+
+********************************************************
+/** CUANDO USAR CSS GRID O FLEXBOX
+
+FLEXBOX
+Es para la alineacion o distribucion de los elementos dentro de contenedores
+como barras de navegacion
+
+
+GRID
+Para definir el Layout de tu sitio web
+como columnas o contenedores de elementos
+
+FLOATS
+
+NUNCA USAR FLOATS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**/

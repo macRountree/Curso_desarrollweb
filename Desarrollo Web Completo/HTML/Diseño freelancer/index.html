@@ -31,104 +31,125 @@
         </nav>
     </div>
     
-    <img src="images/webdev.jpg" alt=""> <!---Las imagenes de background las modificamos en CSS-->
-    <section>
+    <section class="hero">
+        <div class="contenido-hero">
+            <h2> Práctica de Diseño Web</h2>
+            
+            <p>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-current-location" width="64" height="64"
+                    viewBox="0 0 24 24" stroke-width="3" stroke="#6f32be" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <circle cx="12" cy="12" r="3" />
+                    <circle cx="12" cy="12" r="8" />
+                    <line x1="12" y1="2" x2="12" y2="4" />
+                    <line x1="12" y1="20" x2="12" y2="22" />
+                    <line x1="20" y1="12" x2="22" y2="12" />
+                    <line x1="2" y1="12" x2="4" y2="12" />
+                </svg>
+                Hermosillo, Sonora
+            </p>
+            <a class="boton" href="#">Contacto</a> <!---Nuestros textos se recomiendan que esten en minusculas-->
+        </div>
         <!--- Si hay un header hijo consecutivo (h2,h2,h3 ...) utilizamos Section si es para el contenido principal usamos main-->
-        <h2> Práctica de Diseño Web</h2>
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-current-location" width="64"
-            height="64" viewBox="0 0 24 24" stroke-width="3" stroke="#6f32be" fill="none" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <circle cx="12" cy="12" r="3" />
-            <circle cx="12" cy="12" r="8" />
-            <line x1="12" y1="2" x2="12" y2="4" />
-            <line x1="12" y1="20" x2="12" y2="22" />
-            <line x1="20" y1="12" x2="22" y2="12" />
-            <line x1="2" y1="12" x2="4" y2="12" />
-        </svg>
-        <p>Hermosillo, Sonora</p>
-        <a href="#">Contacto</a> <!---Nuestros textos se recomiendan que esten en minusculas-->
+        
+ 
     </section>
 
-    <main> <!--Nuestro Contenido principal esta contenido aqui SOLO HAY 1 main por pagina-->
+    <main class="contenedor sombra"> <!--Nuestro Contenido principal esta contenido aqui SOLO HAY 1 main por pagina-->
         <h2> Mis Servicios</h2>
-
+        <div class="servicios">
+            <section class="servicio">
+                <h3>Fron end</h3>
+                <div class="icono">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-html5" width="36"
+                        height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M20 4l-2 14.5l-6 2l-6 -2l-2 -14.5z" />
+                        <path d="M15.5 8h-7l.5 4h6l-.5 3.5l-2.5 .75l-2.5 -.75l-.1 -.5" />
+                    </svg>
+                </div>
+    
+    
+    
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae qui illum harum tempore laudantium
+                    eligendi totam, </p>
+            </section>
+            <section class="servicio">
+                <h3> Back End</h3>
+                <div class="icono">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database" width="36"
+                        height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <ellipse cx="12" cy="6" rx="8" ry="3"></ellipse>
+                        <path d="M4 6v6a8 3 0 0 0 16 0v-6" />
+                        <path d="M4 12v6a8 3 0 0 0 16 0v-6" />
+                    </svg>
+                </div>
+    
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae qui illum harum tempore laudantium
+                    eligendi totam, </p>
+    
+            </section>
+            <section class="servicio">
+                <h3> FullStack</h3>
+                <div class="icono">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-stack" width="36"
+                        height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M12 6l-8 4l8 4l8 -4l-8 -4" />
+                        <path d="M4 14l8 4l8 -4" />
+                    </svg>
+                </div>
+    
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae qui illum harum tempore laudantium
+                    eligendi totam, </p>
+    
+            </section>
+        </div>
+    
+    
+    
         <section>
-            <h3>Fron end</h3>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-html5" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <path d="M20 4l-2 14.5l-6 2l-6 -2l-2 -14.5z" />
-                <path d="M15.5 8h-7l.5 4h6l-.5 3.5l-2.5 .75l-2.5 -.75l-.1 -.5" />
-              </svg>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae qui illum harum tempore laudantium
-                eligendi totam, </p>
-        </section>
-        <section>
-            <h3> Back End</h3>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database" width="36" height="36"
-                viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <ellipse cx="12" cy="6" rx="8" ry="3"></ellipse>
-                <path d="M4 6v6a8 3 0 0 0 16 0v-6" />
-                <path d="M4 12v6a8 3 0 0 0 16 0v-6" />
-            </svg>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae qui illum harum tempore laudantium
-                eligendi totam, </p>
-
-        </section>
-        <section>
-            <h3> FullStack</h3>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-stack" width="36" height="36"
-                viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M12 6l-8 4l8 4l8 -4l-8 -4" />
-                <path d="M4 14l8 4l8 -4" />
-            </svg>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae qui illum harum tempore laudantium
-                eligendi totam, </p>
-
-        </section>
-
-    </main>
-
-    <section>
-        <h2>Contacto</h2> <!---------Si tiene un headiog DEBEMOS PONER SECTION--------->
-        <form action=""> <!---TODD lo que esta dentro es un formulario inputs parrafos o información -->
-            <fieldset> <!--Nos permite agrupar  un conjunto de labels -->
-                <legend> <!--Describimos o indicamos al usuario algo-->
+            <h2>Contacto</h2> <!---------Si tiene un headiog DEBEMOS PONER SECTION--------->
+            <form action="" class="formulario"> <!---TODD lo que esta dentro es un formulario inputs parrafos o información -->
+                <fieldset> <!--Nos permite agrupar  un conjunto de labels -->
+                    <legend> <!--Describimos o indicamos al usuario algo-->
+        
+                        <p>Mandanos correo para cualquier petición</p>
+                    </legend>
+                    <div class="contenedor-campos">
+                        <div class="campo"> <!---AQui como no usamos ningun header podemos usar un div-->
+                            <label for="">Nombre</label>
+                            <input class="input-text" type="text" placeholder="Tu Nombre">
+                        </div>
                     
-                    <p>Mandanos correo para cualquier petición</p>
-                </legend>
-                <div> <!---AQui como no usamos ningun header podemos usar un div-->
-                    <label for="">Nombre</label>
-                    <input type="text" placeholder="Tu Nombre">
-                </div>
-                
-                <div>
-                    <label for="">Telefono</label>
-                    <input type="tel" placeholder=" Tu Telefono">
-                </div>
-                <div>
-                    <label for="">Correo</label>
-                    <input type="email" placeholder=" Tu E-mail">
-                </div>
-                <div>
-                    <label for="">Mensaje</label>
-                    <textarea></textarea>
-                    <input type="submit" value="Enviar">
-                </div>
-                
-               
-                
-                
-                
-            </fieldset>
-        </form>
-    </section>
-
-    <footer> <!-- Todo el -->
+                        <div class="campo">
+                            <label for="">Telefono</label>
+                            <input class="input-text" type="tel" placeholder=" Tu Telefono">
+                        </div>
+                        <div class="campo">
+                            <label for="">Correo</label>
+                            <input class="input-text" type="email" placeholder=" Tu E-mail">
+                        </div>
+                        <div class="campo">
+                            <label for="">Mensaje</label>
+                            <textarea class="input-text"></textarea>
+                           
+                        </div>
+                        
+                    </div> <!--contenedor de campos-->
+                    <div>
+                        <input class="boton" type="submit" value="Enviar">
+                   </div>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+    <footer class="footer"> <!-- Todo el -->
         <p> Todos los derechos reservados. Mac Rountree</p>
     </footer>
 

@@ -12,38 +12,266 @@
 
 
 
+
+
 html{  /* esta etiqueta y el body  SE UTILIZAN EN TODOS MIS PROYECTOS es para adaptación de dispositivos*/
     font-size: 62.5%;
+    box-sizing: border-box;
+    scroll-snap-type: y proximity; /*?hacemos scroll para ir del eje y de arriba a abajo*/
+
+}
+*,*:before, *:after{ /*Este snippet nos ayuda a resolver los problemas de CSSbox model*/
+    box-sizing: inherit;
+}
+
+.serivicios,
+.nav-principal,
+.formulario{
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
 }
 body{
     font-size: 16px;
     font-family: 'Krub', sans-serif; /*Si queremos que toda la fuente de la pagina sea igual lo agregamos en el body*/  
+    background-image: linear-gradient(to top, #dfe9f3 0%, var(--blanco) 100%);
 }
-/*Es recomendable utilizar siempre las CLASES*/
-.titulo{
+.sombra {
+    -webkit-box-shadow: 10px 8px 15px 1px rgba(103, 68, 184, 0.33);
+    -moz-box-shadow: 10px 8px 15px 1px rgba(103, 68, 184, 0.33);
+    box-shadow: 10px 8px 15px 1px rgba(103, 68, 184, 0.33);
+    padding-top: 2.5rem;
+    background-color: var(--blanco);
+    margin-top: 2.5rem;
+    border-radius: 1rem;
+}
+h1{
+    font-size: 3.8rem;
+}
+h2{
+    font-size: 2.8rem;
+}
+h3{
+    font-size: 1.8rem;
+}
+ h1,h2,h3{
     text-align: center;
-    font-size: 3.8rem; /* 1 Rem = 10px*/
-    font-family: 'Krub', sans-serif;
-}
+ }
+/*Es recomendable utilizar siempre las CLASES*/
+
 
 .titulo span{  /*Si tenemos muchos span o muchas etiquetas en el html podemos especificarlas con la etiqueta padre */
     font-size: 2rem;  /* YA no se usa pixelear se usa rem*/
 }
 
 .contenedor{ /*Es para centrar el contenido*/
-    width: 120rem;
+    max-width: 120rem;
     /*Nos da eparación*/
     margin: 0 auto;
 }   
 
+.boton{ /**Configuración recomendada de botones*/
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem ;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 2rem;
+    width: 90%;
+    text-align: center;
+} 
+.boton:hover{
+    background-color: var(--primario) ; /*Solo colocara el fondo del tamaño del eenlace*/
+    padding: 1rem;
+    color: var(--secundario);
+    cursor:pointer
+} 
+@media (min-width: 768px) {
+    .boton{
+        width: auto;
+    }
+    
+}
 .nav-bg{
     background-color: var(--secundario); 
 }
 .nav-principal{
    
+   display:flex; /*Los elementos se muestran de izq a derecha*/
+   flex-direction: column;
+   align-items: center;
+   
 }
 
+/*Resolucion para telefonos*/
+@media (min-width: 480px) {
+    
+}
+/*Resolucion para tablets*/
+@media (min-width: 768px) { /*A partir de 760px */
+    .nav-principal{
+        flex-direction: row;
+        justify-content: space-between; /*Solo para espacios horizontales*/
+        
+    }
+}
+/*Es para laptops y PC*/
+@media (min-width: 1140px) {
+    
+}
+/*para pc o laptps*/
+@media (min-width: 1400px) {
+    
+}
 .nav-principal a{
-    background-color:var(--primario);
-   
+    display:block;
+    text-align: center;
+    
+    color:var(--blanco); /*Estamos modificando el color de las a  que son los links*/
+    text-decoration: none; /*Deja el texto limpio sin subraya, tachado etc */
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+}
+
+.nav-principal a:hover{ /*Hover es una pseudoclase que podemos cambiar el color al momento de seleccionar el link*/
+    background-color: var(--primario) ; /*Solo colocara el fondo del tamaño del eenlace*/
+    padding: 1rem;
+    color: var(--secundario);
+
+}
+
+.hero{
+    background-image: url(../images/webdev.jpg); /**AQUI IMPORTAMOS LAS IMAGENES*/
+    background-repeat: no-repeat; /*Esta es para que no se repita la imagen Todas se repiten por defaut*/
+    background-size: cover; /*Se adapta al ancho*/
+    height:45rem ;
+    /*padding: 20px; /*Bajamos un poco para que no este pegado arriba*/
+    position: relative; /*la clase padre Debe tener posicion relativa siempre*/
+    margin-bottom: 2rem;
+}
+
+.contenido-hero{
+    position: absolute; /*Laclase hijo puede tener posicion absouluta*/
+    background-color: rgba(0 0 0 / 70%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenido-hero h2,
+.contenido-hero p { /* ?Si aplicamos la misma regla podemos agrupar lam isma clase en 2 tags*/
+    color: var(--blanco);
+}
+
+
+ /**Servicios*/
+ @media (min-width: 768px) {
+    .servicios {
+            display: grid;/*?Permite definir la ubicacion y el tamaño de los elementos*/
+            grid-template-columns: 1fr 1fr 1fr;/*? 1 fr s una fraccion si son 3 fracciones son 1fr cada fraccion*/
+           /* grid-template-rows: 200px 100px;/*?Podemos definir de izq a derecha y arribaa a abajo*/
+            column-gap:  1rem;
+        }
+ }
+
+ .servicio{
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+ }
+
+ .servicio h3{
+    color: var(--secundario);
+    font-weight: normal;
+ }
+.servicio p {
+    line-height: 2; /*? es el interlineado*/
+    text-align: center;
+}
+ .servicio .icono{
+    height: 15rem; /*? Esto forma un cuadrado*/
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%; /*?como height y width es un cuadrado.. el border radius al 50 se hace circulo*/
+    display: flex;
+    
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+/**Contacto*/
+.formulario{
+    background-color: var(--gris);
+    width: min(60rem, 100%); /*?Utiliza el valor mas pequeño*/
+    margin: 0 auto; /*? Solo usarlo en caso de formulario y cuyo padro no es un display flex*/
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario fieldset{
+    border: none;
+}
+
+.formulario legend{
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+
+@media (min-width: 768px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);/*?Partimos el formulario en 2 columnas*/
+        column-gap: 1rem;  /*?separacion de columnas*/
+        grid-template-rows: auto auto 20rem;
+
+
+    }
+    /*?:nth - child() nos permite acceder a los selectores hijos y especificar cual modificar*/
+    .campo:nth-child(3){
+        grid-column: 1 / 3; /*?nth(3) es el 3er selector de campo es decir correo y queremos posicionarlo de la seccion 1 a la 3 de grid para que ocupe todo el form*/
+
+    }
+    .campo:nth-child(4){
+        grid-column: 1/3;
+    }
+
+}
+.campo{
+    margin-bottom: 1rem;
+}
+
+.campo label{
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+
+}
+.input-text{
+    width: 100%; /*?toma todo los inputs disponibles*/
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;/*?Esquinas redondeadas*/
+
+}
+
+/**Modificando el text area del formulario*/
+
+.campo textarea{
+    height: 20rem;
+}
+/**footer*/
+.footer{
+    text-align: center;
 }
