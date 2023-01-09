@@ -91,6 +91,7 @@ h3{
 @media (min-width: 768px) {
     .boton{
         width: auto;
+        margin-top: 3.5rem;
     }
     
 }
