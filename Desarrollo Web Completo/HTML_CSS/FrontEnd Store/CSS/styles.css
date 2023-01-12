@@ -41,7 +41,7 @@ a{
 }
 
 img{
-    max-width: 100%;
+    width: 100%;
 }
 
 
@@ -121,6 +121,7 @@ h3{
 .grid{
     display: grid;
     grid-template-columns: repeat(2,1fr);
+    gap: 1rem;
 }
 
 @media (min-width: 768px ) {
@@ -136,14 +137,11 @@ h3{
 .producto{
     background-color: var(--primarydark);
     padding: 1rem;
+    border: .5rem solid var(--secondary);
 }
 
-.producto__imagen{
-    width: 100$;
-}
-.producto__info{
 
-}
+
 .producto__nombre{
     font-size: 4rem;
 }
@@ -170,6 +168,7 @@ h3{
    /* grid-column: 1/3;*/
     background-image: url(../img/grafico1.jpg);
     background-size: cover ;
+    
 
 }
 
@@ -178,10 +177,108 @@ h3{
    /* grid-column: 1 / 3;*/
     grid-row: 8 / 9;
     background-repeat: cover;
+
 }
+
 @media (min-width: 768px) {
     .grafico--node{
         grid-row: 5 / 6 ;
         grid-column: 2 / 4;
+        background-repeat: cover;
     }
+}
+
+/**NosotrosCSS*/
+.nosotros{
+    display: grid;
+    grid-auto-flow: repeat(2, 1fr) ;
+}
+@media (min-width: 768px) {
+    .nosotros {
+
+        grid-template-columns: repeat(2, 1fr);
+        margin: 2rem;
+        gap: 2rem;
+    }
+}
+.nosotros__imagen{
+    grid-row: 1 / 2 ;
+    
+}
+
+@media (min-width: 768px) {
+    .nosotros__imagen {
+        grid-column: 2/3;
+
+    }
+}
+
+.bloques{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .bloques{
+        grid-template-columns: repeat(4,1fr);
+    }
+}
+
+.bloque{
+    text-align: center;
+}
+
+.bloque__titulo{
+    margin:0 ;
+}
+
+.camisa{
+    gap: 2rem;
+}
+@media (min-width: 768px) {
+    .camisa{
+        display:grid;
+        grid-template-columns: repeat(2, 1fr);
+        
+
+    }
+}
+
+.form{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    border: 1rem solid var(--primarydark);
+
+}
+.form__campo{
+    border: 1rem solid var(--primarydark);/*? La sintaxis para el borde es width, style y color */
+    background-color: var(--primarydark);
+    color: var(--blanco);
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1rem;
+    
+}
+
+.form__submit{
+    background-color: var(--secondary);
+    color: var(--primarydark);
+    border: none;
+    font-size: 2rem;
+    font-family: var(--font);
+    padding: 2rem;
+    margin: 1rem;
+    grid-column: 1/3;
+    transition:background-color .5s ease;
+    
+    
+}
+
+.form__submit:hover{
+    background-color: var(--primarydark);
+    color: var(--secondary);
+    cursor:pointer;
+    font-size: 2.2rem;
 }
