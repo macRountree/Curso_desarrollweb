@@ -108,6 +108,25 @@ img{
     font-weight: 700;
 }
 
+@media (min-width: 768px) {
+    .nav{
+        display: flex;
+    }
+}
 .nav{
+    
+    margin: 1em;
+    padding: 1rem;
+}
+
+.nav__link{
+    display: block; /*?Uno debado de otro*/
+    text-align: center;
+    
+    color:var(--blanco);
+    padding: 1rem;
+}
+
+.nav__link:hover{
 
 }
