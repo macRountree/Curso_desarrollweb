@@ -89,6 +89,12 @@ img{
     color: var(--blanco);
     margin-top: 5rem;
 }
+
+@media (min-width: 768px) {
+    .header__texto{
+        margin-top: 12rem;
+    }
+}
 @media (min-width: 768px) {
     .barra{
     display: flex;
@@ -111,6 +117,7 @@ img{
 @media (min-width: 768px) {
     .nav{
         display: flex;
+        gap: 2rem;
     }
 }
 .nav{
@@ -122,11 +129,15 @@ img{
 .nav__link{
     display: block; /*?Uno debado de otro*/
     text-align: center;
-    
+    font-size: 1.8rem;
     color:var(--blanco);
-    padding: 1rem;
+    
 }
 
-.nav__link:hover{
-
+@media (min-width: 768px) {
+    .contenido-principal{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        column-gap: 4rem;
+    }
 }
