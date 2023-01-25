@@ -1,12 +1,97 @@
 /*Global*/
+/*? Box model esta definido por el padding, border, margin*/
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+} /*Lineas 3-8 es codigo de Paul Irish*/
 
+body{
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.6rem;
+ }
 
+ h1,h2,h3{
+    font-family: 'Playfair Display', serif;
+ }
+a{
+    text-decoration: none;
+    color: #000000;
+}
+.contenedor{
+    max-width: 120rem;
+    margin: 0 auto;
+}
+ img{
+    max-width: 100%;
+    display: block;
+ }
 /*Utilidades*/
 
 
 /*Header*/
-
-
+.header{
+    text-align: center;
+    
+     
+}
+.header span{
+    color: #037bc0;
+}
+/*Navegacion*/
+.nav-contenedor{
+    border: 1px solid #e1e1e1;
+}
+.navegacion{
+    display: flex;
+    justify-content:space-between;    
+    padding: 2rem 0;
+    font-size: 1.8rem;
+   
+}
+.nav__link{
+    font-weight: bold;
+     
+}
+.bg-img{
+    background-image: url(../img/principal.jpg);
+    height: 55rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 /*main*/
+/*Listado Categorias*/
 
+.categorias h2{
+    text-align: center;    
+}
+.categoria a{
+    display: block;
+    text-align: center; /*NO es posible debes usar display block*/
+    padding: 2rem;
+    font-size: 2rem;
+
+}
+
+.categoria a:hover{
+    background-color: #037bc0;
+    color: #fff;
+    border-bottom-right-radius: 1rem;
+}
+.listado-categorias{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+    
+}
+
+
+/*Sobre Nosotros*/
+.sobre-nosotros{
+    background-color: red;
+    padding: 1rem 0 0 1rem;
+    
+}
 /*footer*/

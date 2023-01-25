@@ -6,38 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Furniture Store</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
+
   <body>
     <header class="header">
-      <h1>Tienda <span>Muebles</span></h1>
+      <h1>Tienda<span>Muebles</span></h1>
     </header>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="nosotros.html">Nosotros</a>
-        <a href="tienda.html"> Tienda</a>
-        <a href="blog.html">Blog</a>
-        <a href="gallery.html">Galeria</a>
-        <a href="contact.html">Contacto</a>
-      </nav>
-    <section>
-      <h2>Categorias de Producto</h2>
 
-      <div>
-        <img src="img/categoria1.jpg" alt="imagen_oficina" />
-        <a href="#">Oficina</a>
-      </div>
-      <div>
-        <img src="img/categoria2.jpg" alt="imagen_hogar" />
-        <a href="#">Hogar</a>
-      </div>
-      <div>
-        <img src="img/categoria3.jpg" alt="image_cocina" />
-        <a href="#">Cocina</a>
+    <div class="nav-contenedor">
+      <nav class="navegacion contenedor">
+        <a class="nav__link" href="index.html">Home</a>
+        <a class="nav__link" href="nosotros.html">Nosotros</a>
+        <a class="nav__link" href="tienda.html"> Tienda</a>
+        <a class="nav__link" href="blog.html">Blog</a>
+        <a class="nav__link" href="gallery.html">Galeria</a>
+        <a class="nav__link" href="contact.html">Contacto</a>
+      </nav>
+    </div>
+
+    <div class="bg-img"></div>
+    <section class="contenedor categorias">
+      <h2>Categorias de Producto</h2>
+      <div class="listado-categorias">
+        <div class="categoria">
+          <img src="img/categoria1.jpg" alt="imagen_oficina" />
+          <a href="#">Oficina</a>
+        </div>
+        <div class="categoria">
+          <img src="img/categoria2.jpg" alt="imagen_hogar" />
+          <a href="#">Hogar</a>
+        </div>
+        <div class="categoria">
+          <img src="img/categoria3.jpg" alt="image_cocina" />
+          <a href="#">Cocina</a>
+        </div>
       </div>
     </section>
 
-    <section>
+    <section class="sobre-nosotros">
       <div>
         <h2>Sobre Nosotros</h2>
         <p>
