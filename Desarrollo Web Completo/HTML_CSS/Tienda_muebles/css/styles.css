@@ -11,17 +11,30 @@ html {
 body{
     font-family: 'Raleway', sans-serif;
     font-size: 1.6rem;
+    line-height: 1.5 ;
  }
 
  h1,h2,h3{
     font-family: 'Playfair Display', serif;
+    margin: 0 0 5rem 0;
  }
+
+ h1{
+    font-size: 5rem;
+ }
+h2{
+    font-size: 4rem;
+}
+h3{
+    font-size: 3rem;
+    
+}
 a{
     text-decoration: none;
     color: #000000;
 }
 .contenedor{
-    max-width: 120rem;
+    max-width: 100rem;
     margin: 0 auto;
 }
  img{
@@ -34,6 +47,7 @@ a{
 /*Header*/
 .header{
     text-align: center;
+    margin-top: 2rem;
     
      
 }
@@ -60,10 +74,14 @@ a{
     height: 55rem;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center center;
 }
 /*main*/
 /*Listado Categorias*/
 
+.categorias{
+    padding-top: 5rem;
+}
 .categorias h2{
     text-align: center;    
 }
@@ -90,8 +108,13 @@ a{
 
 /*Sobre Nosotros*/
 .sobre-nosotros{
-    background-color: red;
-    padding: 1rem 0 0 1rem;
+   background-image: linear-gradient(to right, transparent 50%, #037bc0 51%, #037bc0 100% ), url(../img/nosotros.jpg);
+   padding: 10 rem 0;
+   background-position: ;
+   background-repeat: no-repeat;
+   background-size: 100% 140rem;
     
 }
+
+
 /*footer*/
