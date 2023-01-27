@@ -108,13 +108,33 @@ a{
 
 /*Sobre Nosotros*/
 .sobre-nosotros{
-   background-image: linear-gradient(to right, transparent 50%, #037bc0 51%, #037bc0 100% ), url(../img/nosotros.jpg);
-   padding: 10 rem 0;
-   background-position: ;
-   background-repeat: no-repeat;
-   background-size: 100% 140rem;
+   
+   background-image: linear-gradient( to right,transparent 50%, #037bc0 51%, #037bc0 100% ) , 
+    url(../img/nosotros.jpg);
+
+   margin-top: 5rem;
+   padding: 10rem 0;
+   background-size: 100%, 90rem ;
+   background-position: left center;
+   
+
+
     
 }
+.sobre-nosotros__grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 5rem;
+    color: #fff;
+    
+}
+
+.sobre-nosotros__text{
+    grid-column: 2/3 ;
+    
+}
+
+
 
 
 /*footer*/
