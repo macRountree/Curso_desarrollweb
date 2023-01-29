@@ -27,7 +27,7 @@ h2{
     
 }
 h3{
-    font-size: 3rem;
+    font-size: 2.8rem;
     
     
 }
@@ -48,6 +48,9 @@ a{
  .text-center{
     text-align: center;
  }
+ .text-left{
+    text-align: left;
+ }
  .btn{
     background-color: #8cbc00;
     display: block;
@@ -64,18 +67,7 @@ a{
     cursor: pointer;
     font-size: 2rem;
  }
- .text-producto a{
-    background-color: #8cbc00;
-    display: block;
-    color: #fff;
-    margin: 1rem;
-    text-transform: uppercase;
-    font-weight: 900;
-    padding: 1rem;
-    transition: background-color .3s ease-out ;
-    transition: font-size .3s ease-out ;
-    
-}
+ 
 
 /*Header*/
 .header{
@@ -197,6 +189,12 @@ a{
     grid-column: 1/4;
     
 }
+.producto:nth-child(2) img,
+.producto:nth-child(3) img{
+    height: 30rem;
+    width: 100%;
+    object-fit:cover;
+}
 .producto:nth-child(3){
     grid-column: 4/7;
     
@@ -242,3 +240,52 @@ a{
     
 }
 /*footer*/
+.site-footer{
+    border-top: 1px solid #e1e1e1;
+    margin-top: 5rem;
+}
+.footer{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 2rem;
+    border-bottom: 1px solid #e1e1e1;
+   
+}
+.footer h3{
+    padding: 1rem 0;
+    margin-bottom: .5rem;
+   
+}
+.footer-block{
+    margin: 1rem;
+    padding: 1rem;
+}
+.footer-nav{
+    display: block;
+    margin-top: 1rem;
+    
+}
+.cr{
+    margin-top: 3rem;
+}
+
+/*Nosotros_sheet*/
+.about_us-main h3,
+.blog h3 {
+    margin: 4rem 0;
+}
+.about_us{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+.about_us img{
+    width: 32rem;
+    
+}
+.about_us__text p{
+    margin-top: 0;
+}
+
+/*Blog*/
+
