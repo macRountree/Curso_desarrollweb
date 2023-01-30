@@ -63,3 +63,131 @@ h1, h2 {
     background-color: var(--blanco);
     padding: 5rem;
 }
+
+/*Selector etiqueta*/
+
+/*Es el menos especifico de todos*/
+
+/*
+p{
+    color: #bb2b03;
+}
+*/
+
+
+/*Selector de Clase
+    ->Son reutilizables
+    ->Es la forma mas comunp para darle
+    atributos al CSS
+
+
+
+*/
+
+.primer-parrafo{
+    font-size: 2rem;
+    color: var(--azul);
+}
+
+
+/*selector de 2 clase*/
+
+/*.texto{
+    background-color: var(--naranja);
+}*/
+.azul{
+    color: #0071b7;
+}
+
+.texto.mayusculas{
+    text-transform: uppercase;
+}
+
+/*Clases anidadas*/
+.header .descripcion {
+    color:#0071b7;
+}
+ .descripcion{
+    color:  #bb2b03;
+ }
+
+ /* ID 
+ Tiene mas especificidad pero no
+ sonmuy reutilizables
+ Un archivo html solo puede tener un nombre ID
+ */
+#encabezado{
+    color: var(--azul);
+}
+
+
+.texto,
+.oferta{
+    border: 2px solid #0071b7;
+    padding: 1rem;
+
+
+}
+
+
+/*Primer nivel de hijos*/
+.admin > div{ /*Especificamos el primer nivel de hijos si hay mas divs de primer nivel aplica en todos*/
+    border: 1px solid #0071b7;
+}
+
+/*Primer elemento despues*/
+
+.admin div p{
+    background-color: red;
+}
+
+/*aatributo*/
+
+a[href^="http"]{ /*Si queremos estilizar un atributo con http.. empiezadesde el principio
+    se utiliza " ^" si termina en .com  utiliza "$"*/
+    background-color: #0071b7;
+    color: #FFF;
+}
+
+
+/*Primer hijo de una lista*/
+
+ul li:first-child{ /*Busca el primer li de un ul*/
+    color: #0071b7;
+}
+
+/*ultimo hijo deuna lista*/
+
+ul li:last-child{ /*Busca el ultimo hijo de li dentro de ul*/
+    color: #bb2b03;
+}
+
+
+/*Elemento especifico*/
+
+/*ul li:nth-child(3){ /*el numero selecciona el tercer hijo en este caso y lo modificara
+    color: #021b2a;
+    background-color: #bb2b03;
+}*/
+
+ul li:nth-child(3n + 1){ /*Podemos poner algebra*/
+    border: 1px solid #bb2b03;
+}
+
+/*Seleccionamos todos menos 1 o varios*/
+
+p:not(.texto):not(.oferta){ /*Estamos diciendo que la clase .texto  y la clase oferta no se cumpla el color*/
+    color: #bb2b03;
+}
+
+
+/*primer letra y linea*/
+.primer-letra::first-letter{ /*Seleccionamos la primer letra de la clase .primer-letra*/
+    font-size: 10rem;
+}
+
+.primer-linea::first-line{ /*Se selecciona la primer linea de un parrafo
+    Si es que la pantalla se va haciendo responsiva.. todas las letras que aparezcan se les dara
+    el trato de first line*/
+    font-size: 2rem;
+}
