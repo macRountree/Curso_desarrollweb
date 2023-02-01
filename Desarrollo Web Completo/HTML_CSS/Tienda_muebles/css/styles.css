@@ -18,17 +18,31 @@ body{
     font-family: 'Playfair Display', serif;
     margin: 0 0 5rem 0;
  }
-
- h1{
-    font-size: 5rem;
+h1{
+    font-size: 4rem;
+}
+ 
+ @media (min-width: 768px) {
+        h1{
+        font-size: 5rem;
+    }
  }
 h2{
-    font-size: 4rem;
+    font-size: 3.2rem;
     
 }
+@media (min-width: 768px) {
+    h2{font-size: 4rem;
+    }
+}
 h3{
-    font-size: 2.8rem;
+    font-size: 2rem;
    
+}
+@media (min-width: 768px) {
+    h3{
+        font-size: 2.8rem;
+    }
 }
 h4{
     font-size: 2rem;
@@ -92,12 +106,22 @@ a{
 .nav-contenedor{
     border: 1px solid #e1e1e1;
 }
+
 .navegacion{
     display: flex;
-    justify-content:space-between;    
+    flex-direction: column;
+    justify-content:space-between; 
+    text-align: center;   
     padding: 2rem 0;
     font-size: 1.8rem;
    
+}
+
+@media (min-width: 768px) {
+    .navegacion{
+        justify-content: space-between;
+        flex-direction: row;
+    }
 }
 .nav__link{
     font-weight: bold;
@@ -105,19 +129,30 @@ a{
 }
 .bg-img{
     background-image: url(../img/principal.jpg);
-    height: 55rem;
+    height: 25rem;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
+}
+
+@media (min-width: 768px) {
+    .bg-img{
+        height: 55rem; /*Reescribimos lo que va a cambiar*/
+    }
 }
 /*main*/
 /*Listado Categorias*/
 
 .categorias{
     padding-top: 5rem;
+    gap: 2rem;
 }
 .categorias h2{
     text-align: center;    
+}
+
+.categoria img{
+    width: 100%;
 }
 .categoria a{
     display: block;
@@ -128,6 +163,7 @@ a{
 
 }
 
+
 .categoria a:hover{
     background-color: #037bc0;
     color: #fff;
@@ -136,34 +172,64 @@ a{
 }
 .listado-categorias{
     display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 1rem;
+    gap: 2rem;
     
+}
+
+@media (min-width: 768px) {
+    .listado-categorias{
+       grid-template-columns: repeat(3,1fr); 
+    }
 }
 
 
 /*Sobre Nosotros*/
 .sobre-nosotros{
    
-   background-image: linear-gradient( to right,transparent 50%, #037bc0 51%, #037bc0 100% ) , 
+   background-image: linear-gradient( to bottom ,transparent 50%, #037bc0 51%, #037bc0 100% ) , 
     url(../img/nosotros.jpg);
    margin-top: 5rem;
    padding: 10rem 0;
-   background-size: 100%, 90rem ;
-   background-position: left center;
+   background-size: 100%, 100rem ;
+   background-position: bottom center;
+    background-repeat: no-repeat;
       
+}
+@media (min-width: 768px) {
+    .sobre-nosotros{
+        background-image: linear-gradient( to right,transparent 50%, #037bc0 51%, #037bc0 100% ) , 
+        url(../img/nosotros.jpg);
+       margin-top: 5rem;
+       padding: 10rem 0;
+       background-size: 100%, 100rem ;
+       background-position: left center;
+        background-repeat: no-repeat;
+    }
+    
 }
 .sobre-nosotros__grid{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 10rem;
+    grid-template-rows: repeat(2,1fr);
+    gap: 10rem;
     color: #fff;
     
 }
-
+@media (min-width: 768px) {
+    .sobre-nosotros__grid{
+         grid-template-columns: repeat(2, 1fr);
+         gap: 10rem;
+        color: #fff;
+    }
+}
 .sobre-nosotros__text{
+    grid-row: 2/3;
+}
+
+@media (min-width: 768px) {
+    .sobre-nosotros__text{
     grid-column: 2/3 ;
     
+}
 }
 
 /*Productos*/
