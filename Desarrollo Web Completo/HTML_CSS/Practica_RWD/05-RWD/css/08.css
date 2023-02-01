@@ -1,0 +1,15 @@
+/*columnas responsive flexbox*/
+
+@media (min-width: 768px) {
+    .tres-columnas-flex{
+    display: flex;
+    gap: 2rem;
+    justify-content: space-around;
+    margin: 0 auto;
+    
+    }
+
+    .columna{
+        flex-grow: 1;
+    }
+}

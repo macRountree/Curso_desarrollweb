@@ -1,0 +1,12 @@
+/*Formatos modernos
+Utilizar el formato jpg png y WEBP para mas soporte
+
+ <picture>
+        <source srcset="img/imagen.avif" type="image/type" />
+        <source srcset="img/imagen.webp" type="image/webp">
+        <source src="img/imagen.jpg" type="image/jpg">
+      </picture>
+
+      este formato es utiilizado sea para que cualquier navegador
+      cargue nuestra imagen dependiendo de su extension (.avif, wep, jpg)
+*/

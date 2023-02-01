@@ -1,0 +1,17 @@
+/*IMAGENEES RESPONSIVE
+    USUALMENTE LAS IMAGENES VAN DEntro de los 
+    divs
+
+    Es mejor adaptar el contenedor repsonsive que la imagen en si
+
+*/
+
+img{
+    max-width: 100%; /*Se adapta al 100 de la clase contenedor*/
+    display: block; /*Se quita la separacion de la imagen con el parrafo*/ 
+}
+
+p{
+    margin: 0;
+    background-color: red;
+}
