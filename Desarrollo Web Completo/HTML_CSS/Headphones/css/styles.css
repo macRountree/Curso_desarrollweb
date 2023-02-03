@@ -1,0 +1,65 @@
+/*CustomProperties*/
+
+:root {
+  --primario: #7909ad;
+  --secundario: #c8de11;
+  --blanco: #ffffff;
+  --negro: #1f1e1e;
+  --gris: #383838;
+  --grisClaro: #e1e1e1;
+  --Gap: 5rem;
+
+  --MainFont: "Roboto", sans-serif;
+  --SecFont: "Lato", sans-serif;
+}
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+*,*:before,*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: var(--MainFont);
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+/*Globals*/
+
+.contenedor{
+    max-width: 120rem;
+    width: 90%;
+    margin: 0 auto; /*Mas soporte que margin inline*/ 
+}
+
+h1,h2,h3{
+    font-family: var(--SecFont);
+    margin: calc( var(--Gap)/ 2 ) 0;
+}
+
+h1{
+    font-size: 4.4rem;
+
+}
+h2{
+    font-size: 3.6rem;
+}
+
+h3{
+    font-size: 2.8rem;
+}
+
+img{
+    max-width: 100%;
+    display: block;
+}
+
+/*Utilidades*/
+
+.text-center{
+    text-align: center;
+}
+
+/*Header*/
