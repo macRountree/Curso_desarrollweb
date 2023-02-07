@@ -16,7 +16,9 @@ html {
   box-sizing: border-box;
   font-size: 62.5%;
 }
-*,*:before,*:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -28,38 +30,438 @@ body {
 
 /*Globals*/
 
-.contenedor{
-    max-width: 120rem;
-    width: 90%;
-    margin: 0 auto; /*Mas soporte que margin inline*/ 
+.contenedor {
+  max-width: 120rem;
+  width: 90%;
+  margin: 0 auto; /*Mas soporte que margin inline*/
 }
 
-h1,h2,h3{
-    font-family: var(--SecFont);
-    margin: calc( var(--Gap)/ 2 ) 0;
+h1,
+h2,
+h3 {
+  font-family: var(--SecFont);
+  margin: calc(var(--Gap) / 2) 0;
 }
 
-h1{
-    font-size: 4.4rem;
-
+h1 {
+  font-size: 4.4rem;
 }
-h2{
-    font-size: 3.6rem;
-}
-
-h3{
-    font-size: 2.8rem;
+h2 {
+  font-size: 3.6rem;
 }
 
-img{
-    max-width: 100%;
-    display: block;
+h3 {
+  font-size: 2.8rem;
 }
 
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+/*Degradados*/
+
+.gradient-green {
+  color: transparent; /*Para que se adapte a la letra ponemos transparente, ya que el H1 le pusimos var(--Blanco)*/
+  background: linear-gradient(
+    to right,
+    var(--primario) 0%,
+    var(--secundario) 100%
+  );
+  -webkit-background-clip: text; /*Ajustamos el linear gradient para que sea solo texto*/
+}
 /*Utilidades*/
 
-.text-center{
-    text-align: center;
+.text-center {
+  text-align: center;
 }
 
 /*Header*/
+
+.header {
+  background-color: var(--negro);
+  padding: calc(var(--Gap) * 3) 0;
+  color: var(--blanco);
+}
+.header-img {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .contenido-header {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.header-text {
+  text-align: center;
+  padding-top: var(--Gap);
+}
+@media (min-width: 768px) {
+  .header-text {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+.header-text p {
+  line-height: 1;
+}
+.tag-producto {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+}
+
+.name-producto {
+  font-size: 6rem;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .name-producto {
+    font-size: 10rem;
+
+    line-height: 1;
+  }
+}
+
+.price-producto span {
+  font-size: 6rem;
+  font-weight: 900;
+}
+
+/*Caracteristicas*/
+.caracteristicas {
+  margin-top: var(--Gap);
+}
+@media (min-width: 768px) {
+  .caracteristicas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--Gap);
+  }
+}
+.lista-caracteristicas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0;
+  line-height: 1;
+}
+.lista-caracteristicas h3 {
+  color: var(--primario);
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+.icono {
+  width: 5rem;
+}
+
+/*Sobre Los Tech PRo*/
+
+.sobre-tech {
+  background-position: right;
+  background-repeat: repeat, no-repeat;
+  background-size: 100%, 80rem;
+}
+
+.notavif.notwebp .sobre-tech {
+  background-image: linear-gradient(
+      to bottom,
+      transparent 50%,
+      var(--primario) 0%
+    ),
+    url(../img/imagen-mujer.jpg);
+}
+
+.webp .sobre-tech {
+  background-image: linear-gradient(
+      to bottom,
+      transparent 50%,
+      var(--primario) 0%
+    ),
+    url(../img/imagen-mujer.webp);
+}
+.avif .sobre-tech {
+  background-image: linear-gradient(
+      to bottom,
+      transparent 50%,
+      var(--primario) 0%
+    ),
+    url(../img/imagen-mujer.avif);
+}
+@media (min-width: 768px) {
+  .sobre-tech {
+    padding: 1rem 2rem;
+    margin-top: var(--Gap);
+  }
+  .notavif.notwebp .sobre-tech {
+    background-image: linear-gradient(
+        to left,
+        transparent 50%,
+        var(--primario) 0%
+      ),
+      url(../img/imagen-mujer.jpg);
+  }
+  .webp .sobre-tech {
+    background-image: linear-gradient(
+        to left,
+        transparent 50%,
+        var(--primario) 0%
+      ),
+      url(../img/imagen-mujer.webp);
+  }
+
+  .avif .sobre-tech {
+    background-image: linear-gradient(
+        to left,
+        transparent 50%,
+        var(--primario) 0%
+      ),
+      url(../img/imagen-mujer.avif);
+  }
+}
+
+@media (min-width: 1600px) {
+  .sobre-tech {
+    background-size: 100%, 93rem;
+  }
+}
+
+.sobre-tech-grid {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  gap: var(--Gap);
+}
+
+@media (min-width: 768px) {
+  .sobre-tech-grid {
+    grid-template-rows: unset;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.sobre-tech-text {
+  grid-row: 2/3;
+  color: var(--blanco);
+}
+
+.sobre-tech-text {
+  font-size: 2rem;
+  line-height: 2;
+  margin-bottom: var(--Gap);
+}
+
+/*SECCION MODELO
+*Poner el producto mas Costoso primero
+*/
+
+.elige-tech {
+  padding: var(--Gap) 0;
+}
+.elige-tech h2 {
+  font-size: 6rem;
+}
+
+.elige-tech-modelos {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+@media (min-width: 992px) {
+  .elige-tech-modelos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 20rem);
+    gap: 2rem;
+  }
+}
+.modelo {
+  border-radius: 2rem;
+  margin-bottom: 2rem;
+  padding: var(--Gap) 3rem;
+  transition: transform 0.4s ease-out;
+  background-repeat: no-repeat;
+  background-position: 90% center; /*Se puede manipular el background 90% es hasta la derecha*/
+  background-size: 21rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.modelo:hover {
+  transform: scale3d(1.2, 1.4, 6.3) rotate(5deg); /*scale(1.1);*/
+  cursor: pointer;
+  background-size: 30rem;
+}
+.modelo h3 {
+  font-size: 2.4rem;
+  margin-top: 0;
+}
+
+.modelo .precio {
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 0.5;
+  margin: 3rem 0;
+}
+.modelo :first-of-type {
+  margin-bottom: 0;
+}
+.x {
+  background-image: url(../img/modelo-x.svg);
+}
+
+.y {
+  background-image: url(../img/modelo-y.svg);
+}
+.x,
+.y {
+  background-color: var(--grisClaro);
+  color: var(--primario);
+}
+
+.z {
+  background-color: var(--primario);
+  color: var(--blanco);
+  background-image: url(../img/modelo-z.svg);
+}
+@media (min-width: 992px) {
+  .z {
+    grid-column: 2/3;
+    grid-row: 1/3;
+    background-position: 104% center; /*Se puede manipular el background 90% es hasta la derecha*/
+    background-size: 25rem;
+  }
+}
+
+.z .precio {
+  font-size: 6rem;
+}
+
+/*NewsLetter*/
+
+.newsletter {
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 100%, 58rem;
+}
+
+.notavif.notwebp .newsletter {
+  background-image: linear-gradient(
+      to bottom,
+      transparent 50%,
+      var(--blanco) 0%
+    ),
+    url(../img/newsletter.jpg);
+}
+
+.webp .newsletter {
+  background-image: linear-gradient(
+      to bottom,
+      transparent 50%,
+      var(--blanco) 0%
+    ),
+    url(../img/newsletter.webp);
+}
+.avif .newsletter {
+  background-image: linear-gradient(
+      to bottom,
+      transparent 50%,
+      var(--blanco) 0%
+    ),
+    url(../img/newsletter.avif);
+}
+
+@media (min-width: 768px) {
+  .newsletter {
+    background-position: center left;
+    background-size: 100%, 92rem;
+  }
+
+  .notavif.notwebp .newsletter {
+    background-image: linear-gradient(
+        to right,
+        transparent 50%,
+        var(--blanco) 0%
+      ),
+      url(../img/newsletter.jpg);
+  }
+  .webp .newsletter {
+    background-image: linear-gradient(
+        to right,
+        transparent 50%,
+        var(--blanco) 0%
+      ),
+      url(../img/newsletter.webp);
+  }
+
+  .avif.newsletter {
+    background-image: linear-gradient(
+        to right,
+        transparent 50%,
+        var(--blanco) 0%
+      ),
+      url(../img/newsletter.avif);
+  }
+}
+.contenido-newsletter {
+  display: grid;
+  grid-template-rows: repeat(2, 30rem);
+  gap: var(--Gap);
+}
+
+@media (min-width: 768px) {
+  .contenido-newsletter {
+    grid-template-rows: unset;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.newsletter-text {
+  grid-row: 2/3;
+}
+@media (min-width: 768px) {
+  .newsletter-text {
+    grid-row: unset;
+    grid-column: 2/3;
+  }
+}
+
+.form input[type="submit"] {
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: var(--primario);
+  color: var(--secundario);
+  border: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2rem;
+  transition: transform 0.3s ease-out;
+}
+.form input[type="submit"]:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.form input[type="text"] {
+  width: 100%;
+  padding: 1rem;
+}
+/*FOOTER*/
+
+.footer p {
+  text-align: center;
+  margin-top: 2rem;
+  color: var(--primario);
+  font-size: 2rem;
+  padding: 1rem 0;
+  text-transform: uppercase;
+  font-weight: 900;
+}
