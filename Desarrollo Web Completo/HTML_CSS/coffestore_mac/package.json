@@ -1,12 +1,12 @@
 {
   "name": "coffestore_mac",
   "version": "1.0.0",
-  "description": "Coffestore w/ CSS SASS GULP",
+  "description": "CSS,GULP,SASS",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Mac_Rountree",
+  "author": "Mac Rountree",
   "license": "ISC",
   "devDependencies": {
     "gulp": "^4.0.2",

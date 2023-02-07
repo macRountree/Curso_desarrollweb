@@ -1,9 +1,13 @@
-const { src, dest } = require("culp");
+//gfhgf
+
+const { src, dest } = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
+
 function css(done) {
-  //compilar sass
-  // Paso 1 Identificar archivo , 2- Compilarla, 3- Guardar .css
-  src("scr/scss/styles.css").pipe(sass()).pipe(dest("build/css"));
+  //compilar SASS
+  //Identificar Archivo, Compilar y guardar el .css
+  src("scr/scss/styles.scss").pipe(sass()).pipe(dest("build/css"));
   done();
 }
+
 exports.css = css;
