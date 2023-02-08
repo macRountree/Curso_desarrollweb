@@ -1,0 +1,6 @@
+//traemos aqui todos los archivos
+
+//Forward nos sirve para incluir estos archivos a _index.scss y este se puede aplicar aotros arvchivos
+@forward "normalize";
+@forward "globales";
+@forward "variables";
