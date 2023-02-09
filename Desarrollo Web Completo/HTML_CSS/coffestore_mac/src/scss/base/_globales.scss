@@ -1,4 +1,4 @@
-@use "variables" as v;
+@use "variables" as v; //importa El archivo variables y dale el nombre de 'v'
 html {
   font-size: 62.5%;
   box-sizing: border-box;
@@ -11,12 +11,7 @@ html {
 
 body {
   font-family: v.$main_font;
-  font-size: 1.6rem;
-}
-
-h1 {
-  font-size: 5rem;
-  color: v.$primario;
+  font-size: 1.8rem;
 }
 
 p {
@@ -32,4 +27,25 @@ p {
 
 a {
   text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 v.$gap, 0;
+}
+
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 3.6rem;
+}
+h3 {
+  font-size: 3.2rem;
 }
