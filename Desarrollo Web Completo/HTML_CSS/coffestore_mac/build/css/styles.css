@@ -371,3 +371,79 @@ h3 {
 .bg-primario {
   background-color: #e8505b;
 }
+
+.header {
+  padding: 5rem 0;
+  position: relative;
+}
+@media (min-width: 480px) {
+  .header {
+    padding: 4rem;
+  }
+}
+@media (min-width: 768px) {
+  .header {
+    padding: 4rem;
+  }
+}
+.header::before {
+  /*'&' tiene encuenta el elemento padre (.header) en este caso*/
+  content: "";
+  background-color: #000000;
+  position: absolute; /*ocupamos declarar position relative en .contenido-header*/
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.6;
+}
+.header .contenido-header {
+  position: relative;
+}
+
+.header-home {
+  background-image: url(../img/header_inicio.jpg);
+}
+
+.nav-home {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .nav-home {
+    flex-direction: row;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+.nav-home a {
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.bar {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 768px) {
+  .bar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.bar .logo {
+  width: 50%;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .bar .logo {
+    width: 20rem;
+    margin: 0 auto;
+  }
+}
