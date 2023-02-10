@@ -18,6 +18,7 @@
 }
 
 @mixin grid($columnas, $gridgap) {
+  //Este mixin tiene  como valor el nuemro de columnas y el gap cuando lo usemos en otros archivos
   display: grid;
   grid-template-columns: repeat($columnas, 1fr);
   gap: $gridgap;
