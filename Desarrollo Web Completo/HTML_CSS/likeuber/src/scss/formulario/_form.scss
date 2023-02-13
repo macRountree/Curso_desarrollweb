@@ -1,0 +1,32 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.formulario {
+  &__grid {
+    @include m.tablet {
+      @include m.grid(2, v.$separacion);
+    }
+  }
+  &__contenido {
+    background-color: v.$primario;
+
+    padding: 5rem;
+  }
+
+  h2 {
+    color: v.$blanco;
+    text-align: center;
+  }
+  &__imagen-container {
+    margin-top: v.$separacion;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__imagen {
+    width: 30rem;
+    @include m.desktop {
+      width: 100%;
+    }
+  }
+}
