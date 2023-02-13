@@ -32,7 +32,7 @@ h2 {
 }
 
 .heading-blanco {
-  @extend h2;
+  @extend h2; //hereda los atributos de h2
   color: v.$blanco;
 
   span {

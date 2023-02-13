@@ -9,6 +9,8 @@ const { src, dest, watch, series } = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
 const postcss = require("gulp-postcss");
 const autoprefixer = require("autoprefixer");
+const sourcemaps = require("gulp-sourcemaps"); //Sourcemaps nos permite visualizar  el tipo de archivo scss donde proviene nuestro selector al moment de inspeccionar nuestro navegador
+const cssnano = require("cssnano"); //es una dependencia que nos permite reducir el tamaño del archivo css final
 
 //--------IMAGENES--------------------
 const imagemin = require("gulp-imagemin"); //instalamos la version 7.1.0 de gulp-imagemin para que soporte la funcion require
@@ -19,8 +21,10 @@ function css(done) {
   //compilar SASS
   //Identificar Archivo(src), Compilar(pipe(sass(Este se compila))) y guardar el .css (pipe(dest(lo mandamos a build/css)))
   src("src/scss/styles.scss")
+    .pipe(sourcemaps.init()) //Se inicia sourcemaps antes de sass
     .pipe(sass({ outputStyle: "expanded" }))
-    .pipe(postcss([autoprefixer()]))
+    .pipe(postcss([autoprefixer(), cssnano()]))
+    .pipe(sourcemaps.write("."))
     .pipe(dest("build/css"));
   done();
 }

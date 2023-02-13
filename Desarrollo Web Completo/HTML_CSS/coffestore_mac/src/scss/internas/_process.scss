@@ -1,0 +1,50 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.process-cafe {
+  margin: 8rem;
+  gap: v.$gap;
+  text-align: justify;
+  align-items: center;
+  @include m.tablet {
+    display: flex;
+    margin: 3rem;
+  }
+  .imagen,
+  .texto {
+    flex: 1;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  &:nth-child(even) {
+    //todos los hijos pares
+    .texto {
+      order: -1; //order lo utilizamos solocuando hay flex como padre
+    }
+  }
+
+  .imagen {
+    transition: transform 0.3s ease-out;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  .texto {
+    margin-top: 3rem;
+    h3 {
+      margin: 0;
+      text-align: left;
+      color: v.$primario;
+      &::after {
+        content: "";
+        display: block;
+        width: 50%;
+        height: 0.5rem;
+        background-color: v.$secundario;
+      }
+    }
+  }
+}
