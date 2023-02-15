@@ -13,6 +13,7 @@
 
   @include m.tablet {
     margin-bottom: 0;
+    padding: 2rem;
     &:nth-child(1) {
       grid-column: 1 / 4;
     }
@@ -35,29 +36,29 @@
   }
   &__imagen {
     flex-basis: 10rem;
-    border-radius: 50%;
+    border-radius: 50%; //50% da el efecto de borde redondeado
     overflow: hidden; //el div lo toma el la imagen
   }
 
   &__auth {
     color: v.$blanco;
-    margin: 0.5rem 0;
+    margin: 0.8rem 0;
     font-weight: 700;
   }
 
   &__texto {
     font-size: 2rem;
     line-height: 1.1;
-    margin: 2rem 0 0 0;
+    margin: 3rem 0 0 0;
     padding-left: 4rem;
     position: relative;
 
     &::before {
       content: '"';
       font-size: 10rem;
-      position: absolute;
+      position: absolute; //ponemos absolute para poder usar left/top etc
       left: 0;
-      top: -4rem;
+      top: -2rem;
       opacity: 40%;
     }
   }

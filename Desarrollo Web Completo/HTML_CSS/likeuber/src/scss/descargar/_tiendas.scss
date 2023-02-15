@@ -1,0 +1,33 @@
+@use "base/mixins" as m;
+@use "base/variables" as v;
+
+.tiendas {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__heading,
+  &__texto {
+    text-align: center;
+  }
+
+  &__heading {
+    color: v.$secundario;
+    margin: 2rem 0 0 0;
+  }
+
+  &__texto {
+    margin-bottom: 3rem;
+  }
+
+  &__grid {
+    @include m.grid(2, 3rem);
+  }
+
+  &__link {
+    transition: transform 0.3s ease-out;
+    &:hover {
+      transform: rotate(4deg) scale(1.2);
+    }
+  }
+}

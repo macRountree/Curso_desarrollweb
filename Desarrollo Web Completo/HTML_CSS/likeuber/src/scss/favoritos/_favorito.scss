@@ -6,7 +6,7 @@
   padding: 4rem;
   margin-bottom: 2rem;
   box-shadow: 0px 0px 2.6rem -0.8rem darken(v.$grisClaro, 30%);
-  border-radius: 1rem;
+  border-radius: 1rem; //esquinas redondeadas
   &:last-of-type {
     margin-bottom: 0;
   }
@@ -17,9 +17,13 @@
   &__grid {
     @include m.tablet {
       display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    @include m.tablet {
       grid-template-columns: 1fr 3fr;
       gap: 4rem;
-      align-items: center;
     }
   }
 
@@ -33,11 +37,25 @@
     align-items: center;
 
     @include m.tablet {
-      align-items: flex-start;
+      align-items: center;
     }
   }
 
   &__nombre {
     margin: 1rem 0;
+    color: v.$primario;
+    font-size: 2.8rem;
+    text-align: center;
+  }
+
+  &__descripcion {
+    margin: 0.5rem 0;
+    text-align: justify;
+    font-size: v.$secundario;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    @include m.tablet {
+      text-align: left;
+    }
   }
 }
