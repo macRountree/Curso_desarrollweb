@@ -1,0 +1,19 @@
+@use "base/mixins" as m;
+@use "base/variables" as v;
+
+.header {
+  @include m.bgImage("../img/header.jpg", v.$secundarioOpacity);
+  padding: 5rem 0;
+
+  &__logo {
+    max-width: 20rem;
+    margin: 0 auto;
+    @include m.tablet {
+      margin: 0;
+    }
+  }
+
+  &__heading {
+    margin: 5rem;
+  }
+}
