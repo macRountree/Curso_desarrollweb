@@ -1,0 +1,32 @@
+@use "base/mixins" as m;
+@use "base/variables" as v;
+
+.planes {
+  background-color: v.$secundario;
+  padding: 8rem;
+
+  &__heading {
+    @include m.headingBorder(v.$blanco, v.$primario);
+  }
+
+  &__descripcion {
+    color: v.$blanco;
+  }
+}
+
+.nuestros-planes {
+  display: flex;
+  flex-direction: column-reverse;
+
+  @include m.tablet {
+    flex-direction: row;
+  }
+  .plan {
+    &.negocio {
+      order: 1;
+      @include m.tablet {
+        order: unset;
+      }
+    }
+  }
+}

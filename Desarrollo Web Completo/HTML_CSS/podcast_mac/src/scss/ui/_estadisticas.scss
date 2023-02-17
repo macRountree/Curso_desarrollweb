@@ -1,0 +1,10 @@
+@use "base/mixins" as m;
+@use "base/variables" as v;
+
+.estadisticas {
+  margin: 8rem auto;
+
+  &__heading {
+    @include m.headingBorder(v.$secundario, v.$primario);
+  }
+}

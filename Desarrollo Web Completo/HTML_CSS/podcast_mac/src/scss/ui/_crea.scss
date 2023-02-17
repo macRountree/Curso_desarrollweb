@@ -12,6 +12,10 @@
     }
   }
 
+  &__heading {
+    @include m.headingBorder(v.$secundario, v.$primario);
+  }
+
   &__texto {
     margin-top: 0;
   }
