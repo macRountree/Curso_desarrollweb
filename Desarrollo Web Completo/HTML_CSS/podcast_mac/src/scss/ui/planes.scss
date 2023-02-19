@@ -3,7 +3,10 @@
 
 .planes {
   background-color: v.$secundario;
-  padding: 8rem;
+
+  @include m.tablet {
+    padding: 8rem;
+  }
 
   &__heading {
     @include m.headingBorder(v.$blanco, v.$primario);
@@ -17,16 +20,64 @@
 .nuestros-planes {
   display: flex;
   flex-direction: column-reverse;
+  padding: 5rem;
 
   @include m.tablet {
     flex-direction: row;
+    max-width: 80rem;
+    margin: 0 auto;
+    margin-block-start: 10rem;
   }
   .plan {
+    flex-grow: 1;
+    padding: 16rem 4rem 4rem 4rem;
+    border-bottom: 1px solid #e1e1e1;
+    @include m.tablet {
+      border: none;
+      transition: transform 0.3s ease-out;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    .precio {
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .listado {
+      li {
+        text-align: center;
+        line-height: 1.5;
+      }
+    }
     &.negocio {
+      @include m.iconoBg("../img/icono_negocio.svg");
+      background-color: v.$primario;
+
       order: 1;
+
       @include m.tablet {
         order: unset;
+        margin: -5rem 0;
+        border-radius: 2rem;
+        background-position: 50% 7rem;
+        padding-top: calc(16rem + 5rem);
+        z-index: 100; //mantiene adelante nuestro contenedor sobre los demas
       }
+    }
+
+    &.inicio,
+    &.pro {
+      background-color: v.$blanco;
+    }
+    &.inicio {
+      @include m.iconoBg("../img/icono_inicio.svg");
+    }
+    &.pro {
+      @include m.iconoBg("../img/icono_pro.svg");
     }
   }
 }
