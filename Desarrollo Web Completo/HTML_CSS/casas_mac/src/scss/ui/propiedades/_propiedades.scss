@@ -2,4 +2,65 @@
 @use "base/mixins" as m;
 
 .propiedades {
-  m
+  margin-top: 5rem;
+
+  @include m.tablet {
+    margin-top: 10rem;
+  }
+
+  &__heading {
+    @include m.heading;
+  }
+
+  &__grid {
+    margin-top: 5rem;
+    @include m.grid(1, 2rem);
+    @include m.tablet {
+      @include m.grid(3, 2rem);
+    }
+  }
+}
+.propiedad {
+  background-color: v.$blanco;
+  &__imagen {
+    aspect-ratio: 10/ 6; //por cada 10 pixel horizontal da 6px vertical
+    position: relative;
+    background-position: center;
+  }
+
+  @for $i from 1 through 6 {
+    //del 1 al 6 metemos la imagen de cada hijo en un for
+    $imagen: "../img/propiedad_" + $i + ".jpg";
+    &:nth-child(#{$i}) &__imagen {
+      background-image: linear-gradient(
+          to bottom,
+          transparentize(v.$negro, 1%) 0%,
+          transparentize(v.$negro, 0.3%) 100%
+        ),
+        url($imagen);
+    }
+  }
+
+  &__nombre {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    color: v.$blanco;
+    font-size: 1.8rem;
+  }
+
+  &__info {
+    padding: 2rem;
+    text-align: justify;
+  }
+
+  &__texto {
+    margin-bottom: 0;
+  }
+
+  &__link {
+    @include m.boton(v.$primario, v.$blanco);
+    display: block;
+    text-transform: uppercase;
+  }
+}
