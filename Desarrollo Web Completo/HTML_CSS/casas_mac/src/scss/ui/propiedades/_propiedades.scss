@@ -25,7 +25,8 @@
   &__imagen {
     aspect-ratio: 10/ 6; //por cada 10 pixel horizontal da 6px vertical
     position: relative;
-    background-position: center;
+    background-position: auto, 150%;
+    background-repeat: no-repeat;
   }
 
   @for $i from 1 through 6 {
