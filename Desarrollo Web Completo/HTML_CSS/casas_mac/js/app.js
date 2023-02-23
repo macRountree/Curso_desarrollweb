@@ -1,9 +1,12 @@
 const imagenes = document.querySelectorAll(".propiedad__imagen");
 
 window.addEventListener("scroll", () => {
-  const scroll = this.scrollY / -20;
+  const scroll = this.scrollY / -25;
 
   imagenes.forEach((imagen) => {
-    console.log((imagen.style.backgroundPositionY = `${scroll}px`));
+    if (scroll < -80) {
+      scroll += 80;
+    }
+    imagen.style.backgroundPositionY = `${scroll}px`;
   });
 });

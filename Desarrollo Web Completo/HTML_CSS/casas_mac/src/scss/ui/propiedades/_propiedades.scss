@@ -23,10 +23,11 @@
 .propiedad {
   background-color: v.$blanco;
   &__imagen {
-    aspect-ratio: 10/ 6; //por cada 10 pixel horizontal da 6px vertical
+    width: auto;
+    height: 30rem;
+    //aspect-ratio: 10/ 6; //por cada 10 pixel horizontal da 6px vertical
     position: relative;
-    background-position: auto, 150%;
-    background-repeat: no-repeat;
+    background-position: auto 150%;
   }
 
   @for $i from 1 through 6 {
