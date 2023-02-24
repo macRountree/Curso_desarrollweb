@@ -1,16 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Carolina Spa</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Italianno&family=Lato:wght@400;700;900&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="build/css/app.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Italianno&family=Lato:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="build/css/app.css" />
+  </head>
+  <body>
+    <header class="header contenedor">
+      <div class="header__grid">
+        <div class="header__logo">
+          <img src="build/img/logo.svg" alt="logo spa" />
+        </div>
+        <nav class="redes">
+          <a class="redes__sociales" href="https://facebook.com"
+            ><span class="redes__access">Facebook</span></a
+          >
+          <a class="redes__sociales" href="https://twitter.com"
+            ><span class="redes__access">Twitter</span></a
+          >
+          <a class="redes__sociales" href="https://instagram.com"
+            ><span class="redes__access">Instragram</span></a
+          >
+          <a class="redes__sociales" href="https://youtube.com"
+            ><span class="redes__access">youtube</span></a
+          >
+          <a class="redes__sociales" href="https://tiktok.com"
+            ><span class="redes__access">Tik-Tok</span></a
+          >
+        </nav>
+      </div>
+    </header>
+    <div class="nav">
+      <div class="nav__border">
+        <nav class="nav__contenedor">
+          <a href="#" class="nav__link">Inicio</a>
+          <a href="#" class="nav__link">Nosotros</a>
+          <a href="#" class="nav__link">Servicios</a>
+          <a href="#" class="nav__link">Productos</a>
+          <a href="#" class="nav__link">Contacto</a>
+        </nav>
+      </div>
+    </div>
 
-</body>
+    <section class="slider">
+      <ul class="slider__container">
+        <li class="slider__slide">
+          <img src="build/img/slide_01.jpg" alt="imagen slide" />
+        </li>
+        <li class="slider__slide">
+          <img src="build/img/slide_02.jpg" alt="imagen slide" />
+        </li>
+        <li class="slider__slide">
+          <img src="build/img/slide_03.jpg" alt="imagen slide" />
+        </li>
+      </ul>
+    </section>
+
+    <section class="bienvenida seccion">
+      <h1 class="bienvenida__heading">
+        Bienvenida(o) a nuestro <span>Sitio Web</span>
+      </h1>
+      <p class="bienvendia__texto seccion">Te sentiras como new</p>
+    </section>
+  </body>
 </html>
