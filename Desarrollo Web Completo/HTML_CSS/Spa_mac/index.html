@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <section class="slider">
+    <section class="slider contenedor">
       <ul class="slider__container">
         <li class="slider__slide">
           <img src="build/img/slide_01.jpg" alt="imagen slide" />
@@ -64,19 +64,122 @@
       </ul>
     </section>
 
-    <section class="bienvenida seccion">
+    <section class="bienvenida seccion contenedor">
       <h1 class="bienvenida__heading">
         Bienvenida(o) a nuestro <span>Sitio Web</span>
       </h1>
-      <p class="bienvenida__texto seccion">Te sentiras como new</p>
+      <p class="bienvenida__texto seccion">
+        Te sentiras como new con nuestros masajistas profesionales
+      </p>
     </section>
 
-    <section class="cards contenedor">
+    <section class="cards">
       <div class="cards__grid contenedor">
         <div class="card">
-          <img src="build/img/" alt="" class="card__imagen" />
+          <img
+            src="build/img/servicio_01.jpg"
+            alt="imagen servicio"
+            class="card__imagen"
+          />
+          <div class="card__container">
+            <h2 class="card__heading">conoce sobre <span>Nosotros</span></h2>
+            <a href="#" class="card__link"> Leer mas</a>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            src="build/img/servicio_02.jpg"
+            alt="imagen servicio"
+            class="card__imagen"
+          />
+          <div class="card__container">
+            <h2 class="card__heading">Nuestros <span>Servicios</span></h2>
+            <a href="#" class="card__link"> Leer mas</a>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            src="build/img/servicio_03.jpg"
+            alt="imagen servicio"
+            class="card__imagen"
+          />
+          <div class="card__container">
+            <h2 class="card__heading">Visita nuestra <span>Tienda</span></h2>
+            <a href="#" class="card__link"> Leer mas</a>
+          </div>
         </div>
       </div>
     </section>
+
+    <section class="schedules seccion">
+      <div class="schedules__grid contenedor">
+        <div class="schedules__container">
+          <h3 class="schedules__heading">Horarios</h3>
+          <p class="schedules__texto">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit
+            accusamus similique reprehenderit, laboriosam sequi quisquam
+            molestiae, dicta, deleniti aut qui praesentium cumque! Aliquid fugit
+            doloremque laboriosam perspiciatis libero. Suscipit, perspiciatis.
+          </p>
+          <table class="tabla">
+            <thead class="tabla__thead">
+              <tr>
+                <th class="tabla_th">Dia</th>
+                <th class="tabla_th">De</th>
+                <th class="tabla_th">Hasta</th>
+              </tr>
+            </thead>
+            <tbody class="tabla__tbody">
+              <tr class="tabla__tr">
+                <td class="tabla__td">Lunes</td>
+                <td class="tabla__td">09:00</td>
+                <td class="tabla__td">19:00</td>
+              </tr>
+              <tr class="tabla__tr">
+                <td class="tabla__td">Martes</td>
+                <td class="tabla__td">09:00</td>
+                <td class="tabla__td">19:00</td>
+              </tr>
+              <tr class="tabla__tr">
+                <td class="tabla__td">Miercoles</td>
+                <td class="tabla__td">09:00</td>
+                <td class="tabla__td">19:00</td>
+              </tr>
+              <tr class="tabla__tr">
+                <td class="tabla__td">Jueves</td>
+                <td class="tabla__td">09:00</td>
+                <td class="tabla__td">19:00</td>
+              </tr>
+              <tr class="tabla__tr">
+                <td class="tabla__td">Viernes</td>
+                <td class="tabla__td">09:00</td>
+                <td class="tabla__td">19:00</td>
+              </tr>
+              <tr class="tabla__tr">
+                <td class="tabla__td">Sábado</td>
+                <td class="tabla__td">09:00</td>
+                <td class="tabla__td">19:00</td>
+              </tr>
+            </tbody>
+            <tr class="tabla__tr">
+              <td class="tabla__td">Domingo</td>
+              <td class="tabla__td" colspan="2">Cerrado</td>
+              <!--Coldspan toma el tamaño de columnas en el valor asignado-->
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <main class="productos contenedor seccion">
+      <h2 class="productos__heading">nuestros <span>productos</span></h2>
+      <div class="productos__grid">
+        <div class="producto">
+          <div class="producto__imagen">
+            <img src="build/img/producto_01.jpg" alt="imagen producto" />
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
