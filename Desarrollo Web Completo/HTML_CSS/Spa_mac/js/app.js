@@ -1,12 +1,11 @@
 window.swiper = new Swiper({
-  el: ".slider__container",
-  slideClass: "slider__slide",
-  createElements: true,
+  el: ".slider__container", //contenedor del slider
+  slideClass: "slider__slide", //cada uno de los sliders
+  createElements: true, //genere el resto del HTML
   autoplay: {
     delay: 5000,
   },
   loop: true,
-  spaceBetween: 20,
   pagination: true,
   navigation: true,
 });

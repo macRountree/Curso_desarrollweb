@@ -2,14 +2,27 @@
 @use "base/variables" as v;
 
 .footer {
+<<<<<<< HEAD
   text-align: center;
 
+=======
+  padding-top: 5rem;
+>>>>>>> b73d5cd38db701d958f950bf747a6eae9a6740ad
   &__grid {
     @include m.tablet {
       @include m.grid(3, 2rem);
     }
   }
+<<<<<<< HEAD
   &__widget {
+=======
+
+  &__widget {
+    text-align: center;
+    &:first-of-type {
+      text-align: justify;
+    }
+>>>>>>> b73d5cd38db701d958f950bf747a6eae9a6740ad
     &:nth-child(3) {
       display: flex;
       flex-direction: column;
@@ -19,18 +32,32 @@
 
   &__heading {
     @include m.headingblue;
+<<<<<<< HEAD
     font-size: 3.8rem;
   }
+=======
+    font-size: 3.4rem;
+  }
+
+>>>>>>> b73d5cd38db701d958f950bf747a6eae9a6740ad
   &__texto {
     line-height: 1.8;
   }
 
   &__cr {
+<<<<<<< HEAD
     padding: 2rem;
     border-top: 1px solid darken(v.$grisClaro, 10%);
     max-width: 120rem;
     margin: 0 auto;
     font-size: 1.6rem;
     color: v.$gris;
+=======
+    text-align: center;
+    max-width: 120rem;
+    margin: 2rem auto 0 auto;
+    border-top: 1px solid darken(v.$grisClaro, 10%);
+    padding: 2rem;
+>>>>>>> b73d5cd38db701d958f950bf747a6eae9a6740ad
   }
 }

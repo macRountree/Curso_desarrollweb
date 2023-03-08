@@ -2,6 +2,7 @@
 @use "base/variables" as v;
 
 .slider {
+<<<<<<< HEAD
   overflow: hidden;
   margin-top: 2rem;
   position: relative;
@@ -25,5 +26,33 @@
     colr: v.$blanco;
   }
   .swiper-pagination-bullet-active {
+=======
+  margin-top: 1rem;
+  overflow: hidden;
+  position: relative;
+  &__container {
+  }
+  &__slide {
+    height: 100%;
+    flex-shrink: 0;
+    width: 100%;
+    position: relative;
+    transition-property: transform;
+  }
+
+  &__imagen {
+    width: 100%;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: v.$blanco;
+  }
+  .swiper-pagination-bullet {
+    background-color: v.$blanco;
+  }
+  .swiper-pagination-bullet-active {
+    background-color: v.$primario;
+>>>>>>> b73d5cd38db701d958f950bf747a6eae9a6740ad
   }
 }

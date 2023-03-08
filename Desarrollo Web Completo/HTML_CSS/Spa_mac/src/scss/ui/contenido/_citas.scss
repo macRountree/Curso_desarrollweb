@@ -5,11 +5,16 @@
   background-image: url(../img/bg_citas.jpg);
   background-repeat: no-repeat;
   background-position: center center;
+  background-attachment: fixed;
   padding: 10rem 0;
   background-size: cover;
+<<<<<<< HEAD
   align-items: center;
   background-attachment: fixed;
   text-align: center; //centramos boton
+=======
+  text-align: center;
+>>>>>>> b73d5cd38db701d958f950bf747a6eae9a6740ad
 
   &__container {
     width: 50%;
@@ -31,10 +36,15 @@
   &__link {
     @include m.boton(v.$primario, v.$blanco);
 
+<<<<<<< HEAD
     padding: 2rem;
 
     @include m.tablet {
       width: 50%;
     }
+=======
+    margin-top: 5rem;
+    padding: 2rem 10rem;
+>>>>>>> b73d5cd38db701d958f950bf747a6eae9a6740ad
   }
 }
