@@ -7,11 +7,14 @@
   background-position: center center;
   padding: 10rem 0;
   background-size: cover;
+  align-items: center;
+  background-attachment: fixed;
+  text-align: center; //centramos boton
 
   &__container {
-    text-align: center;
     width: 50%;
     color: v.$blanco;
+    align-items: center;
   }
 
   &__heading {
@@ -28,11 +31,10 @@
   &__link {
     @include m.boton(v.$primario, v.$blanco);
 
-    margin-top: 5rem;
-    display: block;
+    padding: 2rem;
+
     @include m.tablet {
       width: 50%;
-      margin: 0 auto; //**
     }
   }
 }

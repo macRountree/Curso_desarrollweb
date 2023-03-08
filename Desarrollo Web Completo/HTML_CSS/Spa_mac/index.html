@@ -11,6 +11,10 @@
       href="https://fonts.googleapis.com/css2?family=Italianno&family=Lato:wght@400;700;900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="build/css/app.css" />
   </head>
   <body>
@@ -53,13 +57,25 @@
     <section class="slider contenedor">
       <ul class="slider__container">
         <li class="slider__slide">
-          <img src="build/img/slide_01.jpg" alt="imagen slide" />
+          <img
+            class="slider__imagen"
+            src="build/img/slide_01.jpg"
+            alt="imagen slide"
+          />
         </li>
         <li class="slider__slide">
-          <img src="build/img/slide_02.jpg" alt="imagen slide" />
+          <img
+            class="slider__imagen"
+            src="build/img/slide_02.jpg"
+            alt="imagen slide"
+          />
         </li>
         <li class="slider__slide">
-          <img src="build/img/slide_03.jpg" alt="imagen slide" />
+          <img
+            class="slider__imagen"
+            src="build/img/slide_03.jpg"
+            alt="imagen slide"
+          />
         </li>
       </ul>
     </section>
@@ -248,5 +264,48 @@
         <a href="#" class="cita__link">Leer más</a>
       </div>
     </section>
+    <footer class="footer">
+      <div class="footer__grid contenedor seccion">
+        <div class="footer__widget">
+          <h3 class="footer__heading">Nosotros</h3>
+          <p class="footer__texto">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi
+            praesentium explicabo ex quasi possimus recusandae unde optio
+            accusamus dicta rem consequuntur excepturi impedit architecto nam,
+            suscipit laborum saepe quos! Cupiditate.
+          </p>
+        </div>
+        <div class="footer__widget">
+          <h3 class="footer__heading">Horario</h3>
+          <p class="footer__texto">Lun-Vie: 9AM - 7PM</p>
+          <p class="footer__texto">Sábado 10AM - 2PM</p>
+          <p class="footer__texto">Domingo: Cerrado</p>
+        </div>
+        <div class="footer__widget">
+          <h3 class="footer__heading">Contacto</h3>
+          <p class="footer__texto">5G 204 86542</p>
+          <nav class="redes">
+            <a class="redes__sociales" href="https://facebook.com"
+              ><span class="redes__access">Facebook</span></a
+            >
+            <a class="redes__sociales" href="https://twitter.com"
+              ><span class="redes__access">Twitter</span></a
+            >
+            <a class="redes__sociales" href="https://instagram.com"
+              ><span class="redes__access">Instragram</span></a
+            >
+            <a class="redes__sociales" href="https://youtube.com"
+              ><span class="redes__access">youtube</span></a
+            >
+            <a class="redes__sociales" href="https://tiktok.com"
+              ><span class="redes__access">Tik-Tok</span></a
+            >
+          </nav>
+        </div>
+      </div>
+      <p class="footer__cr">Todos los derechos reservados</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="js/app.js"></script>
   </body>
 </html>

@@ -1,0 +1,29 @@
+@use "base/mixins" as m;
+@use "base/variables" as v;
+
+.slider {
+  overflow: hidden;
+  margin-top: 2rem;
+  position: relative;
+
+  &__slide {
+    height: 100%;
+    width: 100%;
+    flex-shrink: 0;
+    position: relative;
+    transition-property: transform;
+  }
+  &__imagen {
+    width: 100%;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: v.$blanco;
+  }
+
+  .swiper-pagination-bullet {
+    colr: v.$blanco;
+  }
+  .swiper-pagination-bullet-active {
+  }
+}

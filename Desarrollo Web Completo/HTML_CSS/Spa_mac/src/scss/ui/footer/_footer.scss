@@ -1,0 +1,36 @@
+@use "base/mixins" as m;
+@use "base/variables" as v;
+
+.footer {
+  text-align: center;
+
+  &__grid {
+    @include m.tablet {
+      @include m.grid(3, 2rem);
+    }
+  }
+  &__widget {
+    &:nth-child(3) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__heading {
+    @include m.headingblue;
+    font-size: 3.8rem;
+  }
+  &__texto {
+    line-height: 1.8;
+  }
+
+  &__cr {
+    padding: 2rem;
+    border-top: 1px solid darken(v.$grisClaro, 10%);
+    max-width: 120rem;
+    margin: 0 auto;
+    font-size: 1.6rem;
+    color: v.$gris;
+  }
+}
