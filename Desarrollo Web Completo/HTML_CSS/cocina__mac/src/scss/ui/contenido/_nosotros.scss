@@ -1,0 +1,11 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.nosotros {
+  &__heading {
+    @include m.heading;
+  }
+  &__grid {
+    @include m.grid(3, 2rem);
+  }
+}
