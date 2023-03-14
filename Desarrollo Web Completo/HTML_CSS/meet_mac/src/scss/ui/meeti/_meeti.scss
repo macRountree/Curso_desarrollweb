@@ -1,0 +1,33 @@
+@use "base/mixins" as m;
+@use "base/variables" as v;
+
+.container {
+  @include m.tablet {
+    @include m.grid(3, 2rem);
+  }
+  &__heading {
+    @include m.heading;
+    margin-bottom: 5rem;
+  }
+
+  &__main {
+    grid-column: 1/3;
+  }
+
+  &__sidebar {
+    background-color: v.$secundario;
+    padding: 3rem;
+    text-align: center;
+  }
+}
+
+.sidebar__heading {
+  color: v.$blanco;
+}
+.sidebar__texto {
+  color: v.$blanco;
+}
+
+.label {
+  font-weight: 700;
+}
