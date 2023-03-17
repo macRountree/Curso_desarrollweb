@@ -1,0 +1,142 @@
+:root {
+  --primary: #e99401;
+  --negro: #262626;
+  --blanco: #fff;
+  --fuente-principal: "Outfit", sans-serif;
+}
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  font-size: 2rem;
+  font-family: var(--fuente-principal);
+  line-height: 1.5;
+}
+img {
+  max-width: 100%;
+}
+
+.contenedor {
+  margin: 0 auto;
+}
+[class$="__container"] {
+  max-width: 120rem;
+  margin: 0 auto;
+  width: 95%;
+}
+
+/* Header*/
+
+.header {
+  background-image: linear-gradient(
+      to right,
+      rgb(0 0 0 / 0.7),
+      rgb(0 0 0 / 0.7)
+    ),
+    url(../img/header.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  position: relative;
+}
+
+.header__guitar {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .header__guitar {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}
+.header__bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .header__bar {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5rem 0;
+  }
+}
+.header__logo {
+  width: 30rem;
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+  margin-top: 5rem;
+  position: relative;
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  .nav {
+    margin-top: 0;
+  }
+}
+.nav__link {
+  color: var(--blanco);
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.4rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  transition: background-color 0.3s;
+}
+
+.nav__link:hover {
+  background-color: var(--primary);
+}
+
+/*MODELO*/
+
+.modelo {
+  color: var(--blanco);
+  margin-top: 8rem;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .modelo {
+    text-align: left;
+    width: 50%;
+  }
+}
+
+.modelo__nombre {
+  font-size: 8rem;
+}
+
+.modelo__precio {
+  font-size: 6rem;
+  color: var(--primary);
+  font-weight: 900;
+  line-height: 0;
+}
+
+.modelo__enlace {
+  margin: 5rem 0;
+  text-decoration: none;
+  padding: 1rem 5rem;
+  border: 2px solid var(--primary);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--blanco);
+}
+
+.modelo__enlace:hover {
+  background-color: var(--primary);
+}
