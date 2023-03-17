@@ -1,0 +1,23 @@
+@use "base/mixins" as m;
+@use "base/variables" as v;
+
+.escuela {
+  @include m.bg_image("../img/chef_bg.jpg");
+  padding: 20rem 0;
+  text-align: center;
+  color: v.$blanco;
+
+  &__heading {
+    font-weight: 700;
+  }
+
+  &__texto {
+    font-size: 2.6rem;
+    max-width: 50rem;
+    margin: 0 auto;
+  }
+
+  &__link {
+    @include m.boton(v.$primario, v.$blanco);
+  }
+}

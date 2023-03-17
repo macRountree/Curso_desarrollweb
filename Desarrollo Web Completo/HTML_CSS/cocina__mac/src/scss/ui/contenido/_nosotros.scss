@@ -2,10 +2,21 @@
 @use "base/mixins" as m;
 
 .nosotros {
+  margin-top: 5rem;
   &__heading {
     @include m.heading;
   }
   &__grid {
-    @include m.grid(3, 2rem);
+    @include m.tablet {
+      @include m.grid(3, 2rem);
+    }
+  }
+
+  &__bloque {
+    text-align: center;
+  }
+
+  &__imagen {
+    margin: 0 auto;
   }
 }
