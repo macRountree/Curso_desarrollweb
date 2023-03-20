@@ -250,6 +250,10 @@ img {
   flex-direction: column;
 }
 .producto__label {
+  text-align: center;
+}
+.producto__option {
+  text-align: left;
 }
 .producto__cantidad {
   border: 2px solid var(--primary);
