@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción a Bootstrap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+</head>
+<body>
+
+    <header class="header p-5 mb-5">
+        <h1 class="text-center">Bootstrap 5 - La Guía Completa inc. BEM y SASS +10 Proyectos</h1>
+        <p class="text-center text-white">Básicos de Bootstrap 5</p>
+    </header>
+
+    <section class="seccion">
+        <h1 class="text-center my-5 heading">Contenedores</h1>
+        <div class="container-sm">Contenido</div>
+        <div class="container-md">Contenido</div>
+        <div class="container-lg">Contenido</div>
+        <div class="container-xl">Contenido</div>
+        <div class="container-xxl">Contenido</div>
+        <div class="container-fluid">Contenido</div>
+        
+
+    </section>
+
+    <section class="seccion">
+        <h1 class="text-center my-5 heading">Grid</h1>
+
+        <div class="container-xl">
+            <div class="row">
+                <div class="col-md-4 col-md-8">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod necessitatibus deleniti similique, nesciunt et beatae alias magni, nisi eveniet sapiente ipsam. Quibusdam sint qui modi doloribus cum at optio. Optio?</div>
+                <div class="col-md-4 col-sm-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores rerum odio dolorem et sequi eius labore! Esse aut reiciendis nemo deserunt, dolorum nam nisi a. Possimus suscipit minus amet veritatis!</div>
+                <div class="col-md-4 col-sm-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id repudiandae dolor nemo dignissimos aliquam, amet quo totam voluptatem vero recusandae? Fugiat exercitationem tempore debitis, laudantium suscipit expedita ab eaque nam?</div>
+            </div>
+        </div>
+
+
+
+    </section>
+
+    <section class="seccion">
+        <h1 class="text-center my-5 heading">Tipografia</h1>
+        <h1>encabezado 1</h1>
+        <h2>Encabezado 2</h2>
+        <h3>Encabezado3</h3>
+        <h4>Encabezado4</h4>
+        <h5>Encabezado5</h5>
+        <h6>Encabezado6</h6>
+        <p>parrafo</p>
+
+        <!--Displays-->
+        <h1 class="display-1">Encabezado display</h1>
+        <h1 class="display-2">Encabezado display</h1>
+        <h1 class="display-3">Encabezado display</h1>
+        <h1 class="display-4">Encabezado display</h1>
+        
+        <p class="display-1">parrafo display</p>
+
+        <!--FONTSIZES-->
+
+        <h1 class="fs-1">Encabezado fontsize</h1>
+        <h1 class="fs-2">Encabezado fontsize</h1>
+        <h1 class="fs-3">Encabezado fontsize</h1>
+        <h1 class="fs-4">Encabezado fontsize</h1>
+        <h1 class="fs-5">Encabezado fontsize</h1>
+        <h1 class="fs-6">Encabezado fontsize</h1>
+     
+        <p class="fs-1">parrafo</p>
+
+        <!--Utilidades para align text-->
+
+        <p class="text-start">Texto izquierda</p>
+        <p class="text-end">Derecha</p>
+        <p class="text-center">centro</p>
+
+
+        <!--align text con MQ-->
+
+        <p class="text-md-end text-md-center text-xl-start">texto con MQ</p>
+
+        <!--Capitalizacion-->
+        <p class="text-lowercase">MINUSCULAS</p>
+        <p class="text-uppercase">mayusculas</p>
+        <p class="text-capitalize">capital</p>
+
+        <!--Fontweight-->
+
+        <p class="fw-bold">Text</p>
+        <p class="fw-normal">texto</p>
+        <p class="fw-light">texto</p> <!--Si no hace el cambio quiere decir que la fuente no soporta esa tonalidad-->
+
+    </section>
+
+    <section class="seccion">
+        <h1 class="text-center my-5 heading">Colores en Bootstrap</h1>
+
+        <h1 class="text-primary">Clores en textos</h1>
+        <h1 class="text-secondary">Clores en textos</h1>
+        <h1 class="text-danger">Clores en textos</h1>
+        <h1 class="text-success">Clores en textos</h1>
+        <h1 class="text-warning">Colores en texto</h1>
+
+        <!--Backgrounds-->
+        <div class="bg-danger text-warning text-center">Contenido</div>
+
+    </section>
+
+    <section class="seccion">
+        <h1 class="text-center my-5 heading">Imágenes</h1>
+
+       
+        <div class="container-xl">
+            <div class="row">
+                <div class="col-md-3"> <img class="img-thumbnail" src="img/curso_1.jpg" alt="imagen curso"></div>
+            </div>
+        </div>
+
+
+
+
+
+        
+    </section>
+
+
+    <section class="seccion">
+        <h1 class="text-center my-5 heading">Botones</h1>
+        <button class="btn btn-danger" type="button">Agregar <i class="bi bi-person-plus-fill"></i></button>
+        <button class="btn btn-dark" type="button">Agregar</button>
+        <button class="btn btn-warning" type="button">Agregar</button>
+        <a href="#" class=" btn btn-primary">ENLACE</a><a href="" class="btn btn-outline-danger" disabled> HOLA</a>
+        <a href="" class="btn  btn-dark" disabled> QUE HACE</a>
+        <a href=""></a>
+        <a href=""></a>
+        <button type="submit" class="btn btn-outline-dark"> Enviar <i class="bi bi-send"></i></button>
+        <input type="submit" class="btn btn-warning" value="Enviar Form">
+
+        <button type="submit" class="btn btn-danger">Eliminar <i class="bi bi-trash"></i></button>
+
+
+
+    </section>
+
+    <section class="seccion">
+        <h1 class="text-center my-5 heading">Margins y Paddings</h1>
+
+    </section>
+
+    <section class="seccion">
+        <h1 class="text-center my-5 heading">Spinners</h1>
+
+    </section>
+
+    <section class="seccion">
+        <h1 class="text-center my-5 heading">Cards</h1>
+
+    </section>
+
+    <section class="seccion">
+        <h1 class="text-center my-5 heading">Formularios</h1>
+
+    </section>
+
+    <section class="seccion">
+        <h1 class="text-center my-5 heading">Toasts</h1>
+
+    </section>
+
+    <section class="seccion">
+        <h1 class="text-center my-5 heading">Carousel</h1>
+
+    </section>
+    
+    <section class="seccion">
+        <h1 class="text-center my-5 heading">Modals</h1>
+
+    </section>
+
+    <section class="seccion">
+        <h1 class="text-center my-5 heading">Navs</h1>
+   
+    </section>
+    
+    <section class="seccion">
+        <h1 class="text-center my-5 heading">Off Canvas</h1>
+
+    </section>
+
+</html>

@@ -1,0 +1,51 @@
+/*  
+BOOTSTRAP
+
+Framework Responsivo con enfoque MOBILE FIRST
+
+CUANDO UTILIZARLO
+
+-Crear sitios modernos y responsivos
+
+Contiene componentes como:
+-GRID
+-FORMULARIOS
+-VALIDACIÖN
+
+
+VENTAJAS:
+-BUENA DOCUMENTACIÖN
+-La cantidad de dependencias es minima (no ocupamos agregar JQUERY)
+-Personalización con SASS o CSS PLANO
+-COMPATIBLE CON :
+    -Webpack
+    -parcel
+    -gulp
+    -npm e integrar todo en nuestro workflow
+
+-Accesible , ya que sigue las normas WAI-ARIA
+
+
+DESVENTAJAS:
+
+-Tenemos que aprendernos las clases y componentes
+- muchos proyectos son muy parecidos en diferentes sitios
+-Queda desordenado el HTML Y CSS
+
+
+INSTALACIÖN:
+
+-CDN: No requiero descargar nada ya que solo lo podemos enlazarnos..Nuestro servidor no consumira
+muchos recursos. Requiero siempre una conexion de internet
+-Descargar Archivos: Desarrollamos sin internet, el deployment del proyecto, y consumira la hoja de estilos y el script
+, se puede aligerar con PurgeCSS
+-NPM-Podemos integrar workflows mas mdernos como webpack, gulp, vite, parcel y NPM, y personalizarlo
+en CSS
+--Desventaja es que requiere conocimientos aavanzados y tarda mas tiempo en tener u ambiente de desarrollo
+listo
+
+
+
+
+
+*/
