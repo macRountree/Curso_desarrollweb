@@ -1,0 +1,35 @@
+:root {
+  --bs-blue: #037bc0;
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px*/
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.6rem;
+  line-height: 2;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Playfair Display", serif;
+}
+h1 {
+  font-size: 3.8rem;
+}
+@media (min-width: 768px) {
+  h1 {
+    font-size: 5rem;
+  }
+}
+
+header span {
+  color: var(
+    --bs-blue
+  ) !important; /* Reescribir colores se usa important para cambiar especificidad */
+}
+
+/*BARRA NAV*/
