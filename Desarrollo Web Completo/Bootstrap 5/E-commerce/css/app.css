@@ -1,5 +1,6 @@
 :root {
   --bs-blue: #037bc0;
+  --bs-green: #acdf14fb;
 }
 
 html {
@@ -19,10 +20,26 @@ h3 {
 h1 {
   font-size: 3.8rem;
 }
-
 @media (min-width: 768pc) {
   h1 {
     font-size: 5rem;
+  }
+}
+h2 {
+  font-size: 3.2rem;
+}
+@media (min-width: 768px) {
+  h2 {
+    font-size: 4rem;
+  }
+}
+
+h3 {
+  font-size: 2.4rem;
+}
+@media (min-width: 768px) {
+  h3 {
+    font-size: 3rem;
   }
 }
 /*Rescribir Colores*/
@@ -30,10 +47,15 @@ h1 {
 .nombre-sitio {
   color: var(--bs-blue) !important;
 }
-
-.nombre-sitio {
-  color: var(--bs-blue);
+.bg-primary,
+.btn-primary {
+  background-color: var(--bs-blue) !important;
 }
+
+.btn-success {
+  color: var(#000);
+}
+
 .hero {
   background-image: url(../img/principal.jpg);
   height: 25rem;
@@ -46,4 +68,42 @@ h1 {
   .hero {
     height: 55rem;
   }
+}
+
+/*Productos*/
+
+.producto img {
+}
+
+@media (min-width: 768px) {
+  .producto img {
+    height: 43rem;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+/*Categoria*/
+.categoria {
+  transition: transform 0.5s ease-in-out;
+}
+.categoria img:hover {
+  transform: scale(1.2);
+}
+
+/* Galeria*/
+
+.galeria li {
+  margin-bottom: 1rem;
+}
+
+.galeria li:last-of-type {
+  margin-bottom: 0;
+}
+
+/*Formulario*/
+
+.form-control {
+  padding: 1rem;
+  font-size: 1.6rem;
 }
