@@ -1,0 +1,23 @@
+//Reescribimos la Paleta de collores de BS
+
+$rojo: #f34f51;
+$verde: #0098ae;
+$oscuro: #212121;
+
+//Asignamos paleta de colores a BS
+
+$secondary: $verde;
+$primary: $rojo;
+$dark: $oscuro;
+
+//Tipografia
+
+$display-font-weight: 900;
+$headings-font-weight: 700;
+
+//cards
+$card-border-color: transparent;
+
+//importamos Bootstrap
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
