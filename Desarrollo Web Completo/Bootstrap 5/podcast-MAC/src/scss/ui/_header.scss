@@ -1,0 +1,6 @@
+@use "../custom" as *;
+@use "utilities/mixins" as m;
+
+.site-header {
+  @include m.bgImage("../img/header.jpg", $secondary);
+}

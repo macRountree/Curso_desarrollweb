@@ -1,5 +1,5 @@
 //llamamos las depeendencias src es paratomar un archivo y dest para destinar una ubicacion
-const { src, dest, watch } = require("gulp");
+const { src, dest, watch, series } = require("gulp");
 
 const sass = require("gulp-sass")(require("sass")); //const sass tiene asociado gulp-sass y sass
 
