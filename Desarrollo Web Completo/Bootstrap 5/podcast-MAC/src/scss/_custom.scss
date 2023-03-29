@@ -10,5 +10,13 @@ $secondary: $gris;
 $headings-font-family: "Poppins", sans-serif;
 $headings-font-weight: 700;
 $font-family-sans-serif: "Poppins", sans-serif;
+$font-size-root: 62.5%;
+$font-family-base: 1.8rem;
+$h1-font-size: 4.5rem;
+$h2-font-size: 3.6rem;
+
+//Spacer
+
+$spacer: 5rem;
 //importamos BS
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";

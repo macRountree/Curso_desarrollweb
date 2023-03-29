@@ -1,0 +1,8 @@
+@use "utilities/mixins";
+@use "../custom" as *;
+
+.crea {
+  h2 {
+    @include mixins.headingBorder($secondary, $primary);
+  }
+}
