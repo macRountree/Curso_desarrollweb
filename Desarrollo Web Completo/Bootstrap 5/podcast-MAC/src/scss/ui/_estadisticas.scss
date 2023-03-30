@@ -1,7 +1,7 @@
 @use "utilities/mixins" as m;
 @use "../custom" as *;
 
-.crea {
+.estadisticas {
   h2 {
     @include m.headingBorder($secondary, $primary);
   }
