@@ -129,20 +129,20 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  font-size: calc(1.425rem + 2.1vw);
+  font-size: calc(1.485rem + 2.82vw);
 }
 @media (min-width: 1200px) {
   h2, .h2 {
-    font-size: 3rem;
+    font-size: 3.6rem;
   }
 }
 
 h3, .h3 {
-  font-size: calc(1.3rem + 0.6vw);
+  font-size: calc(1.425rem + 2.1vw);
 }
 @media (min-width: 1200px) {
   h3, .h3 {
-    font-size: 1.75rem;
+    font-size: 3rem;
   }
 }
 
@@ -7871,11 +7871,11 @@ textarea.form-control-lg {
 }
 
 .fs-2 {
-  font-size: calc(1.425rem + 2.1vw) !important;
+  font-size: calc(1.485rem + 2.82vw) !important;
 }
 
 .fs-3 {
-  font-size: calc(1.3rem + 0.6vw) !important;
+  font-size: calc(1.425rem + 2.1vw) !important;
 }
 
 .fs-4 {
@@ -10733,10 +10733,10 @@ textarea.form-control-lg {
     font-size: 4.5rem !important;
   }
   .fs-2 {
-    font-size: 3rem !important;
+    font-size: 3.6rem !important;
   }
   .fs-3 {
-    font-size: 1.75rem !important;
+    font-size: 3rem !important;
   }
   .fs-4 {
     font-size: 1.5rem !important;
@@ -10920,9 +10920,24 @@ textarea.form-control-lg {
 .plan {
   padding: 16rem 4rem 4rem 4rem;
 }
-.plan.precio {
+@media (min-width: 768px) {
+  .plan {
+    transition: transform 0.3s ease;
+  }
+}
+@media (min-width: 768px) and (prefers-reduced-motion: reduce) {
+  .plan {
+    transition: none;
+  }
+}
+@media (min-width: 768px) {
+  .plan:hover {
+    transform: scale(1.2);
+  }
+}
+.plan .precio {
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: 900;
   text-transform: uppercase;
 }
 .plan.negocio {
@@ -10933,9 +10948,12 @@ textarea.form-control-lg {
 }
 @media (min-width: 768px) {
   .plan.negocio {
+    padding-top: 21rem;
     margin-top: -5rem;
     margin-bottom: -5rem;
     border-radius: 2rem;
+    z-index: 100;
+    background-position: 50% 7rem;
   }
 }
 .plan.pro {
@@ -10949,6 +10967,125 @@ textarea.form-control-lg {
   background-size: 10rem;
   background-position: 50% 2rem;
   background-repeat: no-repeat;
+}
+.plan li {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.testimoniales h2 {
+  color: #313c4e;
+  display: inline-block;
+  margin-top: 5rem;
+}
+@media (min-width: 768px) {
+  .testimoniales h2 {
+    margin-top: 0;
+  }
+}
+.testimoniales h2::after {
+  content: "";
+  height: 1rem;
+  width: 100%;
+  background-color: #84d9bc;
+  display: block;
+  margin: -1.4rem 0;
+}
+
+.testimonial {
+  border: 0.5rem solid #313c4e;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  padding: 2rem 2rem 2rem 8rem;
+  position: relative;
+}
+.testimonial::before {
+  content: "";
+  width: 5rem;
+  height: 5rem;
+  display: block;
+  background-size: 5rem;
+  background-image: url(../img/comilla.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: absolute;
+  left: 1.5rem;
+}
+
+.footer {
+  background-color: #313c4e;
+  color: #fff;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .footer {
+    text-align: left;
+  }
+}
+.footer__container {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1320px;
+}
+.footer__row {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
+}
+.footer__widget {
+  margin-bottom: 2rem;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-top: var(--bs-gutter-y);
+}
+@media (min-width: 768px) {
+  .footer__widget {
+    flex: 0 0 auto;
+    width: 25%;
+  }
+}
+.footer__logo {
+  width: 20rem;
+  margin-bottom: 5rem;
+}
+.footer__heading {
+  color: #84d9bc;
+}
+.footer__link {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.footer__cr {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1320px;
+  border-top: 2px solid #84d9bc;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+  margin-bottom: 0;
 }
 
 .btn-header, .boton-plan {
@@ -10986,4 +11123,10 @@ textarea.form-control-lg {
 
 .boton-plan {
   border: 1px solid #fff;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .boton-plan {
+    display: block;
+  }
 }

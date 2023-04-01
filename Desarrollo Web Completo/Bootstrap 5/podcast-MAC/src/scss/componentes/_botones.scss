@@ -21,4 +21,8 @@
 .boton-plan {
   @extend .btn-header;
   border: 1px solid $white;
+  text-align: center;
+  @include media-breakpoint-up(md) {
+    display: block;
+  }
 }

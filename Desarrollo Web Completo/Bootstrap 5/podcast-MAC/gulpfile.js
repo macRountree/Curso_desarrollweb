@@ -2,7 +2,8 @@
 const { src, dest, watch, series } = require("gulp");
 
 const sass = require("gulp-sass")(require("sass")); //const sass tiene asociado gulp-sass y sass
-
+const purgecss = require("gulp-purgecss");
+const rename = require("gulp-rename");
 //aligerar imagenes
 
 const imagemin = require("gulp-imagemin");
@@ -17,6 +18,13 @@ function css(done) {
   done(); //callback done
 }
 
+function cssbuild(done) {
+  src("build/css/app.css")
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(purgecss({ content: ["index.html"] }))
+    .pipe(dest("build/css"));
+  done();
+}
 function dev() {
   watch("src/scss/**/*.scss", css); //llamamos la funcion css (6)
 }
@@ -34,3 +42,4 @@ exports.css = css;
 exports.dev = dev;
 exports.imagenes = imagenes;
 exports.default = series(imagenes, css, dev);
+exports.build = series(cssbuild);
