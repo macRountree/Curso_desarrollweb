@@ -1,0 +1,12 @@
+@use "utilities/mixins" as m;
+@use "../custom" as *;
+
+.crea {
+  h2 {
+    @include m.headingBorder($secondary, $primary);
+  }
+
+  p {
+    font-size: 2.8rem;
+  }
+}
