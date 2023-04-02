@@ -1,7 +1,50 @@
+//colores
 
+$negro: #000;
+$blanco: #fff;
+$morado: #a435f0;
+$gris: #f8f9fb;
 
+$darkgris: #6a6f73;
+$naranja: #b4690e;
 
+//tipografia
 
+$fuente-heading: "Kaisei HarunoUmi", serif;
+$fuente-textos: Arial, Helvetica, sans-serif;
+$headings-font-family: $fuente-heading;
+
+$headings-font-weight: 700;
+$h2-font-size: 3rem;
+$h3-font-size: 2.6rem;
+
+//colores
+
+$secondary: $naranja;
+$success: $morado;
+$light: $gris;
+$dark: $negro;
+
+//Formularios
+$input-border-color: $dark;
+$input-border-radius: 1rem;
+//Nav
+$nav-link-color: $darkgris;
+$nav-link-hover-color: $dark;
+$nav-link-font-weight: 700;
+$nav-link-font-size: 0.9rem;
+
+//btn
+$btn-font-radius: 0;
+$btn-font-weight: 700;
+
+//cards
+$card-spacer-x: 0;
+$card-border-radius: 0;
+$card-border-width: 0;
+
+//CSSgrid
+
+$enable-cssgrid: true;
 // Importar Bootstrap
-@import '../../node_modules/bootstrap/scss/bootstrap.scss';
-
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
