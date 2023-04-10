@@ -92,6 +92,13 @@ const reproductor = {
   },
 };
 
+// ---> Arrow functions
+
+//el function se transforma en un arrow y se traslada enseguida del parentesis
+//NO OCUPA LLAVES podemos enviar al a consolasin llaves en caso de ser solo 1 linea
+const learning2 = () => console.log("aprendinedo JS arrow");
+learning2();
+
 /* ====================FUNCIONES PARA ARRAYS================================= */
 //Vamos a iterar el arreglo carrito con varios objetos dentro el cual cada objeto es llamado producto
 // en este caso llamamos cada nombre y precio de cada objeto
