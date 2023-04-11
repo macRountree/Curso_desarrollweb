@@ -21,9 +21,15 @@ const carrito = [
 
 // console.log(resultado);
 
-//En un arreglo de objetos se utiliza objetos
+//En un arreglo de objetos se utiliza some tambien regresa un boleano
 const existe = carrito.some((producto) => {
   return producto.nombre === "Si";
 });
 
 console.log(existe);
+
+//Some tambien funciona con arreglo tradicional
+
+const existe2 = meses.some((mes) => mes === "Febrero");
+
+console.log(existe2);
