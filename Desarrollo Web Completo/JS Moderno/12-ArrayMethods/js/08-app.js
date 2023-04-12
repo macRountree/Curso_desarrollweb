@@ -8,7 +8,14 @@ const carrito = [
   { nombre: "Teclado", precio: 400 },
   { nombre: "Celular", precio: 700 },
 ];
-//Meses 2 no modifica el arreglo original(meses 2)
+//Meses 2 no modifica el arreglo original
+//Si hacemos un spread(...) en 'agosto' creara un arreglo por lenght
 const meses2 = [...meses, "Agosto"];
 
 console.log(meses2);
+
+const producto = { nombre: "HDD", precio: 300 };
+
+//no podemos poner spread en producto porque no se pueden iterar objetos
+const carrito2 = [...carrito, producto];
+console.log(carrito2);
