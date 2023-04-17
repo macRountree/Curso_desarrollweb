@@ -7,15 +7,19 @@ const carrito = document.querySelector("#carrito");
 const contenedorCarrito = document.querySelector("#lista-carrito tbody");
 const vaciarCart = document.querySelector("#vaciar-carrito");
 const listaCursos = document.querySelector("#lista-cursos");
+//utilizamos let porque ira cambiando... tambien ponemos el arreglo vacio proque se ira llenando
+let articulosCarrito = [];
 
 cargarEventos();
+
+//Aqui hacemos esta funcion para nuestros eventos del carrito
 function cargarEventos() {
-  //Cuando damos click en Agregar al carrito
+  //Cuando damos click en Agregar al carrito, agregarCurso es una funcion que definimos abajo
   listaCursos.addEventListener("click", agregarCurso);
 }
 
 //Functions
-
+//Lo agregamos a cargarEventos()
 function agregarCurso(e) {
   e.preventDefault();
   if (e.target.classList.contains("agregar-carrito")) {
@@ -28,16 +32,71 @@ function agregarCurso(e) {
 //leer el contenido del html y le dimos click y extrae info del curso
 
 function leerDatos(curso) {
-  console.log(curso);
+  // console.log(curso);
 
   //creamos un objetos con el contenido del curso actual
 
   const infoCurso = {
+    //EN lugar de usar document usamos curso que estamos usando
+    //para leer datos
     imagen: curso.querySelector("img").src,
     titulo: curso.querySelector("h4").textContent,
     precio: curso.querySelector(".precio span").textContent,
     id: curso.querySelector("a").getAttribute("data-id"),
     cantidad: 1,
   };
-  console.log(infoCurso);
+  //agregamos elementos al arreglo del carrito
+  //Utilizamos el spread del carrito vacio para ir copiando
+  //los articulos sisguientes
+  articulosCarrito = [...articulosCarrito, infoCurso];
+  console.log(articulosCarrito);
+
+  //llamamos carrito html
+  carritoHtml();
+}
+
+//muestra el carrito en el html
+
+function carritoHtml() {
+  //Limpiar el html
+  limpiarHtml();
+  //iteramos arreglos con forEach para cada curso
+  articulosCarrito.forEach((curso) => {
+    const { imagen, titulo, precio, cantidad, id } = curso;
+    const row = document.createElement("tr");
+    row.innerHTML = `
+    <td>
+      <img src='${/*curso.*/ imagen}' width ='100'  >
+    </td>
+    <td>
+      ${/*curso.*/ titulo}
+    </td>
+    <td class='text-center'>
+      ${/*curso.*/ precio}
+    </td>
+    <td class='text-center'>
+     ${/*curso.*/ cantidad}
+    </td>
+    <td>
+    <a href=# class='borrar-curso' data-id= '${/*curso.*/ id}'> X </a>  
+    
+    </td>
+    `;
+
+    //agrega html del carrito al tbody
+
+    contenedorCarrito.appendChild(row);
+  });
+}
+
+//eliminar los cursos del tbody
+function limpiarHtml() {
+  //forma lenta
+  // contenedorCarrito.innerHTML = "";
+
+  //mientras haya un padre en contenedor carrio.. se elimina el primer hijo
+  //de contenedor carrito
+  while (contenedorCarrito.firstChild) {
+    contenedorCarrito.removeChild(contenedorCarrito.firstChild);
+  }
 }
