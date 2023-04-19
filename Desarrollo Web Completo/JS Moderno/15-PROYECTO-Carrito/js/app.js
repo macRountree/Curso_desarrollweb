@@ -16,6 +16,9 @@ cargarEventos();
 function cargarEventos() {
   //Cuando damos click en Agregar al carrito, agregarCurso es una funcion que definimos abajo
   listaCursos.addEventListener("click", agregarCurso);
+
+  //Eliminar cursos del carrito
+  carrito.addEventListener("click", eliminarCurso);
 }
 
 //Functions
@@ -26,6 +29,21 @@ function agregarCurso(e) {
     const cursoSelec = e.target.parentElement.parentElement;
 
     leerDatos(cursoSelec);
+  }
+}
+
+//Eliminar datos del curso
+
+function eliminarCurso(e) {
+  console.log(e.target.classList);
+  if (e.target.classList.contains("borrar-curso")) {
+    const cursoId = e.target.getAttribute("data-id");
+
+    //elimina del arreglo artiuclosCarrito por el data id
+
+    articulosCarrito = articulosCarrito.filter((curso) => curso.id !== cursoId);
+    console.log(articulosCarrito);
+    carritoHtml(); //iteramos sobre el carrito para que cambie su html
   }
 }
 
@@ -45,10 +63,29 @@ function leerDatos(curso) {
     id: curso.querySelector("a").getAttribute("data-id"),
     cantidad: 1,
   };
-  //agregamos elementos al arreglo del carrito
-  //Utilizamos el spread del carrito vacio para ir copiando
-  //los articulos sisguientes
-  articulosCarrito = [...articulosCarrito, infoCurso];
+
+  //Revisar si un elemento ya existe
+  //itera en los articulos del carrito agregado y revisa si los id de curso e infocurso
+  const exist = articulosCarrito.some((curso) => curso.id === infoCurso.id);
+  if (exist) {
+    //Actualizamos la cantidad
+
+    const cursos = articulosCarrito.map((curso) => {
+      if (curso.id === infoCurso.id) {
+        curso.cantidad++;
+        return curso; //retorna el objeto actualizado
+      } else {
+        return curso; //retorna los objetos que no son duplicados
+      }
+    });
+    articulosCarrito = [...cursos];
+  } else {
+    //agregamos elementos al arreglo del carrito
+    //Utilizamos el spread del carrito vacio para ir copiando
+    //los articulos sisguientes
+    articulosCarrito = [...articulosCarrito, infoCurso];
+  }
+
   console.log(articulosCarrito);
 
   //llamamos carrito html
