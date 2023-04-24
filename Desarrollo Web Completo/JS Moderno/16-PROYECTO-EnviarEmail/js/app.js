@@ -21,29 +21,56 @@ document.addEventListener("DOMContentLoaded", function () {
   inputAsunto.addEventListener("blur", validar);
 
   function validar(e) {
+    //ParentElement muestra en consola el elemento padre de los inputs(en este caso)
+    //si el input es email entonces el padre sera el div de ese input
+    //console.log(e.target.parentElement.nextElementSibling);
     //Si hay un string vacio en los inputs arroja esta vacio si no No esta vacio
 
     //Se recomienda tener un trim en un formulario para que elimine los espacios en blanco
     if (e.target.value.trim() === "") {
       //podemos poner la alerta aqui pero podemos realizar otra funcion
-      mostrarAlerta();
-    } else {
-      console.log("No esta vacio");
+      //e.target.id hace que la validación sea mas dinamica.. ya que metenmos el id de cada campo en la alerta
+      mostrarAlerta(
+        `El campo ${e.target.id} es obligatorio`,
+        e.target.parentElement
+      );
+      return;
     }
+    limpiarAlerta(e.target.parentElement);
+    console.log("Despues del if");
   }
 
-  function mostrarAlerta() {
+  function mostrarAlerta(mensaje, referencia) {
+    limpiarAlerta(referencia);
+    //Comprobamos si ya existe la alerta
+    //podemos seleccionar una clase de la alerta (bg-red-600)
+    //en lugar de document.quer---- utilizamos la referencia para que sea solo en el div acortando
+    const alerta = referencia.querySelector(".bg-red-600");
+    console.log(alerta);
+    if (alerta) {
+      alerta.remove();
+    }
+
     //creamos un elemento html
     const error = document.createElement("P");
     //si utilizamos un innerHtml no se escapa.. es mas seguro TextContent
-    error.textContent = "Hubo un error";
+    error.textContent = mensaje;
     error.classList.add("bg-red-600", "text-white", "p-2", "text-center");
     //Aparecera una etiqueta de p en consola
 
     //inyectamos errror al formulario
-    //appendchild agregamos un nuevo elemento al final de la etiqueta ene este caso del form
+    //appendchild agregamos un nuevo elemento ALFINAL de la etiqueta ene este caso del form
     //con innerHtml limpia la pagina
     //form.innerHTML = error.innerHTML;
-    form.appendChild(error);
+    referencia.appendChild(error);
+  }
+
+  function limpiarAlerta(referencia) {
+    const alerta = referencia.querySelector(".bg-red-600");
+    console.log(alerta);
+    if (alerta) {
+      alerta.remove();
+    }
+    console.log("Dsde limpiar alerta");
   }
 });
