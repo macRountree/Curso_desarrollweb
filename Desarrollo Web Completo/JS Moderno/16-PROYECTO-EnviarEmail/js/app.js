@@ -1,6 +1,11 @@
 //?====================ENVIAR EMAIL=====================
 
 document.addEventListener("DOMContentLoaded", function () {
+  const email = {
+    email: "",
+    asunto: "",
+    mensaje: "",
+  };
   //Seleccionamos los campos de la interfasz
 
   const inputEmail = document.querySelector("#email");
@@ -36,8 +41,17 @@ document.addEventListener("DOMContentLoaded", function () {
       );
       return;
     }
+    if (e.target.id === "email" && !validarEmail(e.target.value)) {
+      mostrarAlerta("El email no es valido", e.target.parentElement);
+      return;
+    }
     limpiarAlerta(e.target.parentElement);
-    console.log("Despues del if");
+
+    //Asignar valores
+
+    email[e.target.name] = e.target.value.trim().toLowerCase();
+    //comprobamos el objeto email
+    comprobarEmail();
   }
 
   function mostrarAlerta(mensaje, referencia) {
@@ -71,6 +85,17 @@ document.addEventListener("DOMContentLoaded", function () {
     if (alerta) {
       alerta.remove();
     }
-    console.log("Dsde limpiar alerta");
+  }
+
+  function validarEmail(email) {
+    //Expresion regular busca un patron en una cadena de texto
+    const regex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+    const resultado = regex.test(email);
+    return resultado;
+  }
+
+  function comprobarEmail() {
+    //includes verifica si uno de los valores del arreglo estan vacios
+    console.log(Object.values(email).includes(""));
   }
 });
