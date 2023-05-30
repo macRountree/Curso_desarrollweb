@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const email = {
     email: "",
     asunto: "",
+    cc: "",
     mensaje: "",
   };
   //Seleccionamos los campos de la interfasz
@@ -14,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const inputEmail = document.querySelector("#email");
   const inputAsunto = document.querySelector("#asunto");
   const inputMensaje = document.querySelector("#mensaje");
+  const inputCc = document.querySelector("#cc");
   const form = document.querySelector("#formulario");
   const btnSubmit = document.querySelector(
     '#formulario button[type= "submit"] '
@@ -32,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
   inputEmail.addEventListener("input", validar);
   inputMensaje.addEventListener("input", validar);
   inputAsunto.addEventListener("input", validar);
+  inputCc.addEventListener("input", validarCC);
   form.addEventListener("submit", enviarEmail);
   btnReset.addEventListener("click", function (e) {
     //prevenimos su accion default.. es decir reiniciar formulario de btnReset
@@ -78,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //Si hay un string vacio en los inputs arroja esta vacio si no No esta vacio
 
     //Se recomienda tener un trim en un formulario para que elimine los espacios en blanco
-    if (e.target.value.trim() === "") {
+    if (e.target.value.trim() === "" && e.target.id !== "cc") {
       //podemos poner la alerta aqui pero podemos realizar otra funcion
       //e.target.id hace que la validación sea mas dinamica.. ya que metenmos el id de cada campo en la alerta
       mostrarAlerta(
@@ -146,6 +149,16 @@ document.addEventListener("DOMContentLoaded", function () {
     return resultado;
   }
 
+  function validarCC(e) {
+    if (e.target.value !== "" && !validarEmail(e.target.value)) {
+      mostrarAlerta("El email no es valido", e.target.parentElement);
+      comprobarEmail();
+      return;
+    }
+    limpiarAlerta(e.target.parentElement);
+    comprobarEmail();
+  }
+
   function comprobarEmail() {
     //includes verifica si uno de los valores del arreglo estan vacios
     //si hay valores que no estan vacios se quita habilita el boton enviar
@@ -162,6 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function resetForm() {
     email.email = "";
     email.asunto = "";
+    email.cc = "";
     email.mensaje = "";
     form.reset();
     comprobarEmail();
