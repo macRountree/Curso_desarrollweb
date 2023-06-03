@@ -47,18 +47,23 @@ year.addEventListener("change", (e) => {
 });
 minimo.addEventListener("change", (e) => {
   datosBusqueda.minimo = e.target.value;
+  filtrarAuto();
 });
 maximo.addEventListener("change", (e) => {
   datosBusqueda.maximo = e.target.value;
+  filtrarAuto();
 });
 puertas.addEventListener("change", (e) => {
   datosBusqueda.puertas = e.target.value;
+  filtrarAuto();
 });
 transmision.addEventListener("change", (e) => {
   datosBusqueda.transmision = e.target.value;
+  filtrarAuto();
 });
 color.addEventListener("change", (e) => {
   datosBusqueda.color = e.target.value;
+  filtrarAuto();
 });
 
 //========FUNCTIONS==============
@@ -110,10 +115,31 @@ function llenarSelect() {
 function filtrarAuto() {
   //hacemos un filtrad y usamos un metodo avanzado para encadenar mas funciones
   //para el año minimo maximo etc
-  const resultado = autos.filter(filtrarMarca).filter(filtrarYear);
+  const resultado = autos
+    .filter(filtrarMarca)
+    .filter(filtrarYear)
+    .filter(filtrarMinimo)
+    .filter(filtrarMaximo)
+    .filter(filtrarPuertas)
+    .filter(filtrarTransmision)
+    .filter(filtrarColor);
   // console.log(resultado);
 
-  mostrarAutos(resultado);
+  if (resultado.length) {
+    mostrarAutos(resultado);
+  } else {
+    noResultado();
+  }
+}
+
+function noResultado() {
+  limpiarHTML();
+
+  const noResultado = document.createElement("div");
+  noResultado.classList.add("alerta", "error");
+  noResultado.textContent =
+    "No hay resultados, intenta otros términos de busqueda";
+  resultado.appendChild(noResultado);
 }
 
 function filtrarMarca(auto) {
@@ -131,6 +157,57 @@ function filtrarYear(auto) {
   //SI HAY un valor (no vacio) entonces filtro por cada marca
   if (year) {
     return auto.year == year;
+  }
+  //si no .. me trae todos los autos de regreso
+  return auto;
+}
+
+function filtrarMinimo(auto) {
+  const { minimo } = datosBusqueda;
+  //SI HAY un valor (no vacio) entonces filtro por cada marca
+  if (minimo) {
+    //nos interesa que el objeto de la db sea el de precio .. y que nos muestre el minimo/
+    //es decir que sean mayor a un precio seleccionado
+    return auto.precio >= minimo;
+  }
+  //si no .. me trae todos los autos de regreso
+  return auto;
+}
+function filtrarMaximo(auto) {
+  const { maximo } = datosBusqueda;
+  //SI HAY un valor (no vacio) entonces filtro por cada marca
+  if (maximo) {
+    //nos interesa que el objeto de la db sea el de precio .. y que nos muestre el maximo/
+    //es decir que sean menor a un precio seleccionado
+    return auto.precio <= maximo;
+  }
+  //si no .. me trae todos los autos de regreso
+  return auto;
+}
+function filtrarPuertas(auto) {
+  const { puertas } = datosBusqueda;
+  //SI HAY un valor (no vacio) entonces filtro por cada marca
+  if (puertas) {
+    return auto.puertas == puertas;
+  }
+  //si no .. me trae todos los autos de regreso
+  return auto;
+}
+function filtrarColor(auto) {
+  const { color } = datosBusqueda;
+  //SI HAY un valor (no vacio) entonces filtro por cada marca
+  if (color) {
+    return auto.color == color;
+  }
+  //si no .. me trae todos los autos de regreso
+  return auto;
+}
+
+function filtrarTransmision(auto) {
+  const { transmision } = datosBusqueda;
+  //SI HAY un valor (no vacio) entonces filtro por cada marca
+  if (transmision) {
+    return auto.transmision == transmision;
   }
   //si no .. me trae todos los autos de regreso
   return auto;
