@@ -23,7 +23,7 @@ function agregarTweet(e) {
 
   //validar
 
-  if (tweet == "") {
+  if (tweet === "") {
     MostrarError("No puede ir vacio");
     return; //con este return previene que se ejecuten otras lineas de codigo
     //el return solo sirve si esta dentro de una funcion
@@ -32,7 +32,7 @@ function agregarTweet(e) {
   //para diferenciar tweets.. agregamos una fechha en modo de objeto a cada tweet
   const tweetObj = {
     id: Date.now(),
-    texto: tweet,
+    tweet,
   };
   //añadir al arreglo tweets
   //spread operator
