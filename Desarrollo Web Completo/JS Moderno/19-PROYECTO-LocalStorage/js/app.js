@@ -11,7 +11,16 @@ let tweets = [];
 eventListeners();
 
 function eventListeners() {
+  //cuando el usuario agrega nuevo tweet
   form.addEventListener("submit", agregarTweet);
+
+  //Cuando el doc esta listo
+
+  document.addEventListener("DOMContentLoaded", () => {
+    tweets = JSON.parse(localStorage.getItem("tweets"));
+
+    console.log(tweets);
+  });
 }
 
 //==============FUNCTIONS?======================
@@ -41,7 +50,12 @@ function agregarTweet(e) {
   // ya que creemos el tweet .. generamos el HTML
 
   crearHtml();
+
+  //Reset el formulario
+
+  form.reset();
 }
+
 //mostrar error es una funcion que crea un parrafo con su clase
 // que se inyectara al html con un mensaje de error
 function MostrarError(error) {
@@ -66,6 +80,7 @@ function MostrarError(error) {
 
 function crearHtml() {
   if (tweets.length > 0) {
+    limpiarHTML();
     //iteramos el arreglo
     tweets.forEach((tweet) => {
       const li = document.createElement("li");
@@ -73,9 +88,20 @@ function crearHtml() {
 
       li.innerText = tweet.tweet;
 
+      //mientras tenga el appendchild el codigo se repetira
       listaTweets.appendChild(li);
     });
   }
+
+  //sincro storage
+
+  syncStorage();
+}
+
+///Agrega tweets al local storage
+
+function syncStorage() {
+  localStorage.setItem("tweets", JSON.stringify(tweets));
 }
 
 //limpiar html
