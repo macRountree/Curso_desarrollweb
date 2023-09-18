@@ -17,9 +17,11 @@ function eventListeners() {
   //Cuando el doc esta listo
 
   document.addEventListener("DOMContentLoaded", () => {
-    tweets = JSON.parse(localStorage.getItem("tweets"));
+    //inteneta buscar en local storage tweets yconviertelos en JSON.parse
+    // si marca null.. conviertelo a un array vacio
+    tweets = JSON.parse(localStorage.getItem("tweets") || []);
 
-    console.log(tweets);
+    crearHtml();
   });
 }
 
@@ -83,10 +85,23 @@ function crearHtml() {
     limpiarHTML();
     //iteramos el arreglo
     tweets.forEach((tweet) => {
+      //agregamos un boton
+      const btnEliminar = document.createElement("a");
+      btnEliminar.classList.add("borrar-tweet");
+      btnEliminar.innerText = "X";
+
+      //añadimos la funcion de eliminar
+
+      btnEliminar.onclick = () => {
+        borrarTweet(tweet.id);
+      };
       const li = document.createElement("li");
       //añadimos texto
 
       li.innerText = tweet.tweet;
+
+      //asignamos el boton
+      li.appendChild(btnEliminar);
 
       //mientras tenga el appendchild el codigo se repetira
       listaTweets.appendChild(li);
@@ -102,6 +117,14 @@ function crearHtml() {
 
 function syncStorage() {
   localStorage.setItem("tweets", JSON.stringify(tweets));
+}
+//le pasamos el id del objeto tweetObj
+function borrarTweet(id) {
+  //para borrar un tweet creando un array
+
+  tweets = tweets.filter((tweet) => tweet.id != id);
+
+  crearHtml();
 }
 
 //limpiar html
