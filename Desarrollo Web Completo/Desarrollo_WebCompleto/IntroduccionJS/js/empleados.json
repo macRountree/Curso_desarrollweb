@@ -1,0 +1,31 @@
+{
+    "empleados":[
+        {
+            "id":1,
+            "nombre": "Mac",
+            "puesto": "Frontend"
+        },
+        {
+            "id":1,
+            "nombre": "Mac",
+            "puesto": "Frontend"
+        },
+        {
+            "id":2,
+            "nombre": "4",
+            "puesto": "backend"
+        },
+        {
+            "id":3,
+            "nombre": "Sato",
+            "puesto": "FullStack MEVN"
+        },
+        {
+            "id":1,
+            "nombre": "Ommy",
+            "puesto": "Fullstack MERN"
+        }
+      
+
+    ]
+}
