@@ -4,18 +4,33 @@
 
 const carrito = document.querySelector("#carrito");
 const contenedorCarrito = document.querySelector("#lista-carrito tbody");
-const vaciarCarrito = document.querySelector("#vaciar-carrito");
+const vaciarCarritoBtn = document.querySelector("#vaciar-carrito");
 const listaCursos = document.querySelector("#lista-cursos");
 
 let articulosCarrito = []; //Se declara let porque el arreglo ira cambiando
 
 //Listeners
 
-//==FUNCIONES
 const cargarEventListeners = () => {
   //Evento ocurre cuando damos click en Agregar al Carrito
   listaCursos.addEventListener("click", agregarCurso);
+
+  //Elimina cursos del carrito
+
+  carrito.addEventListener("click", eliminarCurso);
+
+  //vaciar carrito como es poco código a comparacion de los listeners de arriba .. agregamos un callback
+  //para a
+
+  vaciarCarritoBtn.addEventListener("click", () => {
+    // console.log("vaciando caarrito");
+    // Reseteamos el arreglo
+
+    articulosCarrito = [];
+    limpiarHTML(); //eliminamos el html
+  });
 };
+//==FUNCIONES
 
 const agregarCurso = (e) => {
   e.preventDefault(); //Mantiene elmovimiento de la pagina
@@ -25,6 +40,19 @@ const agregarCurso = (e) => {
   }
 };
 
+const eliminarCurso = (e) => {
+  if (e.target.classList.contains("borrar-curso")) {
+    //obtenemos el id que deseamos eliminar a traves de su data id
+
+    const cursoId = e.target.getAttribute("data-id");
+    //Si queremos traernos solo el cursoID nos creariamos el arreglo que queremos eliminar pero nos traerimaos todo
+    //Para eso hacemos la negacion.. para que eliminemos los datos del arrelo usamos !==
+    articulosCarrito = articulosCarrito.filter((curso) => cursoId !== cursoId);
+
+    //llamamos la funcion carrito HTML
+    carritoHTML();
+  }
+};
 cargarEventListeners();
 
 //Lee el contenido de html del listener y extraemos su info
@@ -42,11 +70,23 @@ const leerDatosCurso = (curso) => {
 
   //Revisamos si existe el producto en el carrito con some() nos permite iterar en un arreglo de eobjetos
   const exist = articulosCarrito.some((curso) => curso.id === infoCurso.id);
-  console.log(exist);
+  if (exist) {
+    //Si existe actualizamos la cantidad
+    const cursos = articulosCarrito.map((curso) => {
+      if (curso.id === infoCurso.id) {
+        curso.cantidad++;
+        return curso; //Retorna el objeto actualizado
+      } else {
+        return curso; //Retorna los objetos que NO estan duplicados
+      }
+    });
+    articulosCarrito = [...cursos];
+  } else {
+    articulosCarrito = [...articulosCarrito, infoCurso]; //usamos spread para agregar infocurso a articuilosCarrito
+  }
 
   //?Agregamos elementos a carrito
 
-  articulosCarrito = [...articulosCarrito, infoCurso]; //usamos spread para agregar infocurso a articuilosCarrito
   console.log(articulosCarrito);
   carritoHTML();
 };
