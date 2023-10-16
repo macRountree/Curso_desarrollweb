@@ -1,17 +1,12 @@
-///ELIMINAR ELEMENTOS DE LOCALSTORAGE
+//Eliminar elementos en el localStorage
 
-localStorage.removeItem("nombre");
+localStorage.removeItem("producto");
 
-//acualizar registro
+// Las apps web deben tener CRUD en el caso de localStorage no hay UPDATE
 
-const mesesArr = JSON.parse(localStorage.getItem("meses"));
-console.log(mesesArr);
-
-mesesArr.push("nuevoMes");
-
-console.log(mesesArr);
-
-localStorage.setItem("meses", JSON.stringify(mesesArr));
-
-//limpia el local storage
+const meses = JSON.parse(localStorage.getItem("meses"));
+console.log(meses);
+meses.push("Nuevo mes");
+console.log(meses);
+localStorage.setItem("meses", JSON.stringify(meses));
 localStorage.clear();
