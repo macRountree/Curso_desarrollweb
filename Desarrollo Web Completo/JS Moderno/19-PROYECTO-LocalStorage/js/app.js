@@ -1,13 +1,15 @@
-//=======LOCAL STORAGE=================
+// ? GUARDAR TWEETS LOCAL STORAGE
+
+// ?==============Variables
 
 //===========VARIABLES =====================
 const form = document.querySelector('#formulario');
 const listaTweets = document.querySelector('#lista-tweets');
 
-//creamos una variable para los arreglos con un arreglo vacio
-// se almacenan los datos en una arreglo
-let tweets = [];
-//===============LISTENERS===================
+// 157_1 creamos un arreglo vacio que almacene todos los tweets
+let tweetsArr = [];
+
+// ? ============= Event listeners
 eventListeners();
 
 function eventListeners() {
@@ -25,8 +27,11 @@ function eventListeners() {
   });
 }
 
-//==============FUNCTIONS?======================
+// ? ============== FUnciones
+
 function agregarTweet(e) {
+  // 157_2 prevenimos la accion por defaultdel Formulario
+
   e.preventDefault();
 
   //text area
@@ -39,19 +44,19 @@ function agregarTweet(e) {
     return; //con este return previene que se ejecuten otras lineas de codigo
     //el return solo sirve si esta dentro de una funcion
   }
-
-  //para diferenciar tweets.. agregamos una fechha en modo de objeto a cada tweet
+  // 159_2 utilizamos date.Now() para tener la fecha en tiempo real y creamos un objeto con id con esa fecha y un texto que sera el tweet ecrito
   const tweetObj = {
     id: Date.now(),
-    tweet,
+    tweet: tweet,
   };
-  //añadir al arreglo tweets
-  //spread operator
-  tweets = [...tweets, tweetObj];
 
-  // ya que creemos el tweet .. generamos el HTML
+  // Añadir al arreglo de tweets
+  // 159_1 utilizamos spreadOperator copiamos todo tweet geenerado con el tweet
+  tweetsArr = [...tweetsArr, tweetObj];
 
-  crearHtml();
+  // 159_3 Una vez agregado creamos el HTML
+
+  crearHTML();
 
   //Reset el formulario
 
@@ -87,9 +92,6 @@ function crearHtml() {
     tweets.forEach(tweet => {
       //agregamos un boton
       const btnEliminar = document.createElement('a');
-      const btnEditar = document.createElement('a');
-      btnEditar.classList.add('editar-tweet');
-      btnEditar.innerText = 'Editar';
       btnEliminar.classList.add('borrar-tweet');
       btnEliminar.innerText = 'X';
 
@@ -105,20 +107,16 @@ function crearHtml() {
 
       //asignamos el boton
       li.appendChild(btnEliminar);
-      li.appendChild(btnEditar);
 
       //mientras tenga el appendchild el codigo se repetira
       listaTweets.appendChild(li);
     });
   }
-
-  //sincro storage
-
+  // 160_1 una vez creado todos los tweets debemos llamar la funcion para almacenarlo en el Storage
   syncStorage();
 }
 
-///Agrega tweets al local storage
-
+// 160_2 creamos la funcion para agregar tweets al localStorage
 function syncStorage() {
   localStorage.setItem('tweets', JSON.stringify(tweets));
 }
@@ -131,15 +129,34 @@ function borrarTweet(id) {
   crearHtml();
 }
 
-//editarTweet
-function editarTweet(id) {
-  // ! crear modal que edite un tweet
-}
-
 //limpiar html
 
 function limpiarHTML() {
   while (listaTweets.firstChild) {
     listaTweets.removeChild(listaTweets.firstChild);
   }
+}
+
+function mostrarError(error) {
+  const mensajeError = document.createElement('p');
+  mensajeError.textContent = error;
+  mensajeError.classList.add('error');
+
+  //158_2 insertamos el error en el id contenido
+
+  const contenido = document.querySelector('#contenido');
+  contenido.appendChild(mensajeError);
+
+  // 158_3 Agregamos un setTimeout para que despues de 3 segundos se elimine el mensaje
+  setTimeout(() => {
+    mensajeError.remove();
+  }, 3000);
+}
+
+function borrarTweet(id) {
+  // console.log("borrando", id);
+  // 161_2 borramos con filter
+  tweetsArr = tweetsArr.filter(tweet => tweet.id !== id);
+  // console.log(tweetsArr);
+  crearHTML();
 }

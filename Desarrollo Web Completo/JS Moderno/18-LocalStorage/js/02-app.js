@@ -1,14 +1,11 @@
-//GET ITEM
+//Obtenemos los datos del local storage
+const producto = localStorage.getItem("producto");
 
-const nombre = localStorage.getItem("nombre2");
-
-console.log(nombre);
-
-const productoJSON = localStorage.getItem("producto");
-
-//JSON.parse convierte un string en un objeto
-console.log(JSON.parse(productoJSON));
+console.log(JSON.parse(producto));
 
 const meses = localStorage.getItem("meses");
-const mesesArray = JSON.parse(meses);
-console.log(JSON.parse(meses));
+//tambien funciona si asigamos el mes en una variable
+
+const mesesArr = localStorage.getItem("meses");
+
+console.log(JSON.parse(mesesArr));

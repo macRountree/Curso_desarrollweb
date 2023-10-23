@@ -1,22 +1,24 @@
-// ============BUSCADOR DE AUTOS==============//
+//* ====BUSCADDOR DE AUTOMOVILES
+//?Variables
 
-//========VARIABLES==============
+// 144_3 nos traemos el id resultados del div del html
+const resultados = document.querySelector("#resultado");
+// 145_3 Nos traemos el id year del select
 const year = document.querySelector("#year");
+//  146_2 - Agregamos el resto de ids de cada filtro de busqueda
+
 const marca = document.querySelector("#marca");
-const minimo = document.querySelector("#minimo");
-const maximo = document.querySelector("#maximo");
+const precioMinimo = document.querySelector("#minimo");
+const precioMaximo = document.querySelector("#maximo");
 const puertas = document.querySelector("#puertas");
 const transmision = document.querySelector("#transmision");
 const color = document.querySelector("#color");
 
-//contenedor para resultados
-const resultado = document.querySelector("#resultado");
-
-const max = new Date().getFullYear(); //getfullyear es el año actual
+// 145_4 creamos un metodo para que nos traiga el año maximo y el minimo
+const max = new Date().getFullYear();
 const min = max - 10;
 
-//========OBJETOS==============
-//Antes de filtrar las busquedas creamos un objeto
+// 146_1 Generamos un objeto con la busqueeda
 const datosBusqueda = {
   marca: "",
   year: "",
@@ -27,188 +29,191 @@ const datosBusqueda = {
   color: "",
 };
 
-//========LISTENERS===============
+//?=====================Eventos
 document.addEventListener("DOMContentLoaded", () => {
-  mostrarAutos(autos); //muestra los autos al cargar
-  //llena la opcion años
+  // 144_1 Una vez que cargue nuestro HTML mandamos a llamar nuestra funcion para mostrar los autos
+  mostrarAutos(autos); //149_3 Le mandamos el argumento para
+
+  // 145_1 Llena las opciones de años con select
+
   llenarSelect();
 });
 
-//listeners para formularios
-//usaremos el objeto Datosbusquda para que identifique cada propiedad al seleccionarla
-// en el select de cada propiedad
+//? 146_3 Listeners para select de busqueda Si queremos usar un evento para selects el mas usado es CHANGE
+
 marca.addEventListener("change", (e) => {
+  // 146_4 asignamos  el evento a la marca del objeto datos busqueda
   datosBusqueda.marca = e.target.value;
+
+  // 147_1 llamamos una funcion de filtrado en tiempo real
   filtrarAuto();
 });
+
 year.addEventListener("change", (e) => {
-  datosBusqueda.year = e.target.value;
+  // 146_4 asignamos  el evento a la year del objeto datos busqueda
+  datosBusqueda.year = parseInt(e.target.value);
   filtrarAuto();
 });
-minimo.addEventListener("change", (e) => {
+
+precioMinimo.addEventListener("change", (e) => {
+  // 146_4 asignamos  el evento a la minimo del objeto datos busqueda
   datosBusqueda.minimo = e.target.value;
   filtrarAuto();
 });
-maximo.addEventListener("change", (e) => {
+
+precioMaximo.addEventListener("change", (e) => {
+  // 146_4 asignamos  el evento a la minimo del objeto datos busqueda
   datosBusqueda.maximo = e.target.value;
   filtrarAuto();
 });
-puertas.addEventListener("change", (e) => {
-  datosBusqueda.puertas = e.target.value;
-  filtrarAuto();
-});
 transmision.addEventListener("change", (e) => {
+  // 146_4 asignamos  el evento a la transmision del objeto datos busqueda
   datosBusqueda.transmision = e.target.value;
   filtrarAuto();
 });
 color.addEventListener("change", (e) => {
+  // 146_4 asignamos  el evento a la color del objeto datos busqueda
   datosBusqueda.color = e.target.value;
   filtrarAuto();
 });
 
-//========FUNCTIONS==============
-
+puertas.addEventListener("change", (e) => {
+  // 146_4 asignamos  el evento a la puertas del objeto datos busqueda
+  datosBusqueda.puertas = parseInt(e.target.value);
+  filtrarAuto();
+});
+// ?===========================Funciones
+// 144_2 Definimos nuestra funcion mostrarAutos
 function mostrarAutos(autos) {
-  //limpiamos el html eliminamos el html previo
-
-  limpiarHTML();
+  //149_2 le pasamos un parametro autos
+  // 144_4 iteramos los autos del archivo db llamado autos con forEach
+  limpiarHTML(); //149_6 Elimina el html previo
   autos.forEach((auto) => {
-    const { marca, modelo, year, precio, puertas, color, transmision } = auto;
-    const autosHTML = document.createElement("P");
-    autosHTML.textContent = `
-    ${marca} 
-    ${modelo} 
-    ${year}
-     -Precio-${precio} 
-     - Puertas - ${puertas} 
-     - Color - ${color} 
-     - Transmision - ${transmision} 
-    `;
-
-    //insertamos en el HTML
-
-    resultado.appendChild(autosHTML);
+    // 144_6 desestructuramos autos y los colocamos en el textContent
+    const { marca, modelo, precio, color, puertas, transmision, year } = auto;
+    const autoHtml = document.createElement("P");
+    autoHtml.textContent = `${marca} ${modelo} - ${year} - ${puertas} Puertas - Transmisión: ${transmision} -  Precio: $${precio} - Color: ${color}  `;
+    // 144_5 asignamos el elemento creado a resultados
+    resultados.appendChild(autoHtml); //149_4 Recordemos que AppendChild NO BORRA  html previo debemos hacerlo con otra funcion
   });
 }
 
-//limpiar HTML
+// 149_5 Creamos la funcion limpiarHTML mientras que resultado tengo hijos.... removemos estos hijos
 function limpiarHTML() {
-  while (resultado.firstChild) {
-    resultado.removeChild(resultado.firstChild);
+  while (resultados.firstChild) {
+    resultados.removeChild(resultados.firstChild);
   }
 }
 
-//generamos los años con un select
+// 152_1 creamos una funcion para que arroje un textContent de que no hay resultados... intente otro metodo de filtrado
+function noHayResultados() {
+  limpiarHTML();
+  const noResultado = document.createElement("DIV");
 
+  noResultado.classList.add("alerta", "error", "mb-5");
+  noResultado.textContent =
+    "No hay  resultado.... Intente con otro método de busqueda";
+  resultados.appendChild(noResultado);
+}
+
+// 145_2 creamos la funcion llenar select
 function llenarSelect() {
-  //recorre de LOS AUTOS DEL 2023 HASTA 2013
+  // 145_5 barremos todos los años desde max hasta min
+  // console.log(year);
   for (let i = max; i >= min; i--) {
-    const opt = document.createElement("option");
-    opt.value = i;
-    opt.textContent = i;
-    year.appendChild(opt); //agrega los años al select
+    // console.log(i);
+
+    // 145_6 insertamos los años en el select creando elemento Option ..asignamos el valor del for en esa opcion y tambien su año y lo insertamos en el selected year
+    const opcion = document.createElement("OPTION");
+    opcion.value = i;
+    opcion.textContent = i;
+    year.appendChild(opcion);
   }
 }
 
-//Filtrado de autos
+// 147_2 funcion que filtra en base a la busqueda
 
 function filtrarAuto() {
-  //hacemos un filtrad y usamos un metodo avanzado para encadenar mas funciones
-  //para el año minimo maximo etc
+  // 147_3 utilizamos el array metod filter .. utilizamos la funcion de alto nivel es decir
+  // crearemos una funcion de filtrar marca y la utilizamos como parametro para esta funcion filter
   const resultado = autos
     .filter(filtrarMarca)
     .filter(filtrarYear)
     .filter(filtrarMinimo)
-    .filter(filtrarMaximo)
-    .filter(filtrarPuertas)
+    .filter(filtrarMax)
+    .filter(filtrarColor)
     .filter(filtrarTransmision)
-    .filter(filtrarColor);
+    .filter(filtrarPuertas); //148_1 podemos encadenar el filtrado poniendo nuevamente el metodo filter
   // console.log(resultado);
 
+  // 149_1 tenemos que mandar llamar la funcion  de mostrarAuto() pero ya con el resultado filtrado
   if (resultado.length) {
     mostrarAutos(resultado);
   } else {
-    noResultado();
+    noHayResultados();
   }
 }
 
-function noResultado() {
-  limpiarHTML();
-
-  const noResultado = document.createElement("div");
-  noResultado.classList.add("alerta", "error");
-  noResultado.textContent =
-    "No hay resultados, intenta otros términos de busqueda";
-  resultado.appendChild(noResultado);
-}
-
+// 147_4 creamos una funcion .. esta se integra a la funcion de filtrar auto en el filter de la db
 function filtrarMarca(auto) {
+  // console.log(auto);
   const { marca } = datosBusqueda;
-  //SI HAY un valor (no vacio) entonces filtro por cada marca
+
+  // 147_5 filtramos si en nuestro objeto marca  esta vacio nos retorna la marca auto
   if (marca) {
-    return auto.marca == marca;
+    return auto.marca === marca;
+    // console.log(auto.marca);
   }
-  //si no .. me trae todos los autos de regreso
+  // 147_6 Si el usuario no escoja ninguna marca.. se regresa el auto completo
   return auto;
 }
 
+// 148_2 Creamos la funcion filtrarYear
+
 function filtrarYear(auto) {
   const { year } = datosBusqueda;
-  //SI HAY un valor (no vacio) entonces filtro por cada marca
+  // 148_3 el year de datos Busqueda viene como String por eso nos arroja que esta vacio.... debemos convertirlo a numero para que se arroje el resultado con parseInt(year) en este caso lo convertimos en el listener de year
   if (year) {
-    return auto.year == year;
+    return auto.year === year;
   }
-  //si no .. me trae todos los autos de regreso
+  return auto;
+}
+
+function filtrarColor(auto) {
+  const { color } = datosBusqueda;
+  if (color) {
+    return auto.color === color;
+  }
   return auto;
 }
 
 function filtrarMinimo(auto) {
   const { minimo } = datosBusqueda;
-  //SI HAY un valor (no vacio) entonces filtro por cada marca
+
   if (minimo) {
-    //nos interesa que el objeto de la db sea el de precio .. y que nos muestre el minimo/
-    //es decir que sean mayor a un precio seleccionado
     return auto.precio >= minimo;
   }
-  //si no .. me trae todos los autos de regreso
   return auto;
 }
-function filtrarMaximo(auto) {
+function filtrarMax(auto) {
   const { maximo } = datosBusqueda;
-  //SI HAY un valor (no vacio) entonces filtro por cada marca
+
   if (maximo) {
-    //nos interesa que el objeto de la db sea el de precio .. y que nos muestre el maximo/
-    //es decir que sean menor a un precio seleccionado
     return auto.precio <= maximo;
   }
-  //si no .. me trae todos los autos de regreso
+  return auto;
+}
+function filtrarTransmision(auto) {
+  const { transmision } = datosBusqueda;
+  if (transmision) {
+    return auto.transmision === transmision;
+  }
   return auto;
 }
 function filtrarPuertas(auto) {
   const { puertas } = datosBusqueda;
-  //SI HAY un valor (no vacio) entonces filtro por cada marca
   if (puertas) {
-    return auto.puertas == puertas;
+    return auto.puertas === puertas;
   }
-  //si no .. me trae todos los autos de regreso
-  return auto;
-}
-function filtrarColor(auto) {
-  const { color } = datosBusqueda;
-  //SI HAY un valor (no vacio) entonces filtro por cada marca
-  if (color) {
-    return auto.color == color;
-  }
-  //si no .. me trae todos los autos de regreso
-  return auto;
-}
-
-function filtrarTransmision(auto) {
-  const { transmision } = datosBusqueda;
-  //SI HAY un valor (no vacio) entonces filtro por cada marca
-  if (transmision) {
-    return auto.transmision == transmision;
-  }
-  //si no .. me trae todos los autos de regreso
   return auto;
 }

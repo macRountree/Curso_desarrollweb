@@ -1,8 +1,7 @@
-//?====================ENVIAR EMAIL=====================
+// == PROYECTO EMAIL
 
-document.addEventListener("DOMContentLoaded", function () {
-  //Creamos un objeto para habilitar el boton de enviar
-  //los valores deben empezar vacios
+document.addEventListener("DOMContentLoaded", () => {
+  //creamos un objeto
 
   const email = {
     email: "",
@@ -10,51 +9,50 @@ document.addEventListener("DOMContentLoaded", function () {
     cc: "",
     mensaje: "",
   };
-  //Seleccionamos los campos de la interfasz
+  // console.log(email);
+  //Seleccionar los elementos de la interfaz o inputs
 
   const inputEmail = document.querySelector("#email");
   const inputAsunto = document.querySelector("#asunto");
   const inputMensaje = document.querySelector("#mensaje");
-  const inputCc = document.querySelector("#cc");
-  const form = document.querySelector("#formulario");
-  const btnSubmit = document.querySelector(
-    '#formulario button[type= "submit"] '
-  );
-  const btnReset = document.querySelector('#formulario button[type= "reset"] ');
+  const formulario = document.querySelector("#formulario");
+  const btnSubmit = document.querySelector('#formulario button[type="submit"]');
+  const btnReset = document.querySelector('#formulario button[type="reset"]');
   const spinner = document.querySelector("#spinner");
-  console.log(inputEmail);
-  console.log(inputAsunto);
-  console.log(inputMensaje);
+  const inputCc = document.querySelector("#cc");
 
-  //asignar eventos
-  //Blur se puede utilizar para validar inputs que no se llenaron
-  //añadimos validar como parametro sin mandar a llamar la funcion.. y nos desasemos de los
-  //callbacks
-  //input es un poco mas en tiempo real es mas rapido que
+  //Listeners
+  //el blur se utiliza cuando tenemos selecciono el input (email) y cuando nos salimos se dispara el evento
+  // "input " nos da una experiencia en tiempo real que blur que debemos abandonar el campo
   inputEmail.addEventListener("input", validar);
-  inputMensaje.addEventListener("input", validar);
   inputAsunto.addEventListener("input", validar);
-  inputCc.addEventListener("input", validarCC);
-  form.addEventListener("submit", enviarEmail);
-  btnReset.addEventListener("click", function (e) {
-    //prevenimos su accion default.. es decir reiniciar formulario de btnReset
+  inputMensaje.addEventListener("input", validar);
+  inputCc.addEventListener("input", validar);
+  formulario.addEventListener("submit", enviarEmail);
+
+  btnReset.addEventListener("click", (e) => {
     e.preventDefault();
-    //Reiniciamos el objeto email
+    // Reiniciamos el objeto y luego limpiamos el formulario
+
     resetForm();
   });
 
+  //FUNCIONES
+
   function enviarEmail(e) {
     e.preventDefault();
+
     spinner.classList.add("flex");
     spinner.classList.remove("hidden");
+
     setTimeout(() => {
       spinner.classList.remove("flex");
       spinner.classList.add("hidden");
       resetForm();
 
-      //creamos alerta
-      const alertaExito = document.createElement("P");
-      alertaExito.classList.add(
+      //creeamos alerta
+      const alertaSuccess = document.createElement("P");
+      alertaSuccess.classList.add(
         "bg-green-500",
         "text-white",
         "p-2",
@@ -65,104 +63,88 @@ document.addEventListener("DOMContentLoaded", function () {
         "text-sm",
         "uppercase"
       );
-      alertaExito.textContent = "Mensaje Enviado";
-      form.appendChild(alertaExito);
-
+      alertaSuccess.textContent = "Mensaje Enviado con éxito";
+      formulario.appendChild(alertaSuccess);
       setTimeout(() => {
-        alertaExito.remove();
+        alertaSuccess.remove();
       }, 3000);
     }, 3000);
   }
 
-  function validar(e) {
-    //ParentElement muestra en consola el elemento padre de los inputs(en este caso)
-    //si el input es email entonces el padre sera el div de ese input
-    //console.log(e.target.parentElement.nextElementSibling);
-    //Si hay un string vacio en los inputs arroja esta vacio si no No esta vacio
+  //En lugar de hacer 3 listeners hacemos 1 funcion para reutilizar codigo ..mandamos la funcion validar a cada listtener
 
-    //Se recomienda tener un trim en un formulario para que elimine los espacios en blanco
+  function validar(e) {
     if (e.target.value.trim() === "" && e.target.id !== "cc") {
-      //podemos poner la alerta aqui pero podemos realizar otra funcion
-      //e.target.id hace que la validación sea mas dinamica.. ya que metenmos el id de cada campo en la alerta
+      //trim elimina espacios en blanco y se recomienda utilizarlo en formularios
       mostrarAlerta(
-        `El campo ${e.target.id} es obligatorio`,
+        `El campo ${e.target.id} obligario`,
         e.target.parentElement
       );
-
       email[e.target.name] = "";
       comprobarEmail();
       return;
     }
-    if (e.target.id === "email" && !validarEmail(e.target.value)) {
-      mostrarAlerta("El email no es valido", e.target.parentElement);
-
+    //Para qye solo muestre msg en el email.. debemos extraer su id  y tambien negar que haya algo escrito que no sea la expresion regular
+    if (
+      (!validarEmail(e.target.value) && e.target.id === "email") ||
+      e.target.id === "cc"
+    ) {
+      mostrarAlerta("Email no válido", e.target.parentElement);
       email[e.target.name] = "";
       comprobarEmail();
       return;
     }
+
     limpiarAlerta(e.target.parentElement);
 
-    //Asignar valores
-
+    //ASIGNAMOS VALORES AL OBJETO
     email[e.target.name] = e.target.value.trim().toLowerCase();
-    //comprobamos el objeto email
+    // console.log(email);
+
     comprobarEmail();
   }
 
+  //Funcion mostrar alerta
+
   function mostrarAlerta(mensaje, referencia) {
+    //Comprobamos si ya existe una alerta
+    //lo podemos hacer con un query selector y seleccionamos si ya tiene alguna clase pero seleccionara todas las clases .. igaul forma eliminaria todas las referencias o inputs
+    //le podemos pasar la referencia(el parent element de ese input) para acotar nuestra seleccion
     limpiarAlerta(referencia);
-    //Comprobamos si ya existe la alerta
-    //podemos seleccionar una clase de la alerta (bg-red-600)
-    //en lugar de document.quer---- utilizamos la referencia para que sea solo en el div acortando
-    const alerta = referencia.querySelector(".bg-red-600");
-    console.log(alerta);
-    if (alerta) {
-      alerta.remove();
-    }
 
-    //creamos un elemento html
+    //GENERAMOS ALERTA EN html se recomienda que la etiqueta sea en mayusculas
     const error = document.createElement("P");
-    //si utilizamos un innerHtml no se escapa.. es mas seguro TextContent
     error.textContent = mensaje;
-    error.classList.add("bg-red-600", "text-white", "p-2", "text-center");
-    //Aparecera una etiqueta de p en consola
-
-    //inyectamos errror al formulario
-    //appendchild agregamos un nuevo elemento ALFINAL de la etiqueta ene este caso del form
-    //con innerHtml limpia la pagina
-    //form.innerHTML = error.innerHTML;
+    //al error le agregamos una clase de fondo rojo para que se vea llamativo
+    error.classList.add("bg-red-600", "text-center", "text-white", "p-2");
+    //appendchidl agrega un nuevo elemento a lo ya existente
     referencia.appendChild(error);
+
+    //Como el aviso de erro no es llamativo le agregamos estilos
+
+    // console.log("ALEERTA");
   }
 
   function limpiarAlerta(referencia) {
+    // console.log("Desde Limpiar alerta");
     const alerta = referencia.querySelector(".bg-red-600");
-    console.log(alerta);
+    //si existe la alerta la removemos
     if (alerta) {
       alerta.remove();
     }
   }
 
   function validarEmail(email) {
-    //Expresion regular busca un patron en una cadena de texto
+    // reg expresion
     const regex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
     const resultado = regex.test(email);
+    // console.log(resultado);
     return resultado;
   }
 
-  function validarCC(e) {
-    if (e.target.value !== "" && !validarEmail(e.target.value)) {
-      mostrarAlerta("El email no es valido", e.target.parentElement);
-      comprobarEmail();
-      return;
-    }
-    limpiarAlerta(e.target.parentElement);
-    comprobarEmail();
-  }
-
   function comprobarEmail() {
-    //includes verifica si uno de los valores del arreglo estan vacios
-    //si hay valores que no estan vacios se quita habilita el boton enviar
-    //removiendo opacity y desabilitando disable de ese botonen html
+    console.log(email);
+    // Si el objeto email contiene campos vacios ... si no estan vacios elimina la clase opacity y el disabled
     if (Object.values(email).includes("")) {
       btnSubmit.classList.add("opacity-50");
       btnSubmit.disabled = true;
@@ -177,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
     email.asunto = "";
     email.cc = "";
     email.mensaje = "";
-    form.reset();
+    formulario.reset();
     comprobarEmail();
   }
 });
