@@ -9,4 +9,8 @@ cliente.set('nombre', 'karen');
 cliente.set('tipo', 'standart');
 cliente.set('saldo', 200);
 
-console.log(cliente);
+// console.log(cliente);
+
+// Map llave valor , set solo valor tiene casi los mismas funciones que el set
+
+console.log(cliente.size);
