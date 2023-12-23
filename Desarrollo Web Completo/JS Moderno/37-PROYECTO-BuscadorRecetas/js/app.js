@@ -7,7 +7,7 @@ function iniciarApp() {
   const resultado = document.querySelector('#resultado');
 
   if (selectCategorias) {
-    selectCategorias.addEventListener('change', seleccionarCategoria); //Change lo usamos en los select
+    selectCategorias.addEventListener('change', seleccionarCategoria); //Change lo usamos en los selectc
     // Inicia con las categorias en el select de categorias consulta las API
     obtenerCategorias();
   }
