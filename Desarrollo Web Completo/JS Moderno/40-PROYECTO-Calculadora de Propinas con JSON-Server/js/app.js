@@ -19,6 +19,13 @@ let cliente = {
   pedido: [], //   Almacenamos el pedido en un arreglo
 };
 
+// Creamos otro objeto para valorizar llas categoriazs
+const categorias = {
+  1: 'Comida',
+  2: 'Bebidas',
+  3: 'Postres',
+};
+
 const btnGuardarCliente = document.querySelector('#guardar-cliente');
 btnGuardarCliente.addEventListener('click', guardarCliente);
 
@@ -83,7 +90,7 @@ function mostrarSecciones() {
 }
 function obtenerPlatillos() {
   // Colocamos la url del backend aqui ... (en este caso usaremos la api de JSON Server)
-  const url = 'http://localhost:4000/platillos';
+  const url = 'http://localhost:3000/platillos';
   fetch(url)
     // *  OJO: en Fetch API hay doble THEN .... uno para respuesta y otro para resultado.........
     // En otras herramientas como Axios se utiliza solo 1 then
@@ -94,21 +101,427 @@ function obtenerPlatillos() {
 }
 function mostrarPlatillos(platillos) {
   // En este caso en HTML el main padre tiene el id platillos.... y su DIVhijo tiene la clase contenido
-
+  //   console.log(platillos);
   const contenidoPlatillo = document.querySelector('#platillos .contenido');
   //   Barremos cada platillo del argumento platillos que agarramos del fetch.thed()
   platillos.forEach(platillo => {
-    const { nombre, precio, categoria, id } = platillo;
+    const { nombre, precio, id, categoria } = platillo;
+    // console.log(nombre);
+    // console.log(categoria);
+    // console.log(precio);
+    // console.log(id);
+
     const row = document.createElement('DIV');
-    row.classList.add('row');
+    row.classList.add('row', 'py-3', 'border-top');
+
+    // creamos cada columna de 1 platillo
+    // columna de Nombre
     const nombreCol = document.createElement('DIV');
     nombreCol.classList.add('col-md-4');
     nombreCol.textContent = nombre;
-    // Primero agregamos el nombre al row y despues agregamos el row al contenido
-    row.appendChild();
+    // columna de precio
+
+    const precioCol = document.createElement('DIV');
+    precioCol.classList.add('col-md-3', 'fw-bold');
+    precioCol.textContent = `$${precio}`;
+
+    // columna Categoria
+
+    const categoriaCol = document.createElement('DIV');
+    categoriaCol.classList.add('col-md-3');
+    // Con el objeto global de categorias... empatamos el id de cada categoria con el del numero de categoria de nuestra API
+    categoriaCol.textContent = categorias[categoria];
+
+    // Creamos un input para agregar cantidades de ese platillo
+
+    const inputCantidades = document.createElement('INPUT');
+    inputCantidades.type = 'number';
+    inputCantidades.min = 0;
+    inputCantidades.value = 0;
+    inputCantidades.id = `producto - ${id}`;
+    inputCantidades.classList.add('form-control');
+
+    // Agregamos una funcion que al momento de agregar una cantidad .... lo mande a la seccion de resumen
+    // Recordar que los listeners como onclick onchange se utilizan cuando inyectamos HTML con JS
+
+    // Si dejamos la funcion agregarPlatillo(id) de esta manera si le estamos pasando el id pero
+    // traera Todos los Id de todos los platillos debido a que estamos llamando toda la funcion y no la accion de change
+    //
+    inputCantidades.onchange = function () {
+      // Queremos leer el numero del input
+      //   inputCantidades.value me traera el numero en String y debemos convertirlo a numero.... usamos parseInt
+
+      const cantidad = parseInt(inputCantidades.value);
+      console.log(cantidad);
+      agregarPlatillo({ ...platillo, cantidad });
+    };
+
+    const agregarADiv = document.createElement('DIV');
+    agregarADiv.classList.add('col-md-2');
+    agregarADiv.appendChild(inputCantidades);
+
+    // Mandamos las columnas al row
+
+    row.appendChild(nombreCol);
+    row.appendChild(precioCol);
+    row.appendChild(categoriaCol);
+    row.appendChild(agregarADiv);
+
+    // Renderizamos en el contenido vacio de nuestro HTML
+
     contenidoPlatillo.appendChild(row);
-    contenidoPlatillo.appendChild(nombreCol);
+  });
+}
+
+function agregarPlatillo(producto) {
+  //   console.log(`Agregando ....`, producto);
+
+  //   Primero tenemos que traernos el pedido Actual para eso lo extraemos del objeto global
+
+  const { pedido } = cliente;
+
+  //   Tenemos que revisar que se eliminen aquellos platillos que se repiten o que seean mayor 0
+
+  if (producto.cantidad > 0) {
+    // El some verificara si en nuestro arreglo  se repiten productos con el mismo id si se llegan a repetir lo eliminamos
+    if (pedido.some(articulo => articulo.id === producto.id)) {
+      // LSi el articulo Ya existe (some tirara true si existe)  actualizamos la cantidad
+      //   map() va a crear un nuevo array ,,,
+      const pedidoActualizado = pedido.map(articulo => {
+        // articulo esta dentro del scope de pedidoActualizado ... no tendra colisiones con el articulo de pedido.some()
+        // si nuestro id de articulo es igual a id de producto ... entonces iguala el articulo de la cantidad que pusimos en el input de producto
+        if (articulo.id === producto.id) {
+          articulo.cantidad = producto.cantidad;
+        }
+        // le damos return aqui para que jale toda la referencia de los objetos
+        return articulo;
+      });
+      //   Se asigna array a cliente.pedido (agregamos el resultado de pedidoACtualizado a cliente.pedido)
+      cliente.pedido = [...pedidoActualizado];
+    } else {
+      // Si el artiuclo no existe lo agregamos al array de pediddo
+      cliente.pedido = [...pedido, producto];
+    }
+  } else {
+    // Eliminamos elementos cuando la cantidad es 0
+    // Filter nos permitira elementos del arreglo ... en este caso solo seria la cantidad
+    const resultado = pedido.filter(artiuclo => artiuclo.id != producto.id);
+
+    // le pegamos el resultado al cliente.pedido
+    cliente.pedido = [...resultado];
+  }
+
+  //   console.log(cliente.pedido);
+  // Limpiamos Resumen
+
+  limpiarHTML();
+  //   Verificamos si hay pedidos
+  if (cliente.pedido.length) {
+    // Mostramos el Resumen
+
+    actualizarResumen();
+  } else {
+    // Si no hay nada mostramos el mensaje
+    MensajePedidoVacio();
+  }
+}
+
+function actualizarResumen() {
+  // en el HTML primero debemos eliminar el parrafo del Resumen que nos dice 'añade los elementos del pedido'
+  const contenidoResumen = document.querySelector('#resumen .contenido');
+
+  const resumen = document.createElement('DIV');
+  resumen.classList.add('col-md-6', 'card', 'py-2', 'px-3', 'shadow');
+  //  renderizamos  la mesa y la hora que seleccionamos  antes
+  const mesa = document.createElement('P');
+  mesa.textContent = 'Mesa: ';
+  mesa.classList.add('fw-bold');
+
+  const mesaSpan = document.createElement('SPAN');
+  mesaSpan.classList.add('fw-normal');
+
+  //   Render Hora
+  const hora = document.createElement('P');
+  hora.textContent = 'Hora: ';
+  hora.classList.add('fw-bold');
+  const horaSpan = document.createElement('SPAN');
+  horaSpan.classList.add('fw-normal');
+
+  mesa.appendChild(mesaSpan);
+  hora.appendChild(horaSpan);
+
+  //   Creamos un Heading para el resumen
+  const heading = document.createElement('H3');
+  heading.textContent = 'Platillos consumidos';
+  heading.classList.add('fw-bold', 'my-4', 'text-center');
+
+  //   Tenemos que iterar el  Array de platillos y mostrarlo
+  const grupo = document.createElement('UL');
+  grupo.classList.add('list-group');
+
+  const { pedido } = cliente;
+
+  pedido.forEach(articulo => {
+    const { nombre, cantidad, precio, id } = articulo;
+
+    const lista = document.createElement('LI');
+    lista.classList.add('list-group-item');
+
+    const nombreElemento = document.createElement('H4');
+    nombreElemento.classList.add('my-4');
+    nombreElemento.textContent = nombre;
+    const cantidadElemento = document.createElement('P');
+    cantidadElemento.classList.add('fw-bold');
+    cantidadElemento.textContent = `Cantidad: ${cantidad}`;
+    const precioElemento = document.createElement('P');
+    precioElemento.classList.add('fw-bold');
+    precioElemento.textContent = `Precio: $${precio}`;
+
+    // Agregamos un boton para eliminar
+
+    const btnEliminar = document.createElement('BUTTON');
+    btnEliminar.classList.add('btn', 'btn-danger');
+    btnEliminar.textContent = 'Eliminar Pedido';
+
+    // Funcion para eliminar pedido
+
+    btnEliminar.onclick = function () {
+      EliminarProductoID(id);
+    };
+
+    // Subtotal
+    const subtotalElemento = document.createElement('P');
+    subtotalElemento.classList.add('fw-bold');
+    subtotalElemento.textContent = CalcularSubtotal(precio, cantidad);
+
+    // Agregamos elementos al LI
+
+    lista.appendChild(nombreElemento);
+    lista.appendChild(cantidadElemento);
+    lista.appendChild(precioElemento);
+    lista.appendChild(subtotalElemento);
+    lista.appendChild(btnEliminar);
+    // Agregamos todo a grupo
+
+    grupo.appendChild(lista);
   });
 
-  //   console.log(platillos);
+  //   Agregamos todo al resumen
+
+  resumen.appendChild(heading);
+  resumen.appendChild(mesa);
+  resumen.appendChild(hora);
+  resumen.appendChild(grupo);
+
+  contenidoResumen.appendChild(resumen);
+
+  mesaSpan.textContent = cliente.mesa;
+  horaSpan.textContent = cliente.hora;
+
+  //   console.log('Desde Actualizar Resumen');
+  //   mostramos el formulario de propinas
+
+  mostrarPropinas();
+}
+
+function CalcularSubtotal(precio, cantidad) {
+  return `El subtotal es: $${precio * cantidad}`;
+}
+
+function EliminarProductoID(id) {
+  const { pedido } = cliente;
+  const resultado = pedido.filter(artiuclo => artiuclo.id != id);
+  cliente.pedido = [...resultado];
+
+  limpiarHTML();
+
+  if (cliente.pedido.length) {
+    actualizarResumen();
+  } else {
+    MensajePedidoVacio();
+  }
+  //   Elpreoducto seeliminó ... debemos resetear los inputs a ceros
+  //   comotenemos el Id como referencia seleccionamos con queryS para resetear
+
+  // Primero creamos un Tstring con el id ... entonces le podemos crearun id(#producto)
+  // Creamos otra variable donde seleccionamos con qSelector dicho producto y lo reseteamos a 0
+  // Cuando eliminemos el producto .. inputDeleted se encargara de dejar los inputs en 0
+  const productoDeleted = `#producto-${id}`;
+  console.log(productoDeleted);
+  const inputDeleted = document.querySelector(productoDeleted);
+  inputDeleted.value = 0;
+}
+
+function limpiarHTML() {
+  const contenido = document.querySelector('#resumen .contenido');
+
+  while (contenido.firstChild) {
+    contenido.removeChild(contenido.firstChild);
+  }
+}
+
+function MensajePedidoVacio() {
+  const contenido = document.querySelector('#resumen .contenido');
+  const texto = document.createElement('P');
+  texto.classList.add('text-center');
+  texto.textContent = `Añade los elementos del pedido`;
+
+  contenido.appendChild(texto);
+}
+
+function mostrarPropinas() {
+  // El resumen de los platillos tiene un col-md-6 del lado izquierdo
+  // colocaremos las propinas de lado derecho
+  const contenidoResumen = document.querySelector('#resumen .contenido');
+
+  const formulario = document.createElement('DIV');
+  formulario.classList.add('col-md-6', 'formulario');
+  const divForm = document.createElement('DIV');
+  divForm.classList.add('card', 'py-2', 'px-3', 'shadow');
+
+  const heading = document.createElement('H3');
+  heading.classList.add('my-4', 'text-center');
+  heading.textContent = 'Propina';
+
+  //   Creamos una radio button para seleeccionar que propina queremos dar
+  // radio 10%
+  const radio10Btn = document.createElement('INPUT');
+  radio10Btn.type = 'radio';
+
+  radio10Btn.name = 'propina';
+  radio10Btn.value = '10';
+  radio10Btn.classList.add('form-check-input');
+  // Agregamos evento para calcular propina
+  // Como no le pasamos ningun parámetro no creamos callback
+  radio10Btn.onclick = calcularPropina;
+
+  const radio10Label = document.createElement('LABEL');
+  radio10Label.textContent = '10%';
+  radio10Label.classList.add('form-check-label');
+
+  const radio10div = document.createElement('DIV');
+  radio10div.classList.add('form-check');
+
+  radio10div.appendChild(radio10Btn);
+  radio10div.appendChild(radio10Label);
+  // radio 25%
+  const radio25Btn = document.createElement('INPUT');
+  radio25Btn.type = 'radio';
+
+  radio25Btn.name = 'propina';
+  radio25Btn.value = '25';
+  radio25Btn.classList.add('form-check-input');
+  radio25Btn.onclick = calcularPropina;
+
+  const radio25Label = document.createElement('LABEL');
+  radio25Label.textContent = '25%';
+  radio25Label.classList.add('form-check-label');
+
+  const radio25div = document.createElement('DIV');
+  radio25div.classList.add('form-check');
+
+  radio25div.appendChild(radio25Btn);
+  radio25div.appendChild(radio25Label);
+  // radio 50%
+  const radio50Btn = document.createElement('INPUT');
+  radio50Btn.type = 'radio';
+
+  radio50Btn.name = 'propina';
+  radio50Btn.value = '50';
+  radio50Btn.classList.add('form-check-input');
+  radio50Btn.onclick = calcularPropina;
+
+  const radio50Label = document.createElement('LABEL');
+  radio50Label.textContent = '50%';
+  radio50Label.classList.add('form-check-label');
+
+  const radio50div = document.createElement('DIV');
+  radio50div.classList.add('form-check');
+
+  radio50div.appendChild(radio50Btn);
+  radio50div.appendChild(radio50Label);
+
+  divForm.appendChild(heading);
+  divForm.appendChild(radio10div);
+  divForm.appendChild(radio25div);
+  divForm.appendChild(radio50div);
+  formulario.appendChild(divForm);
+  contenidoResumen.appendChild(formulario);
+
+  //   console.log('mostrando Form');
+}
+function calcularPropina() {
+  const { pedido } = cliente;
+  let subtotal = 0;
+  // Calculamos el subtotal
+  pedido.forEach(articulo => {
+    subtotal += articulo.cantidad * articulo.precio;
+  });
+  // Seleccionamos el radio button con la propina del cliente
+  const propinaSelect = document.querySelector(
+    '[name="propina"]:checked'
+  ).value;
+
+  //Calcular la propina
+  const propina = (subtotal * parseInt(propinaSelect)) / 100;
+
+  console.log(propina);
+  // Calcular todo el total
+
+  const total = subtotal + propina;
+
+  mostrarTotalHTML(subtotal, total, propina);
+}
+
+function mostrarTotalHTML(subtotal, total, propina) {
+  const divTotales = document.createElement('DIV');
+  divTotales.classList.add('total-pagar');
+  // subtotal
+
+  const subtotalParrafo = document.createElement('P');
+  subtotalParrafo.classList.add('fs-4', 'fw-bold', 'mt-5');
+  subtotalParrafo.textContent = ' Subtotal consumo: ';
+
+  const subtotalSpan = document.createElement('SPAN');
+  subtotalSpan.classList.add('fw-normal');
+  subtotalSpan.textContent = `$${subtotal}`;
+
+  subtotalParrafo.appendChild(subtotalSpan);
+  // propinas
+
+  const propinaParrafo = document.createElement('P');
+  propinaParrafo.classList.add('fs-4', 'fw-bold', 'mt-2');
+  propinaParrafo.textContent = ' propina consumo: ';
+
+  const propinaSpan = document.createElement('SPAN');
+  propinaSpan.classList.add('fw-normal');
+  propinaSpan.textContent = `$${propina}`;
+
+  propinaParrafo.appendChild(propinaSpan);
+  // TOTAL
+
+  const totalParrafo = document.createElement('H3');
+  totalParrafo.classList.add('fs-3', 'fw-bold', 'mt-2');
+  totalParrafo.textContent = ' Total a pagar: ';
+
+  const totalSpan = document.createElement('SPAN');
+  totalSpan.classList.add('fw-normal');
+  totalSpan.textContent = `$${total}`;
+
+  totalParrafo.appendChild(totalSpan);
+
+  //   eliminamos el ultimo resutlado
+
+  const totalpagarDiv = document.querySelector('.total-pagar');
+
+  if (totalpagarDiv) {
+    totalpagarDiv.remove();
+  }
+
+  divTotales.appendChild(subtotalParrafo);
+  divTotales.appendChild(propinaParrafo);
+  divTotales.appendChild(totalParrafo);
+
+  const formulario = document.querySelector('.formulario > div');
+  formulario.append(divTotales);
 }
