@@ -36,13 +36,23 @@ document.addEventListener('DOMContentLoaded', () => {
   monedaSelect.addEventListener('change', leerValor);
 });
 
-function consultarCrypto() {
+async function consultarCrypto() {
   const url =
     'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD';
-  fetch(url)
-    .then(respuesta => respuesta.json())
-    .then(resultado => obtenerCrypto(resultado.Data)) //obtenerCrypto es un promise
-    .then(cryptos => selectCryptos(cryptos));
+  // fetch(url)
+  //   .then(respuesta => respuesta.json())
+  //   .then(resultado => obtenerCrypto(resultado.Data)) //obtenerCrypto es un promise
+  //   .then(cryptos => selectCryptos(cryptos));
+
+  try {
+    // En este caso requiere 3 await porque necesitamos  que se bloqueen cada await par que se resuelva uno
+    const respuesta = await fetch(url);
+    const res = await respuesta.json();
+    const criptomonedas = await obtenerCrypto(resultado.Data);
+    selectCryptos(criptomonedas);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function selectCryptos(cryptos) {
@@ -96,7 +106,7 @@ function mostrarError(mensaje) {
   }
 }
 
-function consultarAPI() {
+async function consultarAPI() {
   // Leemos los valores del objeto principal ( objBusqueda)
 
   const { moneda, crypto } = objBusqueda;
@@ -109,12 +119,20 @@ function consultarAPI() {
   //   ANTES DEL FETCH MOSTRAMOS EL SPINNER
 
   mostrarSpinner();
-  fetch(url)
-    .then(respuesta => respuesta.json())
-    .then(cotizacion => {
-      // * OJO: accedemos a las propiedades del objeto DISPLAY con un [ ] si queremos profundizar agregamos otro []
-      mostrarCotizacionHTML(cotizacion.DISPLAY[crypto][moneda]); //nos lanza RAW y display utilizamos cualquiera de los 2
-    });
+  // fetch(url)
+  //   .then(respuesta => respuesta.json())
+  //   .then(cotizacion => {
+  //     // * OJO: accedemos a las propiedades del objeto DISPLAY con un [ ] si queremos profundizar agregamos otro []
+  //     mostrarCotizacionHTML(cotizacion.DISPLAY[crypto][moneda]); //nos lanza RAW y display utilizamos cualquiera de los 2
+  //   });
+
+  try {
+    const respuesta = await fetch(url);
+    const cotizacion = await respuesta.json();
+    mostrarCotizacionHTML(cotizacion.DISPLAY[crypto][moneda]);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function mostrarCotizacionHTML(cotizacion) {
