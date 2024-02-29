@@ -10,12 +10,21 @@ import { useBebidasStore } from '../stores/bebidas'
 //   UseRoute es un hook que nos permite acceder al objeto y a laspropiedades de una ruta
 // */
 const route = useRoute()
-//* No es recomendable utilizar destructuring cuando utilizamos el store en un componente
+//* No es recomendable utilizar destructuring {categorias} cuando utilizamos el store en un componente
+//* Ya que se puede perder la reactividad de ¨Pinia
 const storeBebidas = useBebidasStore()
-console.log(store.categorias)
+// console.log(storeBebidas.categorias)
 //* creamos una variable computada y le decimos que muestre el inicio
 const paginaInicio = computed(() => route.name === 'inicio') //* Mandamos  la variabla al formulario ... para condicionar si PaginaInicio se muestre solo en la pagina inicio 
-console.log(paginaInicio)
+// console.log(paginaInicio)
+
+const handleSubmit = () => {
+
+
+    // TODO: validar
+    //* Aqui llamamos la funcion
+    storeBebidas.obtenerBebidas()
+}
 
 </script>
 <template>
@@ -28,13 +37,11 @@ console.log(paginaInicio)
                     <RouterLink :to="{ name: 'inicio' }">
                         <img alt="Logotipo" src="/img/logo.svg" class="w-32">
                     </RouterLink>
-                    <nav class="flex gap-4">
-                        <RouterLink :to="{ name: 'inicio' }" class="text-white uppercase font-bold"
-                            active-class="text-orange-500">
+                    <nav class="flex gap-4 text-white">
+                        <RouterLink :to="{ name: 'inicio' }" class=" uppercase font-bold" active-class="text-orange-500">
                             Inicio
                         </RouterLink>
-                        <RouterLink :to="{ name: 'favoritos' }" class="text-white uppercase font-bold"
-                            active-class="text-orange-500">
+                        <RouterLink :to="{ name: 'favoritos' }" class=" uppercase font-bold" active-class="text-orange-500">
                             Favoritos
                         </RouterLink>
                     </nav>
@@ -42,21 +49,26 @@ console.log(paginaInicio)
 
             </div>
 
-            <form class="md:w-1/2 2xl:w-1/3 bg-orange-400 my-32 p-10 rounded-lg shadow space-y-6 " v-if="paginaInicio">
+            <form class="md:w-1/2 2xl:w-1/3 bg-orange-400 my-32 p-10 rounded-lg shadow space-y-6 " v-if="paginaInicio"
+                @submit.prevent="handleSubmit">
                 <div class="space-y-4">
                     <label for="" class="text-white uppercase font-extrabold text-lg">
                         Nombre o Ingredientes
 
                     </label>
                     <input type="text" name="" id="ingrediente" class="p-3 w-full rounded focus:outline-none"
-                        placeholder="Nombre o ingrediente: Vodka,Tequila, etc">
+                        placeholder="Nombre o ingrediente: Vodka,Tequila, etc" v-model="storeBebidas.busqueda.nombre">
                 </div>
                 <div class="space-y-4">
                     <label for="" class="text-white uppercase font-extrabold text-lg">
                         Categoria
                     </label>
-                    <select type="text" name="" id="categoria" class="p-3 w-full rounded focus:outline-none">
+                    <select type="text" name="" id="categoria" class="p-3 w-full rounded focus:outline-none"
+                        v-model="storeBebidas.busqueda.categoria">
                         <option value="">--Selección--</option>
+                        <!-- *en el :key colocamos el identificador unico de cada categoria {puede ser id } pero en este caso el diferenciador es strCategory segun la API -->
+                        <option v-for="categoria in storeBebidas.categorias" :key="categoria.strCategory"
+                            :value="categoria.strCategory">{{ categoria.strCategory }}</option>
                     </select>
                 </div>
                 <input type="submit"

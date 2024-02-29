@@ -1,14 +1,18 @@
 <script setup>
-import HeaderVue from './components/Header.vue';
+import Header from './components/Header.vue';
 import { RouterView } from 'vue-router';
+import Modal from './components/Modal.vue';
+
 </script>
 
 <template>
-  <HeaderVue />
+  <Header />
   <main class="container mx-auto mt-10">
     <RouterView />
 
   </main>
+  <!-- *Modal son ventanas flotantes por lo que no  es necesario declararlo en el main -->
+  <Modal />
 </template>
 
  
