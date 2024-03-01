@@ -1,5 +1,5 @@
 import {defineStore} from 'pinia';
-import {onMounted, reactive, ref} from 'vue';
+import {computed, onMounted, reactive, ref} from 'vue';
 import APIServices from '@/services/APIServices';
 import {useModalStore} from './modal';
 // * Los Store siempre inician con use el nombre y Store
@@ -58,6 +58,10 @@ export const useBebidasStore = defineStore('bebidas', () => {
     modal.handleClickModal();
   }
 
+  const noBebidas = computed(() => {
+    return recetas.value.length === 0;
+  });
+
   /*
    * Siempre tenemos que retornar algo para poderlo reutilizarlo en diferentes paginas
    */
@@ -68,5 +72,6 @@ export const useBebidasStore = defineStore('bebidas', () => {
     receta,
     seleccionaBebida,
     obtenerBebidas,
+    noBebidas,
   };
 });
