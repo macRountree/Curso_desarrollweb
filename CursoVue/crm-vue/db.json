@@ -1,0 +1,14 @@
+{
+  "clientes": [
+    {
+      "nombre": "Mac ",
+      "apellido": "Rountree",
+      "email": "macoy1492@hotmail.com",
+      "telefono": "662-277-8344",
+      "empresa": "SALM",
+      "puesto": "dEV0",
+      "estado": true,
+      "id": "1"
+    }
+  ]
+}

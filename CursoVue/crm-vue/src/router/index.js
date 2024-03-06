@@ -5,15 +5,22 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'inicio',
+      name: 'listado-clientes',
+      title: 'inicio',
       component: ClientesViewVue,
       props: {titulo: 'Listado de Clientes Desde Router.js'},
     },
     {
       path: '/agregar-cliente', //si tenemos el :to="{name: ''}" en en algun View podemos modificar el nombre del path
-      name: 'agregar-cliente',
+      name: 'agregar-cliente', //*es como el id interno de cada ruta
       component: () => import('../views/NuevoClienteView.vue'),
       props: {titulo: 'Agregar Cliente desde...'},
+    },
+    {
+      path: '/editar-cliente/:id', //si tenemos el :to="{name: ''}" en en algun View podemos modificar el nombre del path
+      name: 'editar-cliente', //*es como el id interno de cada ruta
+      component: () => import('../views/EditarClienteView.vue'),
+      props: {titulo: 'Editar Cliente'},
     },
   ],
 });
