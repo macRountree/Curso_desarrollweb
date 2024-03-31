@@ -1,18 +1,19 @@
 <script setup>
 //*UseForm: tendra el metodo para enviar el Submit
 //*UseFiedl: nos permite atar cierto modelo a un input y la validación
-import {useAuthStore} from '@/stores/authStore';
-import {loginSchema as validationSchema} from '@/validation/loginSchema';
 import {useForm, useField} from 'vee-validate';
-
+import {loginSchema as validationSchema} from '@/validation/loginSchema';
+import {useAuthStore} from '@/stores/authStore';
 //!importamos la store de Auth
 
 // *Podemos pasarle nuestro Schema de validacion al useForm a traves de un objeto
-const {handleSubmit} = useForm({validationSchema});
+const {handleSubmit} = useForm({
+  validationSchema,
+}); //unimos los objetos validSchema e imageSchema porque son obligatorios
 const auth = useAuthStore();
 const email = useField('email'); //*No son ref
 const password = useField('password'); //*NO son refs
-console.log('Email', email);
+// console.log('Email', email);
 
 const submit = handleSubmit(values => {
   auth.login(values);
@@ -34,7 +35,7 @@ const submit = handleSubmit(values => {
       v-if="auth.hasError"
       class="my-3"
       :title="auth.errorMessage"
-      type="error"
+      type=" error"
     ></v-alert>
 
     <v-form class="my-5">
@@ -60,4 +61,3 @@ const submit = handleSubmit(values => {
     </v-form>
   </v-card>
 </template>
-<!-- sdfsfsdf -->

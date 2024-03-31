@@ -64,7 +64,7 @@ export const useAuthStore = defineStore('auth', () => {
     onAuthStateChanged(auth, user => {
       //*user regresara null si no esta auth, para facilitar el auth declaramos null en la variable auth y validamos
       if (user) {
-        console.log(user); //*colocamos la info en el state
+        // console.log(user); //*colocamos la info en el state
         authUser.value = user;
       }
 
